@@ -1,5 +1,5 @@
 # Scorponok.IB
-<strong>Cadastro Geral de Membros de Congreção<\strong>
+Cadastro Geral de Membros de Congreção
 
 Desenvolvido como parte de trabalhos acadêmicos do seu autor durante curso superior.
 
