@@ -4,7 +4,7 @@ using Scorponok.IB.Core.ValueObjects;
 
 namespace Scorponok.IB.Unit.Tests.Domain.Models.ValueObjects
 {
-	[TestFixture, Category("Domain/Organizacoes/ValueObjects")]
+	[TestFixture, Category("Domain/Organizacoes/Email/ValueObjects")]
 	public class EmailTests
 	{
 		[TestCase("a@teste.com.br")]
@@ -19,14 +19,14 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.ValueObjects
 			email.Valido.Should().BeTrue();
 		}
 
-		[TestCase("a@teste.com.br", "a@teste.com.br")]
-		[TestCase("a@cd.com", "a@cd.com")]
-		[TestCase("a1@teste.com.br", "a1@teste.com.br")]
-		[TestCase("222222@12333.com", "222222@12333.com")]
-		public void Deve_entender_as_duas_instancias_de_email_com_sucesso(string value1, string value2)
+		[TestCase("a@teste.com.br")]
+		[TestCase("a@cd.com")]
+		[TestCase("a1@teste.com.br")]
+		[TestCase("222222@12333.com")]
+		public void Deve_entender_as_duas_instancias_de_email_com_sucesso(string value1)
 		{
 			var email1 = Email.Factory.CreateNew(value1);
-			var email2 = Email.Factory.CreateNew(value2);
+			var email2 = Email.Factory.CreateNew(value1);
 
 			email1.Should().NotBeNull();
 			email2.Valido.Should().BeTrue();
