@@ -1101,6 +1101,9 @@
         }
       },
       "Scorponok.IB.Domain/1.0.0": {
+        "dependencies": {
+          "Scorponok.IB.Core": "1.0.0"
+        },
         "runtime": {
           "Scorponok.IB.Domain.dll": {}
         }

@@ -55,7 +55,9 @@ namespace Scorponok.IB.Core.ValueObjects
 		{
 			public static Email CreateNew(string email)
 				=> new Email(email);
-			
+
+			public static Email Empty()
+				=> new Email();
 		}
 	}
 }

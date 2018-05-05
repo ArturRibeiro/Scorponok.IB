@@ -7,3 +7,5 @@ C:\Users\scorponok\Source\github\Scorponok.IB\src\Scorponok.IB.Domain\obj\Debug\
 C:\Users\scorponok\Source\github\Scorponok.IB\src\Scorponok.IB.Domain\obj\Debug\netstandard2.0\Scorponok.IB.Domain.AssemblyInfo.cs
 C:\Users\scorponok\Source\github\Scorponok.IB\src\Scorponok.IB.Domain\obj\Debug\netstandard2.0\Scorponok.IB.Domain.dll
 C:\Users\scorponok\Source\github\Scorponok.IB\src\Scorponok.IB.Domain\obj\Debug\netstandard2.0\Scorponok.IB.Domain.pdb
+C:\Users\scorponok\Source\github\Scorponok.IB\src\Scorponok.IB.Domain\bin\Debug\netstandard2.0\Scorponok.IB.Core.dll
+C:\Users\scorponok\Source\github\Scorponok.IB\src\Scorponok.IB.Domain\bin\Debug\netstandard2.0\Scorponok.IB.Core.pdb

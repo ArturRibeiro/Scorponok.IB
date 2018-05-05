@@ -25,6 +25,16 @@
         "build": {
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
+      },
+      "Scorponok.IB.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Scorponok.IB.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Scorponok.IB.Core.dll": {}
+        }
       }
     }
   },
@@ -169,11 +179,17 @@
         "netstandard.library.2.0.1.nupkg.sha512",
         "netstandard.library.nuspec"
       ]
+    },
+    "Scorponok.IB.Core/1.0.0": {
+      "type": "project",
+      "path": "../Scorponok.IB.Core/Scorponok.IB.Core.csproj",
+      "msbuildProject": "../Scorponok.IB.Core/Scorponok.IB.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
-      "NETStandard.Library >= 2.0.1"
+      "NETStandard.Library >= 2.0.1",
+      "Scorponok.IB.Core >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -209,7 +225,11 @@
       },
       "frameworks": {
         "netstandard2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj": {
+              "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
