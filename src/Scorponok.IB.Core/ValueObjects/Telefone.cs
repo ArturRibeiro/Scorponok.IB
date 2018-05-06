@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices.ComTypes;
+using Scorponok.IB.Core.Models;
 
 namespace Scorponok.IB.Core.ValueObjects
 {

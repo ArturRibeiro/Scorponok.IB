@@ -1,4 +1,6 @@
-﻿namespace Scorponok.IB.Core.ValueObjects
+﻿using Scorponok.IB.Core.Models;
+
+namespace Scorponok.IB.Core.ValueObjects
 {
 	public class Endereco : ValueObject<Endereco>
 	{

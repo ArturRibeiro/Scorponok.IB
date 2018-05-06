@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
+using Scorponok.IB.Core.Models;
 
 namespace Scorponok.IB.Core.ValueObjects
 {

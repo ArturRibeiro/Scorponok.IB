@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Reflection;
 
-namespace Scorponok.IB.Core.ValueObjects
+namespace Scorponok.IB.Core.Models
 {
 	public abstract class ValueObject<T> : IEquatable<T>
 		where T : ValueObject<T>
