@@ -1,8 +1,9 @@
-﻿using Scorponok.IB.Core.ValueObjects;
+﻿using Scorponok.IB.Core.Models;
+using Scorponok.IB.Core.ValueObjects;
 
 namespace Scorponok.IB.Domain.Models.Organizacoes
 {
-	public class Igreja
+	public class Igreja : Entity
 	{
 		#region Propriedades
 		public string Nome { get; private set; }
