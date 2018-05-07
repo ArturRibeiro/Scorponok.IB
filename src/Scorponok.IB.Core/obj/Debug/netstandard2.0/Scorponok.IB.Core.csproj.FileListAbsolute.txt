@@ -7,3 +7,12 @@ C:\Users\scorponok\Source\github\Scorponok.IB\src\Scorponok.IB.Core\obj\Debug\ne
 C:\Users\scorponok\Source\github\Scorponok.IB\src\Scorponok.IB.Core\obj\Debug\netstandard2.0\Scorponok.IB.Core.AssemblyInfo.cs
 C:\Users\scorponok\Source\github\Scorponok.IB\src\Scorponok.IB.Core\obj\Debug\netstandard2.0\Scorponok.IB.Core.dll
 C:\Users\scorponok\Source\github\Scorponok.IB\src\Scorponok.IB.Core\obj\Debug\netstandard2.0\Scorponok.IB.Core.pdb
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Core\bin\Debug\netstandard2.0\Scorponok.IB.Core.deps.json
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Core\bin\Debug\netstandard2.0\Scorponok.IB.Core.dll
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Core\bin\Debug\netstandard2.0\Scorponok.IB.Core.pdb
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Core\obj\Debug\netstandard2.0\Scorponok.IB.Core.csprojResolveAssemblyReference.cache
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Core\obj\Debug\netstandard2.0\Scorponok.IB.Core.csproj.CoreCompileInputs.cache
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Core\obj\Debug\netstandard2.0\Scorponok.IB.Core.AssemblyInfoInputs.cache
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Core\obj\Debug\netstandard2.0\Scorponok.IB.Core.AssemblyInfo.cs
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Core\obj\Debug\netstandard2.0\Scorponok.IB.Core.dll
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Core\obj\Debug\netstandard2.0\Scorponok.IB.Core.pdb

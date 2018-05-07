@@ -13,6 +13,8 @@ namespace Scorponok.IB.Domain.Models.Organizacoes
 		public Endereco Endereco { get; private set; } = Endereco.Factory.Empty();
 		#endregion
 
+		public bool IsValid() => true;
+
 		#region Factory
 		public static class Factory
 		{
@@ -58,5 +60,7 @@ namespace Scorponok.IB.Domain.Models.Organizacoes
 
 		}
 		#endregion
+
+
 	}
 }

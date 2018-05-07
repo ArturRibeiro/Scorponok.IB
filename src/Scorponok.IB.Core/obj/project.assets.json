@@ -30,7 +30,7 @@
   },
   "libraries": {
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "sha512": "VdXk6Bwspq7hjOns7dKmXrzy/b3qj6i5++4VTBRRp6ht3jffA6saHm94kRGKMTyOQfcDWEi6I6Rbh1Mp1mMk1Q==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
@@ -177,7 +177,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\scorponok\\.nuget\\packages\\": {},
+    "C:\\Users\\artur.ribeiro\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -186,26 +187,28 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj",
+      "projectUniqueName": "D:\\Projetos\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj",
       "projectName": "Scorponok.IB.Core",
-      "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj",
-      "packagesPath": "C:\\Users\\scorponok\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB\\src\\Scorponok.IB.Core\\obj\\",
+      "projectPath": "D:\\Projetos\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj",
+      "packagesPath": "C:\\Users\\artur.ribeiro\\.nuget\\packages\\",
+      "outputPath": "D:\\Projetos\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\scorponok\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\artur.ribeiro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://www.nuget.org/api/v2/curated-feeds/microsoftdotnet/": {}
+        "http://nuget.celulardireto.com.br/nuget": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.0": {

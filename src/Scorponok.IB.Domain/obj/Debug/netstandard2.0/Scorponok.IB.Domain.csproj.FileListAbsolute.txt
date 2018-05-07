@@ -9,3 +9,14 @@ C:\Users\scorponok\Source\github\Scorponok.IB\src\Scorponok.IB.Domain\obj\Debug\
 C:\Users\scorponok\Source\github\Scorponok.IB\src\Scorponok.IB.Domain\obj\Debug\netstandard2.0\Scorponok.IB.Domain.pdb
 C:\Users\scorponok\Source\github\Scorponok.IB\src\Scorponok.IB.Domain\bin\Debug\netstandard2.0\Scorponok.IB.Core.dll
 C:\Users\scorponok\Source\github\Scorponok.IB\src\Scorponok.IB.Domain\bin\Debug\netstandard2.0\Scorponok.IB.Core.pdb
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Domain\bin\Debug\netstandard2.0\Scorponok.IB.Domain.deps.json
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Domain\bin\Debug\netstandard2.0\Scorponok.IB.Domain.dll
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Domain\bin\Debug\netstandard2.0\Scorponok.IB.Domain.pdb
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Domain\bin\Debug\netstandard2.0\Scorponok.IB.Core.dll
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Domain\bin\Debug\netstandard2.0\Scorponok.IB.Core.pdb
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Domain\obj\Debug\netstandard2.0\Scorponok.IB.Domain.csprojResolveAssemblyReference.cache
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Domain\obj\Debug\netstandard2.0\Scorponok.IB.Domain.csproj.CoreCompileInputs.cache
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Domain\obj\Debug\netstandard2.0\Scorponok.IB.Domain.AssemblyInfoInputs.cache
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Domain\obj\Debug\netstandard2.0\Scorponok.IB.Domain.AssemblyInfo.cs
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Domain\obj\Debug\netstandard2.0\Scorponok.IB.Domain.dll
+D:\Projetos\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Domain\obj\Debug\netstandard2.0\Scorponok.IB.Domain.pdb

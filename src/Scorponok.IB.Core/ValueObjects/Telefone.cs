@@ -64,6 +64,13 @@ namespace Scorponok.IB.Core.ValueObjects
 			public static Telefone CreateNew(byte codigoPais, string ddd, string numero)
 				=> new Telefone(codigoPais, ddd, numero);
 
+			public static Telefone CreateNew(string ddd, string numero)
+				=> new Telefone()
+				{
+					DDD = ddd,
+					Numero = numero
+				};
+
 			public static Telefone Empty()
 				=> new Telefone();
 		}
