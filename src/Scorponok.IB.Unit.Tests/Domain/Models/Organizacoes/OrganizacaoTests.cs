@@ -6,7 +6,7 @@ using Scorponok.IB.Domain.Models.Organizacoes;
 namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes
 {
 	[TestFixture, Category("Domain/Organizacoes/Igreja")]
-	public class IgrejaTests
+	public class OrganizacaoTests
 	{
 		[Test]
 		public void Deve_cria_entidade_organizacao_so_com_nome()
