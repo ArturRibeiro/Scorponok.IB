@@ -3,7 +3,7 @@ using Scorponok.IB.Core.ValueObjects;
 
 namespace Scorponok.IB.Domain.Models.Organizacoes
 {
-	public class Igreja : Entity
+	public class Organizacao : Entity
 	{
 		#region Propriedades
 		public string Nome { get; private set; }
@@ -18,8 +18,8 @@ namespace Scorponok.IB.Domain.Models.Organizacoes
 		#region Factory
 		public static class Factory
 		{
-			public static Igreja CreateNew(string nome, string foto, Email email, Telefone telefone, Endereco endereco)
-				=> new Igreja()
+			public static Organizacao CreateNew(string nome, string foto, Email email, Telefone telefone, Endereco endereco)
+				=> new Organizacao()
 				{
 					Nome = nome,
 					Foto = foto,
@@ -28,8 +28,8 @@ namespace Scorponok.IB.Domain.Models.Organizacoes
 					Endereco = endereco
 				};
 
-			public static Igreja CreateNew(string nome, string foto, Email email, Telefone telefone)
-				=> new Igreja()
+			public static Organizacao CreateNew(string nome, string foto, Email email, Telefone telefone)
+				=> new Organizacao()
 				{
 					Nome = nome,
 					Foto = foto,
@@ -37,23 +37,23 @@ namespace Scorponok.IB.Domain.Models.Organizacoes
 					Telefone = telefone
 				};
 
-			public static Igreja CreateNew(string nome, string foto, Email email)
-				=> new Igreja()
+			public static Organizacao CreateNew(string nome, string foto, Email email)
+				=> new Organizacao()
 				{
 					Nome = nome,
 					Foto = foto,
 					Email = email
 				};
 
-			public static Igreja CreateNew(string nome, string foto)
-				=> new Igreja()
+			public static Organizacao CreateNew(string nome, string foto)
+				=> new Organizacao()
 				{
 					Nome = nome,
 					Foto = foto
 				};
 
-			public static Igreja CreateNew(string nome)
-				=> new Igreja()
+			public static Organizacao CreateNew(string nome)
+				=> new Organizacao()
 				{
 					Nome = nome
 				};

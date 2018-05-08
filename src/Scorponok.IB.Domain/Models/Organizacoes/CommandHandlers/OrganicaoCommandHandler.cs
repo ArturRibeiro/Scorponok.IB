@@ -27,7 +27,7 @@ namespace Scorponok.IB.Domain.Models.Organizacoes.CommandHandlers
 			var email = Email.Factory.CreateNew(message.Email);
 			var telefone = Telefone.Factory.CreateNew(message.DDD, message.Telefone);
 
-			var organizacao = Igreja.Factory.CreateNew(
+			var organizacao = Organizacao.Factory.CreateNew(
 				nome: message.Nome
 				, foto: message.Foto
 				, email: email
