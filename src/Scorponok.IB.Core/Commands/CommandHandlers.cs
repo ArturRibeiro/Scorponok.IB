@@ -1,4 +1,5 @@
-﻿using Scorponok.IB.Core.Bus;
+﻿using FluentValidation.Results;
+using Scorponok.IB.Core.Bus;
 using Scorponok.IB.Core.Interfaces;
 using Scorponok.IB.Core.Notifications;
 
@@ -6,9 +7,9 @@ namespace Scorponok.IB.Core.Commands
 {
 	public abstract class CommandHandler
 	{
-		private readonly IUnitOfWork _uow;
-		private readonly IBus _bus;
-		private readonly IDomainNotificationHandler<DomainNotification> _notification;
+		protected readonly IUnitOfWork _uow;
+		protected readonly IBus _bus;
+		protected readonly IDomainNotificationHandler<DomainNotification> _notification;
 
 		public CommandHandler(IUnitOfWork uow, IBus bus, IDomainNotificationHandler<DomainNotification> notification)
 		{
@@ -17,11 +18,11 @@ namespace Scorponok.IB.Core.Commands
 			_notification = notification;
 		}
 
-		//protected void NotifyErrors(ValidationResult validationResult)
-		//{
-		//	foreach (var error in validationResult.Errors)
-		//		_bus.RaiseEvent(new DomainNotification(error.PropertyName, error.ErrorMessage));
-		//}
+		protected void NotifyErrors(Command command)
+		{
+			foreach (var error in command.ValidationResult.Errors)
+				_bus.RaiseEvent(new DomainNotification(error.PropertyName, error.ErrorMessage));
+		}
 
 		public bool Commit()
 		{

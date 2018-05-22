@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using Scorponok.IB.Core.Commands;
 
-namespace Scorponok.IB.Domain.Models.Organizacoes.Commands
+namespace Scorponok.IB.Domain.Models.Organizacoes.Commands.Validators
 {
 	public class RegisterChurchCommandValidator : CommandValidator<RegisterChurchCommand>
 	{

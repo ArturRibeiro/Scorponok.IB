@@ -11,7 +11,9 @@ namespace Scorponok.IB.Core.Commands
 			get;
 			private set;
 		}
-		
+
+		public ValidationResult ValidationResult { get; set; }
+
 		public Command()
 		{
 			this.Timestamp = new DateTime();

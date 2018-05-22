@@ -51,7 +51,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes
 		public void Deve_cria_entidade_igreja_so_com_nome_foto_email_telefone()
 		{
 			//Arrange's
-			var church = Church.Factory.CreateNew("nome", "foto", Email.Factory.CreateNew("scorponok@scorponok.com"), Telephone.Factory.CreateNew(55, "21", "987413955"));
+			var church = Church.Factory.CreateNew("nome", "foto", Email.Factory.CreateNew("scorponok@scorponok.com"), Telephone.Factory.CreateNew(55, 21, "987413955"));
 
 			//Assert's
 			church.Should().NotBeNull();
@@ -75,7 +75,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes
 			//Arrange's
 			var church = Church.Factory.CreateNew("nome", "foto"
 				, Email.Factory.CreateNew("scorponok@scorponok.com")
-				, Telephone.Factory.CreateNew(55, "21", "987413955")
+				, Telephone.Factory.CreateNew(55, 21, "987413955")
 				, Address.Factory.Empty());
 
 			//Assert's

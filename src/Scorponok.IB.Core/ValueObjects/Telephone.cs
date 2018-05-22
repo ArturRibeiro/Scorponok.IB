@@ -10,7 +10,7 @@ namespace Scorponok.IB.Core.ValueObjects
 
 		public byte Pais { get; private set; } = 55;
 
-		public string DDD { get; private set; }
+		public byte DDD { get; private set; }
 
 		public string Numero { get; private set; }
 
@@ -24,7 +24,7 @@ namespace Scorponok.IB.Core.ValueObjects
 
 		}
 
-		private Telephone(byte codigoPais, string ddd, string numero)
+		private Telephone(byte codigoPais, byte ddd, string numero)
 		{
 			this.Pais = codigoPais;
 			this.DDD = ddd;
@@ -40,7 +40,7 @@ namespace Scorponok.IB.Core.ValueObjects
 				return false;
 			}
 			
-			if (this.DDD.Length != 2)
+			if (this.DDD < 1 || this.DDD > 99)
 			{
 				this.Mensagem = "DDD incorreto";
 				return false;
@@ -61,13 +61,13 @@ namespace Scorponok.IB.Core.ValueObjects
 
 		public static class Factory
 		{
-			public static Telephone CreateNew(byte codigoPais, string ddd, string numero)
+			public static Telephone CreateNew(byte codigoPais, byte ddd, string numero)
 				=> new Telephone(codigoPais, ddd, numero);
 
 			public static Telephone Empty()
 				=> new Telephone();
 
-			public static Telephone CreateNew(string ddd, string numero)
+			public static Telephone CreateNew(byte ddd, string numero)
 				=> new Telephone()
 				{
 					DDD = ddd,

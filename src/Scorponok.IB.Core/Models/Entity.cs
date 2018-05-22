@@ -5,7 +5,7 @@ namespace Scorponok.IB.Core.Models
     //Entity 2
     public abstract class Entity
     {
-        public Guid Id { get; protected set; }
+        public Guid Id { get; protected set; } = Guid.NewGuid();
 
         public override bool Equals(object obj)
         {

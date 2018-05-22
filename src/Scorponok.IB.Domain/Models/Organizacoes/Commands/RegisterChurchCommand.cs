@@ -1,22 +1,18 @@
 ﻿using FluentValidation.Results;
 using Scorponok.IB.Core.Commands;
+using Scorponok.IB.Domain.Models.Organizacoes.Commands.Validators;
 
 namespace Scorponok.IB.Domain.Models.Organizacoes.Commands
 {
 	public class RegisterChurchCommand : Command 
 	{
-		public ValidationResult ValidationResult
-		{
-			get;
-			private set;
-		}
-
 		#region Propriedades
 		public string Name { get; set; }
 		public string Photo { get; }
 		public string Email { get; }
+		public byte DDD { get; }
 		public string Telephone { get; }
-		//public string Address { get; private set; }
+		
 		#endregion
 
 		public RegisterChurchCommand(string name, string photo, string email, string telephone)
