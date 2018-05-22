@@ -43,6 +43,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 			var argument = new RegisterChurchCommand("Richmond’s First Baptist Church", email: "Scorponok@scorponok.com", photo: "1.jpg", telephone: "123456789");
 
 			ChurchRegisteredEvent churchRegisteredEvent = null;
+			Church church = null;
 
 			//Setup
 			_uow.Setup(x => x.Commit()).Returns(new CommandResult(success: true));
