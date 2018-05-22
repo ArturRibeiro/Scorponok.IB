@@ -13,6 +13,8 @@ namespace Scorponok.IB.Domain.Models.Organizacoes
 		public Address Address { get; private set; } = Address.Factory.Empty();
 		#endregion
 
+		public bool IsValid() => true;
+
 		#region Factory
 		public static class Factory
 		{

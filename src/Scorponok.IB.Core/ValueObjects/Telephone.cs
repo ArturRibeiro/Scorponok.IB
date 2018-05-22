@@ -66,6 +66,13 @@ namespace Scorponok.IB.Core.ValueObjects
 
 			public static Telephone Empty()
 				=> new Telephone();
+
+			public static Telephone CreateNew(string ddd, string numero)
+				=> new Telephone()
+				{
+					DDD = ddd,
+					Numero = numero
+				};
 		}
 
 		#endregion
