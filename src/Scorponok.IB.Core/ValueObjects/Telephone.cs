@@ -4,7 +4,7 @@ using Scorponok.IB.Core.Models;
 
 namespace Scorponok.IB.Core.ValueObjects
 {
-	public class Telefone : ValueObject<Telefone>
+	public class Telephone : ValueObject<Telephone>
 	{
 		#region Properties
 
@@ -19,12 +19,12 @@ namespace Scorponok.IB.Core.ValueObjects
 		public string Mensagem { get; private set; }
 		#endregion
 
-		public Telefone()
+		public Telephone()
 		{
 
 		}
 
-		private Telefone(byte codigoPais, string ddd, string numero)
+		private Telephone(byte codigoPais, string ddd, string numero)
 		{
 			this.Pais = codigoPais;
 			this.DDD = ddd;
@@ -61,11 +61,11 @@ namespace Scorponok.IB.Core.ValueObjects
 
 		public static class Factory
 		{
-			public static Telefone CreateNew(byte codigoPais, string ddd, string numero)
-				=> new Telefone(codigoPais, ddd, numero);
+			public static Telephone CreateNew(byte codigoPais, string ddd, string numero)
+				=> new Telephone(codigoPais, ddd, numero);
 
-			public static Telefone Empty()
-				=> new Telefone();
+			public static Telephone Empty()
+				=> new Telephone();
 		}
 
 		#endregion

@@ -16,6 +16,18 @@
           "lib/netstandard2.0/FluentAssertions.dll": {}
         }
       },
+      "FluentValidation/7.1.1": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.0/FluentValidation.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/FluentValidation.dll": {}
+        }
+      },
       "Microsoft.CodeCoverage/1.0.3": {
         "type": "package",
         "compile": {
@@ -1769,6 +1781,9 @@
       "Scorponok.IB.Core/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "FluentValidation": "7.1.1"
+        },
         "compile": {
           "bin/placeholder/Scorponok.IB.Core.dll": {}
         },
@@ -1780,6 +1795,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "FluentValidation": "7.1.1",
           "Scorponok.IB.Core": "1.0.0"
         },
         "compile": {
@@ -1814,6 +1830,19 @@
         "lib/netstandard2.0/FluentAssertions.dll",
         "lib/netstandard2.0/FluentAssertions.pdb",
         "lib/netstandard2.0/FluentAssertions.xml"
+      ]
+    },
+    "FluentValidation/7.1.1": {
+      "sha512": "+EOmm3XjvgSuPWqVDqCT807cPwerhJTK2qNi2+CfCvbSn5Jq4+3aRcB6buUJeeOwRLJxFAvYpTZyJTx6w6RAoQ==",
+      "type": "package",
+      "path": "fluentvalidation/7.1.1",
+      "files": [
+        "fluentvalidation.7.1.1.nupkg.sha512",
+        "fluentvalidation.nuspec",
+        "lib/net45/FluentValidation.dll",
+        "lib/net45/FluentValidation.xml",
+        "lib/netstandard1.0/FluentValidation.dll",
+        "lib/netstandard1.0/FluentValidation.xml"
       ]
     },
     "Microsoft.CodeCoverage/1.0.3": {

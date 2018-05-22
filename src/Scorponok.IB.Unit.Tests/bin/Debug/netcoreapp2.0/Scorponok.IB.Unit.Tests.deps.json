@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "13241c4efed5418c899ea994f5a2d27c3c219b8a"
+    "signature": "3b95342138a2d3121db237274756ee48c952750f"
   },
   "compilationOptions": {},
   "targets": {
@@ -29,6 +29,11 @@
         },
         "runtime": {
           "lib/netstandard2.0/FluentAssertions.dll": {}
+        }
+      },
+      "FluentValidation/7.1.1": {
+        "runtime": {
+          "lib/netstandard1.0/FluentValidation.dll": {}
         }
       },
       "Microsoft.CodeCoverage/1.0.3": {
@@ -1096,12 +1101,16 @@
         }
       },
       "Scorponok.IB.Core/1.0.0": {
+        "dependencies": {
+          "FluentValidation": "7.1.1"
+        },
         "runtime": {
           "Scorponok.IB.Core.dll": {}
         }
       },
       "Scorponok.IB.Domain/1.0.0": {
         "dependencies": {
+          "FluentValidation": "7.1.1",
           "Scorponok.IB.Core": "1.0.0"
         },
         "runtime": {
@@ -1122,6 +1131,13 @@
       "sha512": "sha512-25cL2uXYd/fF5w2VJYDq0CsxgjCIctqlnplrGQvVYJApl9ftLSS3osmf4oTHs4fafbK+rbAoVaIoUqKf14VyTg==",
       "path": "fluentassertions/5.3.0",
       "hashPath": "fluentassertions.5.3.0.nupkg.sha512"
+    },
+    "FluentValidation/7.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+EOmm3XjvgSuPWqVDqCT807cPwerhJTK2qNi2+CfCvbSn5Jq4+3aRcB6buUJeeOwRLJxFAvYpTZyJTx6w6RAoQ==",
+      "path": "fluentvalidation/7.1.1",
+      "hashPath": "fluentvalidation.7.1.1.nupkg.sha512"
     },
     "Microsoft.CodeCoverage/1.0.3": {
       "type": "package",

@@ -5,7 +5,7 @@ using Scorponok.IB.Core.Respositorys;
 
 namespace Scorponok.IB.Domain.Models.Organizacoes.IRespository
 {
-	public interface IIgrejaRepository : IRespositoryBase<Igreja>
+	public interface IIgrejaRepository : IRespositoryBase<Church>
 	{
 		
 	}

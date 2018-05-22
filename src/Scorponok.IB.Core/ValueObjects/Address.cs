@@ -2,9 +2,9 @@
 
 namespace Scorponok.IB.Core.ValueObjects
 {
-	public class Endereco : ValueObject<Endereco>
+	public class Address : ValueObject<Address>
 	{
-		internal Endereco()
+		internal Address()
 		{
 			
 		}
@@ -13,8 +13,8 @@ namespace Scorponok.IB.Core.ValueObjects
 
 		public static class Factory
 		{
-			public static Endereco Empty()
-				=> new Endereco();
+			public static Address Empty()
+				=> new Address();
 		}
 
 		#endregion
