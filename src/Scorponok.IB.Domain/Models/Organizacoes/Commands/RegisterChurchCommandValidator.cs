@@ -28,6 +28,5 @@ namespace Scorponok.IB.Domain.Models.Organizacoes.Commands
 			=> RuleFor(c => c.Telephone)
 				.Length(9)
 					.WithMessage("Telephone must be between 8 and 9 characters.");
-
 	}
 }
