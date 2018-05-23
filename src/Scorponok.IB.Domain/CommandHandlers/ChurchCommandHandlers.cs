@@ -6,10 +6,10 @@ using Scorponok.IB.Core.Events;
 using Scorponok.IB.Core.Interfaces;
 using Scorponok.IB.Core.Notifications;
 using Scorponok.IB.Core.ValueObjects;
-using Scorponok.IB.Domain.Models.Organizacoes;
-using Scorponok.IB.Domain.Models.Organizacoes.Commands;
-using Scorponok.IB.Domain.Models.Organizacoes.Events;
-using Scorponok.IB.Domain.Models.Organizacoes.IRespository;
+using Scorponok.IB.Domain.Models.Churchs;
+using Scorponok.IB.Domain.Models.Churchs.Commands;
+using Scorponok.IB.Domain.Models.Churchs.Events;
+using Scorponok.IB.Domain.Models.Churchs.IRespository;
 
 namespace Scorponok.IB.Domain.CommandHandlers
 {

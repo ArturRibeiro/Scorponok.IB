@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
-using Scorponok.IB.Domain.Models.Organizacoes.Commands;
+using Scorponok.IB.Domain.Models.Churchs.Commands;
 
 namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes.Commands
 {

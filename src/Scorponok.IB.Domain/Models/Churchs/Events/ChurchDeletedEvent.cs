@@ -1,7 +1,7 @@
 ﻿using System;
 using Scorponok.IB.Core.Events;
 
-namespace Scorponok.IB.Domain.Models.Organizacoes.Events
+namespace Scorponok.IB.Domain.Models.Churchs.Events
 {
 	public class ChurchDeletedEvent : Event
 	{

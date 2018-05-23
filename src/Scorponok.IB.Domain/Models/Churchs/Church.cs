@@ -1,7 +1,7 @@
 ﻿using Scorponok.IB.Core.Models;
 using Scorponok.IB.Core.ValueObjects;
 
-namespace Scorponok.IB.Domain.Models.Organizacoes
+namespace Scorponok.IB.Domain.Models.Churchs
 {
 	public class Church : Entity
 	{

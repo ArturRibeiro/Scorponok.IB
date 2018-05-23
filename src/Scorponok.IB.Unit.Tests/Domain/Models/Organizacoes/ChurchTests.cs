@@ -1,11 +1,11 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 using Scorponok.IB.Core.ValueObjects;
-using Scorponok.IB.Domain.Models.Organizacoes;
+using Scorponok.IB.Domain.Models.Churchs;
 
 namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes
 {
-	[TestFixture, Category("Domain/Organizacoes/Church")]
+	[TestFixture, Category("Domain/Churchs/Church")]
 	public class ChurchTests
 	{
 		[Test]
