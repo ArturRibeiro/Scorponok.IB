@@ -230,11 +230,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB\\src\\Scorponok.Gateway.Pagamento.Infra.Cross.Cutting.Bus\\Scorponok.Gateway.Pagamento.Infra.Cross.Cutting.Bus.csproj",
+      "projectUniqueName": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.Gateway.Pagamento.Infra.Cross.Cutting.Bus\\Scorponok.Gateway.Pagamento.Infra.Cross.Cutting.Bus.csproj",
       "projectName": "Scorponok.Gateway.Pagamento.Infra.Cross.Cutting.Bus",
-      "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB\\src\\Scorponok.Gateway.Pagamento.Infra.Cross.Cutting.Bus\\Scorponok.Gateway.Pagamento.Infra.Cross.Cutting.Bus.csproj",
+      "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.Gateway.Pagamento.Infra.Cross.Cutting.Bus\\Scorponok.Gateway.Pagamento.Infra.Cross.Cutting.Bus.csproj",
       "packagesPath": "C:\\Users\\scorponok\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB\\src\\Scorponok.Gateway.Pagamento.Infra.Cross.Cutting.Bus\\obj\\",
+      "outputPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.Gateway.Pagamento.Infra.Cross.Cutting.Bus\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -254,8 +254,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj": {
-              "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj"
+            "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj": {
+              "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj"
             }
           }
         }

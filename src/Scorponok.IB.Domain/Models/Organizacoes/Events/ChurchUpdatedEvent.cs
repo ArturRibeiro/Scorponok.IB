@@ -3,7 +3,7 @@ using Scorponok.IB.Core.Events;
 
 namespace Scorponok.IB.Domain.Models.Organizacoes.Events
 {
-	public class ChurchRegisteredEvent : Event
+	public class ChurchUpdatedEvent : Event
 	{
 		public Guid Id;
 		public string Name;
@@ -12,7 +12,7 @@ namespace Scorponok.IB.Domain.Models.Organizacoes.Events
 		public byte DDD;
 		public string Telephone;
 
-		public ChurchRegisteredEvent(Guid id, string name, string photo, string email, byte ddd, string telephone)
+		public ChurchUpdatedEvent(Guid id, string name, string photo, string email, byte ddd, string telephone)
 		{
 			Id = id;
 			Name = name;

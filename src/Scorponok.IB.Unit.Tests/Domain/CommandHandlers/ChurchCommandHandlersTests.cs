@@ -1,5 +1,7 @@
 ﻿//using FluentAssertions;
 
+using System;
+using FizzWare.NBuilder;
 using FluentAssertions;
 using Moq;
 using NUnit.Framework;
@@ -10,8 +12,8 @@ using Scorponok.IB.Core.Notifications;
 using Scorponok.IB.Domain.CommandHandlers;
 using Scorponok.IB.Domain.Models.Organizacoes;
 using Scorponok.IB.Domain.Models.Organizacoes.Commands;
+using Scorponok.IB.Domain.Models.Organizacoes.Events;
 using Scorponok.IB.Domain.Models.Organizacoes.IRespository;
-using Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes.Events;
 
 namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 {
@@ -32,14 +34,8 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 		}
 
 		[Test]
-		public void Must_register_a_church_successfully()
+		public void Registering_church_successfully()
 		{
-			var commandHandler = new ChurchCommandHandlers(
-				_uow.Object
-				, _bus.Object
-				, _notification.Object
-				, _mockChurchRepository.Object);
-
 			var argument = new RegisterChurchCommand("Richmond’s First Baptist Church", email: "Scorponok@scorponok.com", photo: "1.jpg", telephone: "123456789");
 
 			ChurchRegisteredEvent churchRegisteredEvent = null;
@@ -51,6 +47,9 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 				.Callback<ChurchRegisteredEvent>(x => { churchRegisteredEvent = x; });
 
 			//Act's
+			var commandHandler = new ChurchCommandHandlers(
+				_uow.Object, _bus.Object
+				, _notification.Object, _mockChurchRepository.Object);
 			commandHandler.Handle(argument);
 
 			//Assert's
@@ -66,23 +65,88 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 			//Verify that methods were invocation
 			_mockChurchRepository.Verify(x => x.Add(It.IsAny<Church>()), Times.Once);
 			_bus.Verify(x => x.RaiseEvent(It.IsAny<DomainNotification>()), Times.Never());
-			_uow.Verify(x => x.Commit(), Times.Exactly(2));
+			_uow.Verify(x => x.Commit());
 			_bus.Verify(x => x.RaiseEvent(It.IsAny<ChurchRegisteredEvent>()), Times.Once);
 		}
 
-		//[Test]
-		//public void Registering_church_with_parameter_null_should_fail()
-		//{
-		//	//Arrange
-		//	var commandHandler = new ChurchCommandHandlers(
-		//		_uow.Object
-		//		, _bus.Object
-		//		, _notification.Object);
+		[Test]
+		public void Updating_church_successfully()
+		{
+			//Arrange's
+			var argument = new UpdateChurchCommand(id: Guid.NewGuid()
+				, name: "Richmond’s First Baptist Church"
+				, email: "Scorponok@scorponok.com"
+				, photo: "1.jpg"
+				, telephone: "123456789");
 
+			ChurchUpdatedEvent churchUpdatedEvent = null;
+			Church church = null;
 
-		//	//Act's
-		//	commandHandler.Handle(null);
-		//}
+			//Setup
+			_uow.Setup(x => x.Commit()).Returns(new CommandResult(success: true));
+			_mockChurchRepository.Setup(x => x.GetById(argument.Id))
+				.Returns(Builder<Church>
+					.CreateNew()
+				.Build);
+			_bus.Setup(x => x.RaiseEvent(It.IsAny<ChurchUpdatedEvent>()))
+				.Callback<ChurchUpdatedEvent>(x => { churchUpdatedEvent = x; });
+
+			//Act's
+			var commandHandler = new ChurchCommandHandlers(_uow.Object, _bus.Object
+				, _notification.Object, _mockChurchRepository.Object);
+			commandHandler.Handle(argument);
+
+			//Assert's
+			commandHandler.Commit().Should().BeTrue();
+			churchUpdatedEvent.Should().NotBeNull();
+			churchUpdatedEvent.Id.Should().NotBeEmpty();
+			churchUpdatedEvent.Name.Should().Be(argument.Name);
+			churchUpdatedEvent.Photo.Should().Be(argument.Photo);
+			churchUpdatedEvent.Email.Should().Be(argument.Email);
+			churchUpdatedEvent.DDD.Should().Be(argument.DDD);
+			churchUpdatedEvent.Telephone.Should().Be(argument.Telephone);
+
+			//Verify that methods were invocation
+			_mockChurchRepository.Verify(x => x.GetById(It.IsAny<Guid>()), Times.Once);
+			_mockChurchRepository.Verify(x => x.Update(It.IsAny<Church>()), Times.Once);
+			_bus.Verify(x => x.RaiseEvent(It.IsAny<DomainNotification>()), Times.Never());
+			_uow.Verify(x => x.Commit());
+			_bus.Verify(x => x.RaiseEvent(It.IsAny<ChurchUpdatedEvent>()), Times.Once);
+		}
+
+		[Test]
+		public void Deleting_church_successfully()
+		{
+			//Arrange's
+			var argument = new DeleteChurchCommand(id: Guid.NewGuid());
+
+			ChurchDeletedEvent churchDeletedEvent = null;
+			Church church = null;
+
+			//Setup
+			_uow.Setup(x => x.Commit()).Returns(new CommandResult(success: true));
+			_bus.Setup(x => x.RaiseEvent(It.IsAny<ChurchDeletedEvent>()))
+				.Callback<ChurchDeletedEvent>(x => { churchDeletedEvent = x; });
+
+			//Act's
+			var commandHandler = new ChurchCommandHandlers(_uow.Object, _bus.Object
+				, _notification.Object, _mockChurchRepository.Object);
+			commandHandler.Handle(argument);
+
+			//Assert's
+			commandHandler.Commit().Should().BeTrue();
+			churchDeletedEvent.Should().NotBeNull();
+			churchDeletedEvent.Id.Should().NotBeEmpty();
+			churchDeletedEvent.Id.Should().Be(argument.Id);
+
+			//Verify that methods were invocation
+			_mockChurchRepository.Verify(x => x.GetById(It.IsAny<Guid>()), Times.Never);
+			_mockChurchRepository.Verify(x => x.Update(It.IsAny<Church>()), Times.Never);
+			_mockChurchRepository.Verify(x => x.Remove(It.IsAny<Guid>()), Times.Once);
+			_bus.Verify(x => x.RaiseEvent(It.IsAny<DomainNotification>()), Times.Never());
+			_bus.Verify(x => x.RaiseEvent(It.IsAny<ChurchDeletedEvent>()), Times.Once);
+			_uow.Verify(x => x.Commit());
+		}
 
 
 	}

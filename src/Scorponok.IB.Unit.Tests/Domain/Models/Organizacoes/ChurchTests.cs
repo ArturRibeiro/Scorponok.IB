@@ -93,5 +93,60 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes
 			church.Telephone.Mensagem.Should().BeNullOrEmpty();
 			church.Telephone.Mensagem.Should().BeNullOrEmpty();
 		}
+
+		[Test]
+		public void Update_name()
+		=> Church.Factory.CreateNew("nome", "foto"
+				, Email.Factory.CreateNew("scorponok@scorponok.com")
+				, Telephone.Factory.CreateNew(55, 21, "987413955")
+				, Address.Factory.Empty())
+				.UpdateName("test")
+			.Name
+			.Should()
+			.Be("test");
+		
+		[Test]
+		public void Update_email()
+			=> Church.Factory.CreateNew("nome", "foto"
+				, Email.Factory.CreateNew("scorponok@scorponok.com")
+				, Telephone.Factory.CreateNew(55, 21, "987413955")
+				, Address.Factory.Empty())
+				.UpdateEmail("test@test.com")
+			.Email
+			.Value
+			.Should()
+			.Be("test@test.com");
+		
+		[Test]
+		public void Update_photo()
+			=> Church.Factory.CreateNew("nome", "foto"
+				, Email.Factory.CreateNew("scorponok@scorponok.com")
+				, Telephone.Factory.CreateNew(55, 21, "987413955")
+				, Address.Factory.Empty())
+				.UpdatePhoto("33.jpg")
+			.Photo.Should()
+			.Be("33.jpg");
+		
+		[Test]
+		public void Update_telephone()
+			=> Church.Factory.CreateNew("nome", "foto"
+				, Email.Factory.CreateNew("scorponok@scorponok.com")
+				, Telephone.Factory.CreateNew(55, 21, "987413955")
+				, Address.Factory.Empty())
+				.UpdateTelephone("987413988")
+			.Telephone
+			.Numero
+			.Should()
+			.Be("987413988");
+		
+		[Ignore("Not implement")]
+		public void Update_address()
+			=> Church.Factory.CreateNew("nome", "foto"
+				, Email.Factory.CreateNew("scorponok@scorponok.com")
+				, Telephone.Factory.CreateNew(55, 21, "987413955")
+				, Address.Factory.Empty())
+				.UpdateAddress("xxxxxxx")
+			.Address.Should()
+			.Be(Address.Factory.Empty());
 	}
 }

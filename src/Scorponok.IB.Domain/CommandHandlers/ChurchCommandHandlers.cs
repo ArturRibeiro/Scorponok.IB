@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using Scorponok.IB.Core.Bus;
 using Scorponok.IB.Core.Commands;
 using Scorponok.IB.Core.Events;
@@ -7,8 +8,8 @@ using Scorponok.IB.Core.Notifications;
 using Scorponok.IB.Core.ValueObjects;
 using Scorponok.IB.Domain.Models.Organizacoes;
 using Scorponok.IB.Domain.Models.Organizacoes.Commands;
+using Scorponok.IB.Domain.Models.Organizacoes.Events;
 using Scorponok.IB.Domain.Models.Organizacoes.IRespository;
-using Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes.Events;
 
 namespace Scorponok.IB.Domain.CommandHandlers
 {
@@ -22,9 +23,7 @@ namespace Scorponok.IB.Domain.CommandHandlers
 		public ChurchCommandHandlers(IUnitOfWork uow, IBus bus, IDomainNotificationHandler<DomainNotification> notification,
 			IChurchRepository churchRepository)
 			: base(uow, bus, notification)
-		{
-			_churchRepository = churchRepository;
-		}
+			=> _churchRepository = churchRepository;
 
 		public void Handle(RegisterChurchCommand message)
 		{
@@ -41,26 +40,46 @@ namespace Scorponok.IB.Domain.CommandHandlers
 
 		public void Handle(UpdateChurchCommand message)
 		{
+			if (!message.IsValid())
+			{
+				NotifyErrors(message);
+				return;
+			}
 
+			var church = UpdateChurch(message);
+			if (church.IsValid()) _churchRepository.Update(church);
+			if (Commit()) _bus.RaiseEvent(new ChurchUpdatedEvent(church.Id, church.Name, church.Photo, church.Email.Value, church.Telephone.DDD, church.Telephone.Numero));
 		}
-
 
 		public void Handle(DeleteChurchCommand message)
 		{
-			throw new NotImplementedException();
+			if (!message.IsValid())
+			{
+				NotifyErrors(message);
+				return;
+			}
+
+			_churchRepository.Remove(message.Id);
+			if (Commit()) _bus.RaiseEvent(new ChurchDeletedEvent(message.Id));
 		}
 
-		private static Church CreateNewChurch(RegisterChurchCommand message)
-		{
-			var email = Email.Factory.CreateNew(message.Email);
-			var telephone = Telephone.Factory.CreateNew(message.DDD, message.Telephone);
+		private static Church CreateNewChurch(
+			RegisterChurchCommand message)
+			=> Church.Factory.CreateNew
+				(
+					name: message.Name
+					, photo: message.Photo
+					, email: Email.Factory.CreateNew(message.Email)
+					, telephone: Telephone.Factory.CreateNew(message.DDD, message.Telephone)
+					, endereco: null
+				);
 
-			return Church.Factory.CreateNew(
-				name: message.Name
-				, photo: message.Photo
-				, email: email
-				, telephone: telephone
-				, endereco: null);
-		}
+		private Church UpdateChurch(
+			UpdateChurchCommand message)
+			=> _churchRepository.GetById(message.Id)
+				.UpdateName(message.Name)
+				.UpdatePhoto(message.Photo)
+				.UpdateEmail(message.Email)
+				.UpdateTelephone(message.Telephone);
 	}
 }

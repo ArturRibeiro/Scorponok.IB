@@ -7,12 +7,11 @@ namespace Scorponok.IB.Domain.Models.Organizacoes.Commands
 	public class RegisterChurchCommand : Command 
 	{
 		#region Propriedades
-		public string Name { get; set; }
+		public string Name { get; }
 		public string Photo { get; }
 		public string Email { get; }
 		public byte DDD { get; }
 		public string Telephone { get; }
-		
 		#endregion
 
 		public RegisterChurchCommand(string name, string photo, string email, string telephone)
@@ -22,7 +21,6 @@ namespace Scorponok.IB.Domain.Models.Organizacoes.Commands
 			Email = email;
 			Telephone = telephone;
 		}
-
 
 		public override bool IsValid()
 		{

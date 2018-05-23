@@ -57,6 +57,9 @@ namespace Scorponok.IB.Core.ValueObjects
 			return true;
 		}
 
+		public void Update(string number) 
+			=> this.Numero = number;
+
 		#region Factory
 
 		public static class Factory

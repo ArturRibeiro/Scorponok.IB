@@ -15,6 +15,35 @@ namespace Scorponok.IB.Domain.Models.Organizacoes
 
 		public bool IsValid() => true;
 
+		public Church UpdateName(string name)
+		{
+			this.Name = name;
+			return this;
+		}
+
+		public Church UpdatePhoto(string photo)
+		{
+			this.Photo = photo;
+			return this;
+		}
+
+		public Church UpdateEmail(string email)
+		{
+			this.Email.Update(email);
+			return this;
+		}
+
+		public Church UpdateTelephone(string telephone)
+		{
+			this.Telephone.Update(telephone);
+			return this;
+		}
+
+		public Church UpdateAddress(string address)
+		{
+			return this;
+		}
+
 		#region Factory
 		public static class Factory
 		{

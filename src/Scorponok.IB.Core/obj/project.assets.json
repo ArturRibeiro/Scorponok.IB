@@ -212,11 +212,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj",
+      "projectUniqueName": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj",
       "projectName": "Scorponok.IB.Core",
-      "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj",
+      "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj",
       "packagesPath": "C:\\Users\\scorponok\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB\\src\\Scorponok.IB.Core\\obj\\",
+      "outputPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

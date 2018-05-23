@@ -57,5 +57,8 @@ namespace Scorponok.IB.Core.ValueObjects
 			public static Email Empty()
 				=> new Email();
 		}
+
+		public void Update(string email)
+			=> this.Value = email;
 	}
 }
