@@ -20,7 +20,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes.Commands
 														 photo: "...",
 														 region: 55,
 														 prefix: 21,
-														 telephone: "219874133");
+														 number: "219874133");
 
 			//Assert's
 			commandArg.IsValid().Should().BeFalse();
@@ -38,7 +38,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes.Commands
 				photo: "",
 				region: 55,
 				prefix: 21,
-				telephone: "219874133");
+				number: "219874133");
 
 
 			//Assert's
@@ -57,7 +57,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes.Commands
 				photo: "test.jpg",
 				region: 55,
 				prefix: 21,
-				telephone: "98741397855");
+				number: "98741397855");
 
 
 			//Assert's
@@ -76,7 +76,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes.Commands
 				photo: "test.jpg",
 				region: 55,
 				prefix: 21,
-				telephone: "0123456");
+				number: "0123456");
 
 
 			//Assert's

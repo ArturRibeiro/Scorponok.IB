@@ -34,7 +34,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 				photo: "1.jpg",
 				region: 55,
 				prefix: 21,
-				telephone: "123456789");
+				number: "123456789");
 
 			ChurchRegisteredEvent churchRegisteredEvent = null;
 			Church church = null;
@@ -58,7 +58,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 			churchRegisteredEvent.Photo.Should().Be(argument.Photo);
 			churchRegisteredEvent.Email.Should().Be(argument.Email);
 			churchRegisteredEvent.DDD.Should().Be(argument.Prefix);
-			churchRegisteredEvent.Telephone.Should().Be(argument.Telephone);
+			churchRegisteredEvent.Telephone.Should().Be($"{argument.Region}{argument.Prefix}{argument.Telephone}");
 
 			//Verify that methods were invocation
 			mockChurchRepository.Verify(x => x.Add(It.IsAny<Church>()), Times.Once);
@@ -84,7 +84,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 				, photo: "1.jpg"
 				, region: 55
 				, prefix: 21
-				, telephone: "123456789");
+				, number: "123456789");
 
 			DomainNotification domainNotificationResult = null;
 

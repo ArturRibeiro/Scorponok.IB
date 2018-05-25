@@ -13,8 +13,7 @@ namespace Scorponok.IB.Domain.CommandHandlers
 {
 	public class ChurchCommandHandlers : CommandHandler
 		, IHandler<RegisterChurchCommand>
-		, IHandler<UpdateChurchCommand>
-		, IHandler<DeleteChurchCommand>
+		
 	{
 		private readonly IChurchRepository _churchRepository;
 

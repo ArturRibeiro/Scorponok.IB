@@ -14,16 +14,19 @@ namespace Scorponok.IB.Unit.Integration.Tests.CommandHandlers
 	public class ChurchCommandHandlersTests //: BaseIntegrationTest
 	{
 		[Test]
-		public void Registing()
+		public void Registing_church_with_success()
 		{
 			var bus = Ioc.Provider.GetService<IBus>();
 
-			var registerChurchCommand = new RegisterChurchCommand("Trinity Church Wall Street"
-				, "00000000001.jpg"
-				, "contact@church.com"
-				, 55
-				, 21
-				, "987413988");
+			var registerChurchCommand = new RegisterChurchCommand
+				(
+					name: "Trinity Church Wall Street", 
+					photo: "00000000001.jpg", 
+					email: "contact@church.com", 
+					region: 55, 
+					prefix: 21, 
+					number: "987413988"
+				);
 
 			bus.SendCommand(registerChurchCommand);
 		}
