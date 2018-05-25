@@ -15,7 +15,12 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes.Commands
 														 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 														 ssssssssssssssssssssssssssssssssssssssssssssss
 														 aaaaaaaaaaaaaaaaaaaaaaaaasssssssssssssssssssss
-														 ssssssssssssssssssssssssssssssssssssssssssssss", email: "Scorponok@scorponok.com", photo: "...", telephone: "219874133");
+														 ssssssssssssssssssssssssssssssssssssssssssssss", 
+														 email: "Scorponok@scorponok.com", 
+														 photo: "...",
+														 region: 55,
+														 prefix: 21,
+														 telephone: "219874133");
 
 			//Assert's
 			commandArg.IsValid().Should().BeFalse();
@@ -28,7 +33,12 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes.Commands
 		public void Registering_church_with_photo_large_than_15_should_fail()
 		{
 			//Arrange's
-			var commandArg = new RegisterChurchCommand("Richmond’s First Baptist Church", email: "Scorponok@scorponok.com", photo: "", telephone: "219874133");
+			var commandArg = new RegisterChurchCommand("Richmond’s First Baptist Church", 
+				email: "Scorponok@scorponok.com", 
+				photo: "",
+				region: 55,
+				prefix: 21,
+				telephone: "219874133");
 
 
 			//Assert's
@@ -42,7 +52,12 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes.Commands
 		public void Registering_church_with_telephone_larger_than_9_should_fail()
 		{
 			//Arrange's
-			var commandArg = new RegisterChurchCommand("Richmond’s First Baptist Church", email: "Scorponok@scorponok.com", photo: "test.jpg", telephone: "98741397855");
+			var commandArg = new RegisterChurchCommand("Richmond’s First Baptist Church", 
+				email: "Scorponok@scorponok.com", 
+				photo: "test.jpg",
+				region: 55,
+				prefix: 21,
+				telephone: "98741397855");
 
 
 			//Assert's
@@ -56,7 +71,12 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes.Commands
 		public void Registering_church_with_telephone_less_than_8_should_fail()
 		{
 			//Arrange's
-			var commandArg = new RegisterChurchCommand("Richmond’s First Baptist Church", email: "Scorponok@scorponok.com", photo: "test.jpg", telephone: "0123456");
+			var commandArg = new RegisterChurchCommand("Richmond’s First Baptist Church", 
+				email: "Scorponok@scorponok.com", 
+				photo: "test.jpg",
+				region: 55,
+				prefix: 21,
+				telephone: "0123456");
 
 
 			//Assert's

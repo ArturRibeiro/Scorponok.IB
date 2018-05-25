@@ -63,10 +63,10 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes
 			church.Email.Valido.Should().BeTrue();
 			church.Email.Mensagem.Should().BeNullOrEmpty();
 
-			church.Telephone.Numero.Should().Be("5521987413955");
-			church.Telephone.Valido.Should().BeTrue();
-			church.Telephone.Mensagem.Should().BeNullOrEmpty();
-			church.Telephone.Mensagem.Should().BeNullOrEmpty();
+			church.MobileTelephone.Number.Should().Be("5521987413955");
+			church.MobileTelephone.Valido.Should().BeTrue();
+			church.MobileTelephone.Mensagem.Should().BeNullOrEmpty();
+			church.MobileTelephone.Mensagem.Should().BeNullOrEmpty();
 		}
 
 		[Test]
@@ -88,10 +88,10 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes
 			church.Email.Valido.Should().BeTrue();
 			church.Email.Mensagem.Should().BeNullOrEmpty();
 
-			church.Telephone.Numero.Should().Be("5521987413955");
-			church.Telephone.Valido.Should().BeTrue();
-			church.Telephone.Mensagem.Should().BeNullOrEmpty();
-			church.Telephone.Mensagem.Should().BeNullOrEmpty();
+			church.MobileTelephone.Number.Should().Be("5521987413955");
+			church.MobileTelephone.Valido.Should().BeTrue();
+			church.MobileTelephone.Mensagem.Should().BeNullOrEmpty();
+			church.MobileTelephone.Mensagem.Should().BeNullOrEmpty();
 		}
 
 		[Test]
@@ -134,8 +134,8 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes
 				, Telephone.Factory.CreateNew(55, 21, "987413955")
 				, Address.Factory.Empty())
 				.UpdateTelephone("987413988")
-			.Telephone
-			.Numero
+			.MobileTelephone
+			.Number
 			.Should()
 			.Be("987413988");
 		

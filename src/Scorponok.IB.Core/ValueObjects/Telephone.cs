@@ -8,11 +8,11 @@ namespace Scorponok.IB.Core.ValueObjects
 	{
 		#region Properties
 
-		public byte Pais { get; private set; } = 55;
+		public byte Region { get; private set; } = 55;
 
-		public byte DDD { get; private set; }
+		public byte Prefix { get; private set; }
 
-		public string Numero { get; private set; }
+		public string Number { get; private set; }
 
 		public bool Valido { get; private set; }
 
@@ -26,46 +26,46 @@ namespace Scorponok.IB.Core.ValueObjects
 
 		private Telephone(byte codigoPais, byte ddd, string numero)
 		{
-			this.Pais = codigoPais;
-			this.DDD = ddd;
-			this.Numero = numero;
+			this.Region = codigoPais;
+			this.Prefix = ddd;
+			this.Number = numero;
 			Valido = Validar();
 		}
 
 		private bool Validar()
 		{
-			if (this.Pais != 55)
+			if (this.Region != 55)
 			{
 				this.Mensagem = "Código do país incorreto.";
 				return false;
 			}
 			
-			if (this.DDD < 1 || this.DDD > 99)
+			if (this.Prefix < 1 || this.Prefix > 99)
 			{
 				this.Mensagem = "DDD incorreto";
 				return false;
 			}
 
-			if (string.IsNullOrEmpty(this.Numero))
+			if (string.IsNullOrEmpty(this.Number))
 			{
 				this.Mensagem = "Número inválido.";
 				return false;
 			}
 			
-			this.Numero = $"{this.Pais}{this.DDD}{this.Numero}";
+			this.Number = $"{this.Region}{this.Prefix}{this.Number}";
 
 			return true;
 		}
 
 		public void Update(string number) 
-			=> this.Numero = number;
+			=> this.Number = number;
 
 		#region Factory
 
 		public static class Factory
 		{
-			public static Telephone CreateNew(byte codigoPais, byte ddd, string numero)
-				=> new Telephone(codigoPais, ddd, numero);
+			public static Telephone CreateNew(byte region, byte ddd, string number)
+				=> new Telephone(region, ddd, number);
 
 			public static Telephone Empty()
 				=> new Telephone();
@@ -73,8 +73,8 @@ namespace Scorponok.IB.Core.ValueObjects
 			public static Telephone CreateNew(byte ddd, string numero)
 				=> new Telephone()
 				{
-					DDD = ddd,
-					Numero = numero
+					Prefix = ddd,
+					Number = numero
 				};
 		}
 

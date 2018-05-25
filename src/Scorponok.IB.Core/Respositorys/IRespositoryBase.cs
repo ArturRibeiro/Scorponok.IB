@@ -4,7 +4,7 @@ using Scorponok.IB.Core.Models;
 
 namespace Scorponok.IB.Core.Respositorys
 {
-	public interface IRespositoryBase<TEntity> : IDisposable where TEntity : Entity
+	public interface IRespositoryBase<TEntity> /*IDisposable*/ where TEntity : Entity
 	{
 		void Add(TEntity obj);
 		TEntity GetById(Guid id);

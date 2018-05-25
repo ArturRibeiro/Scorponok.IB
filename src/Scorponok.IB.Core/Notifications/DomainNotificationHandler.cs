@@ -8,28 +8,19 @@ namespace Scorponok.IB.Core.Notifications
         private List<DomainNotification> _notifications;
 
         public DomainNotificationHandler()
-        {
-            _notifications = new List<DomainNotification>();
-        }
-
+			=> _notifications = new List<DomainNotification>();
+        
         public IList<DomainNotification> GetNotifications()
-        {
-            return _notifications;
-        }
+			=> _notifications;
 
         public void Handle(DomainNotification message)
-        {
-            _notifications.Add(message);
-        }
+			=> _notifications.Add(message);
 
         public bool HasNotifications()
-        {
-            return _notifications.Any();
-        }
-
+			=> _notifications.Any();
+        
         public void Dispose()
-        {
-            _notifications = new List<DomainNotification>();
-        }
+			=> _notifications = new List<DomainNotification>();
+        
     }
 }

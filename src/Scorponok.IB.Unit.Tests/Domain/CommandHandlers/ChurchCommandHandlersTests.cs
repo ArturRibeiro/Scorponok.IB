@@ -29,7 +29,12 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 			var notification = new Mock<IDomainNotificationHandler<DomainNotification>>();
 			var mockChurchRepository = new Mock<IChurchRepository>();
 
-			var argument = new RegisterChurchCommand("Richmond’s First Baptist Church", email: "Scorponok@scorponok.com", photo: "1.jpg", telephone: "123456789");
+			var argument = new RegisterChurchCommand("Richmond’s First Baptist Church",
+				email: "Scorponok@scorponok.com",
+				photo: "1.jpg",
+				region: 55,
+				prefix: 21,
+				telephone: "123456789");
 
 			ChurchRegisteredEvent churchRegisteredEvent = null;
 			Church church = null;
@@ -52,7 +57,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 			churchRegisteredEvent.Name.Should().Be(argument.Name);
 			churchRegisteredEvent.Photo.Should().Be(argument.Photo);
 			churchRegisteredEvent.Email.Should().Be(argument.Email);
-			churchRegisteredEvent.DDD.Should().Be(argument.DDD);
+			churchRegisteredEvent.DDD.Should().Be(argument.Prefix);
 			churchRegisteredEvent.Telephone.Should().Be(argument.Telephone);
 
 			//Verify that methods were invocation
@@ -77,6 +82,8 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 						Richmond’s First Baptist Church"
 				, email: "Scorponok@scorponok.com"
 				, photo: "1.jpg"
+				, region: 55
+				, prefix: 21
 				, telephone: "123456789");
 
 			DomainNotification domainNotificationResult = null;
@@ -137,7 +144,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 			churchUpdatedEvent.Name.Should().Be(argument.Name);
 			churchUpdatedEvent.Photo.Should().Be(argument.Photo);
 			churchUpdatedEvent.Email.Should().Be(argument.Email);
-			churchUpdatedEvent.DDD.Should().Be(argument.DDD);
+			churchUpdatedEvent.DDD.Should().Be(argument.Prefix);
 			churchUpdatedEvent.Telephone.Should().Be(argument.Telephone);
 
 			//Verify that methods were invocation
@@ -158,7 +165,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 			var mockChurchRepository = new Mock<IChurchRepository>();
 
 			var arguments = new UpdateChurchCommand(
-				id: Guid.NewGuid(), 
+				id: Guid.NewGuid(),
 				name: @"Richmond’s First Baptist ChurchRichmond’s First Baptist ChurchRichmond’s 
 						First Baptist ChurchRichmond’s First Baptist ChurchRichmond’s First Baptist Church
 						Richmond’s First Baptist Church"

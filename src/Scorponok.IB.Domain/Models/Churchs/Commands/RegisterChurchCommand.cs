@@ -1,14 +1,17 @@
-﻿using Scorponok.IB.Domain.Models.Churchs.Commands.Validators;
+﻿using System.Globalization;
+using Scorponok.IB.Domain.Models.Churchs.Commands.Validators;
 
 namespace Scorponok.IB.Domain.Models.Churchs.Commands
 {
 	public class RegisterChurchCommand : ChurchCommand
 	{
-		public RegisterChurchCommand(string name, string photo, string email, string telephone)
+		public RegisterChurchCommand(string name, string photo, string email, byte region, byte prefix, string telephone)
 		{
 			Name = name;
 			Photo = photo;
 			Email = email;
+			Region = region;
+			Prefix = prefix;
 			Telephone = telephone;
 		}
 

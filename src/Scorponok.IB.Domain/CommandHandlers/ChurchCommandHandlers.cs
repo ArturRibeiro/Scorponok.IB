@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using Scorponok.IB.Core.Bus;
+﻿using Scorponok.IB.Core.Bus;
 using Scorponok.IB.Core.Commands;
 using Scorponok.IB.Core.Events;
 using Scorponok.IB.Core.Interfaces;
@@ -35,7 +33,7 @@ namespace Scorponok.IB.Domain.CommandHandlers
 
 			var church = CreateNewChurch(message);
 			if (church.IsValid()) _churchRepository.Add(church);
-			if (Commit()) _bus.RaiseEvent(new ChurchRegisteredEvent(church.Id, church.Name, church.Photo, church.Email.Value, church.Telephone.DDD, church.Telephone.Numero));
+			if (Commit()) _bus.RaiseEvent(new ChurchRegisteredEvent(church.Id, church.Name, church.Photo, church.Email.Value, church.MobileTelephone.Prefix, church.MobileTelephone.Number));
 		}
 
 		public void Handle(UpdateChurchCommand message)
@@ -48,7 +46,7 @@ namespace Scorponok.IB.Domain.CommandHandlers
 
 			var church = UpdateChurch(message);
 			if (church.IsValid()) _churchRepository.Update(church);
-			if (Commit()) _bus.RaiseEvent(new ChurchUpdatedEvent(church.Id, church.Name, church.Photo, church.Email.Value, church.Telephone.DDD, church.Telephone.Numero));
+			if (Commit()) _bus.RaiseEvent(new ChurchUpdatedEvent(church.Id, church.Name, church.Photo, church.Email.Value, church.MobileTelephone.Prefix, church.MobileTelephone.Number));
 		}
 
 		public void Handle(DeleteChurchCommand message)
@@ -70,7 +68,7 @@ namespace Scorponok.IB.Domain.CommandHandlers
 					name: message.Name
 					, photo: message.Photo
 					, email: Email.Factory.CreateNew(message.Email)
-					, telephone: Telephone.Factory.CreateNew(message.DDD, message.Telephone)
+					, telephone: Telephone.Factory.CreateNew(message.Region, message.Prefix, message.Telephone)
 					, endereco: null
 				);
 
