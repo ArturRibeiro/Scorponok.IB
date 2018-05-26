@@ -1,4 +1,7 @@
 # Scorponok.IB
+
+<a href="https://ci.appveyor.com/project/ArturRibeiro/scorponok-ib-cqrs"> <img src="https://ci.appveyor.com/api/projects/status/ayjh8x62myo5131f/branch/master?svg=true" /></a>
+
 Cadastro Geral de Membros de Congreção
 
 Desenvolvido como parte de trabalhos acadêmicos do seu autor durante curso superior.
