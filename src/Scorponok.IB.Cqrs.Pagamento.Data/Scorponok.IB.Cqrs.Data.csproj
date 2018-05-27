@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Scorponok.IB.Cqrs.Data</AssemblyName>
+    <RootNamespace>Scorponok.IB.Cqrs.Data</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

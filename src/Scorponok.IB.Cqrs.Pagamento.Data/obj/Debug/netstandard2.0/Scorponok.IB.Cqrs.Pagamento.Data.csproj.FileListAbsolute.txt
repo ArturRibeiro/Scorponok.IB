@@ -1,4 +1,3 @@
-C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\obj\Debug\netstandard2.0\Scorponok.IB.Cqrs.Pagamento.Data.csprojResolveAssemblyReference.cache
 C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\obj\Debug\netstandard2.0\Scorponok.IB.Cqrs.Pagamento.Data.csproj.CoreCompileInputs.cache
 C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\obj\Debug\netstandard2.0\Scorponok.IB.Cqrs.Pagamento.Data.AssemblyInfoInputs.cache
 C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\obj\Debug\netstandard2.0\Scorponok.IB.Cqrs.Pagamento.Data.AssemblyInfo.cs
@@ -11,3 +10,5 @@ C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamen
 C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\bin\Debug\netstandard2.0\Scorponok.IB.Domain.pdb
 C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\obj\Debug\netstandard2.0\Scorponok.IB.Cqrs.Pagamento.Data.dll
 C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\obj\Debug\netstandard2.0\Scorponok.IB.Cqrs.Pagamento.Data.pdb
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\obj\Debug\netstandard2.0\Scorponok.IB.Cqrs.Pagamento.Data.csprojAssemblyReference.cache
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\obj\Debug\netstandard2.0\Scorponok.IB.Cqrs.Pagamento.Data.csproj.CopyComplete

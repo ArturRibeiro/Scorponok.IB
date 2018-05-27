@@ -3,9 +3,10 @@ C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cross.Cuttin
 C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cross.Cutting.Bus\bin\Debug\netstandard2.0\Scorponok.IB.Cross.Cutting.Bus.pdb
 C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cross.Cutting.Bus\bin\Debug\netstandard2.0\Scorponok.IB.Core.dll
 C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cross.Cutting.Bus\bin\Debug\netstandard2.0\Scorponok.IB.Core.pdb
-C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cross.Cutting.Bus\obj\Debug\netstandard2.0\Scorponok.IB.Cross.Cutting.Bus.csprojResolveAssemblyReference.cache
 C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cross.Cutting.Bus\obj\Debug\netstandard2.0\Scorponok.IB.Cross.Cutting.Bus.csproj.CoreCompileInputs.cache
 C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cross.Cutting.Bus\obj\Debug\netstandard2.0\Scorponok.IB.Cross.Cutting.Bus.AssemblyInfoInputs.cache
 C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cross.Cutting.Bus\obj\Debug\netstandard2.0\Scorponok.IB.Cross.Cutting.Bus.AssemblyInfo.cs
 C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cross.Cutting.Bus\obj\Debug\netstandard2.0\Scorponok.IB.Cross.Cutting.Bus.dll
 C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cross.Cutting.Bus\obj\Debug\netstandard2.0\Scorponok.IB.Cross.Cutting.Bus.pdb
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cross.Cutting.Bus\obj\Debug\netstandard2.0\Scorponok.IB.Cross.Cutting.Bus.csprojAssemblyReference.cache
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cross.Cutting.Bus\obj\Debug\netstandard2.0\Scorponok.IB.Cross.Cutting.Bus.csproj.CopyComplete

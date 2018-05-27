@@ -1,0 +1,14 @@
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\bin\Debug\netstandard2.0\Scorponok.IB.Cqrs.Data.deps.json
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\bin\Debug\netstandard2.0\Scorponok.IB.Cqrs.Data.dll
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\bin\Debug\netstandard2.0\Scorponok.IB.Cqrs.Data.pdb
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\bin\Debug\netstandard2.0\Scorponok.IB.Core.dll
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\bin\Debug\netstandard2.0\Scorponok.IB.Domain.dll
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\bin\Debug\netstandard2.0\Scorponok.IB.Core.pdb
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\bin\Debug\netstandard2.0\Scorponok.IB.Domain.pdb
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\obj\Debug\netstandard2.0\Scorponok.IB.Cqrs.Data.csprojAssemblyReference.cache
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\obj\Debug\netstandard2.0\Scorponok.IB.Cqrs.Data.csproj.CoreCompileInputs.cache
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\obj\Debug\netstandard2.0\Scorponok.IB.Cqrs.Data.AssemblyInfoInputs.cache
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\obj\Debug\netstandard2.0\Scorponok.IB.Cqrs.Data.AssemblyInfo.cs
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\obj\Debug\netstandard2.0\Scorponok.IB.Cqrs.Data.csproj.CopyComplete
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\obj\Debug\netstandard2.0\Scorponok.IB.Cqrs.Data.dll
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Cqrs.Pagamento.Data\obj\Debug\netstandard2.0\Scorponok.IB.Cqrs.Data.pdb

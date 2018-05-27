@@ -15,3 +15,4 @@ C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Core\obj\Deb
 C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Core\obj\Debug\netstandard2.0\Scorponok.IB.Core.AssemblyInfo.cs
 C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Core\obj\Debug\netstandard2.0\Scorponok.IB.Core.dll
 C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Core\obj\Debug\netstandard2.0\Scorponok.IB.Core.pdb
+C:\Users\scorponok\Source\github\Scorponok.IB.Cqrs\src\Scorponok.IB.Core\obj\Debug\netstandard2.0\Scorponok.IB.Core.csprojAssemblyReference.cache

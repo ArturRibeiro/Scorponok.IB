@@ -15,15 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorponok.IB.Core", "src\Sc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorponok.IB.Unit.Tests", "src\Scorponok.IB.Unit.Tests\Scorponok.IB.Unit.Tests.csproj", "{053CFCCD-F76C-47BA-86B5-71FE5BAEA7A0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorponok.Gateway.Pagamento.Infra.Cross.Cutting.Bus", "src\Scorponok.Gateway.Pagamento.Infra.Cross.Cutting.Bus\Scorponok.Gateway.Pagamento.Infra.Cross.Cutting.Bus.csproj", "{6DF9C5D0-E6AB-4818-B5A3-D65DE4089658}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorponok.IB.Domain", "src\Scorponok.IB.Domain\Scorponok.IB.Domain.csproj", "{6FDB3EE1-14B5-4734-AE07-1A87B7EB9C52}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorponok.IB.Unit.Integration.Tests", "src\Scorponok.IB.Unit.Integration.Tests\Scorponok.IB.Unit.Integration.Tests.csproj", "{6A5BAD4A-7B00-4D48-AB94-5FBC93DE6477}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorponok.IB.Cqrs.Pagamento.Data", "src\Scorponok.IB.Cqrs.Pagamento.Data\Scorponok.IB.Cqrs.Pagamento.Data.csproj", "{DDEE910D-BFD4-4DDB-AA1A-1BCE40335BD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorponok.IB.Cqrs.Data", "src\Scorponok.IB.Cqrs.Pagamento.Data\Scorponok.IB.Cqrs.Data.csproj", "{DDEE910D-BFD4-4DDB-AA1A-1BCE40335BD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorponok.IB.Cross.Cutting.Bus", "src\Scorponok.IB.Cross.Cutting.Bus\Scorponok.IB.Cross.Cutting.Bus.csproj", "{FC404B7A-BD4A-47C2-A0C3-EA2CB2DC31F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorponok.IB.Cross.Cutting.Bus", "src\Scorponok.IB.Cross.Cutting.Bus\Scorponok.IB.Cross.Cutting.Bus.csproj", "{FC404B7A-BD4A-47C2-A0C3-EA2CB2DC31F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +37,6 @@ Global
 		{053CFCCD-F76C-47BA-86B5-71FE5BAEA7A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{053CFCCD-F76C-47BA-86B5-71FE5BAEA7A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{053CFCCD-F76C-47BA-86B5-71FE5BAEA7A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6DF9C5D0-E6AB-4818-B5A3-D65DE4089658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6DF9C5D0-E6AB-4818-B5A3-D65DE4089658}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6DF9C5D0-E6AB-4818-B5A3-D65DE4089658}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6DF9C5D0-E6AB-4818-B5A3-D65DE4089658}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6FDB3EE1-14B5-4734-AE07-1A87B7EB9C52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6FDB3EE1-14B5-4734-AE07-1A87B7EB9C52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FDB3EE1-14B5-4734-AE07-1A87B7EB9C52}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -66,7 +60,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{9AFD630A-034D-4BBE-9B96-A6FDDC2F922C} = {BDD97FDC-6B29-44D6-9C58-9E173712054C}
 		{053CFCCD-F76C-47BA-86B5-71FE5BAEA7A0} = {36AE0625-E3E9-4678-BC80-56A9F6415E9D}
-		{6DF9C5D0-E6AB-4818-B5A3-D65DE4089658} = {F34E94BE-545F-4502-8962-FF310DFBED59}
 		{6FDB3EE1-14B5-4734-AE07-1A87B7EB9C52} = {BDD97FDC-6B29-44D6-9C58-9E173712054C}
 		{6A5BAD4A-7B00-4D48-AB94-5FBC93DE6477} = {36AE0625-E3E9-4678-BC80-56A9F6415E9D}
 		{DDEE910D-BFD4-4DDB-AA1A-1BCE40335BD1} = {F34E94BE-545F-4502-8962-FF310DFBED59}

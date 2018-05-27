@@ -18,7 +18,7 @@
           "NUnit": "3.10.1",
           "NUnit3TestAdapter": "3.10.0",
           "Scorponok.IB.Core": "1.0.0",
-          "Scorponok.IB.Cqrs.Pagamento.Data": "1.0.0",
+          "Scorponok.IB.Cqrs.Data": "1.0.0",
           "Scorponok.IB.Cross.Cutting.Bus": "1.0.0",
           "Scorponok.IB.Domain": "1.0.0"
         },
@@ -1267,7 +1267,7 @@
           "Scorponok.IB.Core.dll": {}
         }
       },
-      "Scorponok.IB.Cqrs.Pagamento.Data/1.0.0": {
+      "Scorponok.IB.Cqrs.Data/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "2.0.3",
           "Microsoft.EntityFrameworkCore.Design": "2.0.3",
@@ -1275,7 +1275,7 @@
           "Scorponok.IB.Domain": "1.0.0"
         },
         "runtime": {
-          "Scorponok.IB.Cqrs.Pagamento.Data.dll": {}
+          "Scorponok.IB.Cqrs.Data.dll": {}
         }
       },
       "Scorponok.IB.Cross.Cutting.Bus/1.0.0": {
@@ -2029,7 +2029,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Scorponok.IB.Cqrs.Pagamento.Data/1.0.0": {
+    "Scorponok.IB.Cqrs.Data/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

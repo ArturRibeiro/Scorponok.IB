@@ -2605,13 +2605,10 @@
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Cqrs.Pagamento.Data\\Scorponok.IB.Cqrs.Pagamento.Data.csproj",
-      "projectName": "Scorponok.IB.Cqrs.Pagamento.Data",
-      "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Cqrs.Pagamento.Data\\Scorponok.IB.Cqrs.Pagamento.Data.csproj",
+      "projectUniqueName": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Cqrs.Pagamento.Data\\Scorponok.IB.Cqrs.Data.csproj",
+      "projectName": "Scorponok.IB.Cqrs.Data",
+      "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Cqrs.Pagamento.Data\\Scorponok.IB.Cqrs.Data.csproj",
       "packagesPath": "C:\\Users\\scorponok\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Cqrs.Pagamento.Data\\obj\\",
       "projectStyle": "PackageReference",
@@ -2633,11 +2630,11 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Domain\\Scorponok.IB.Domain.csproj": {
-              "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Domain\\Scorponok.IB.Domain.csproj"
-            },
             "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj": {
               "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj"
+            },
+            "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Domain\\Scorponok.IB.Domain.csproj": {
+              "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Domain\\Scorponok.IB.Domain.csproj"
             }
           }
         }

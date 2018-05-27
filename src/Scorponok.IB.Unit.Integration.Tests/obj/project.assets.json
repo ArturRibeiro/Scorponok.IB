@@ -2036,7 +2036,7 @@
           "bin/placeholder/Scorponok.IB.Core.dll": {}
         }
       },
-      "Scorponok.IB.Cqrs.Pagamento.Data/1.0.0": {
+      "Scorponok.IB.Cqrs.Data/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -2046,10 +2046,10 @@
           "Scorponok.IB.Domain": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/Scorponok.IB.Cqrs.Pagamento.Data.dll": {}
+          "bin/placeholder/Scorponok.IB.Cqrs.Data.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Scorponok.IB.Cqrs.Pagamento.Data.dll": {}
+          "bin/placeholder/Scorponok.IB.Cqrs.Data.dll": {}
         }
       },
       "Scorponok.IB.Cross.Cutting.Bus/1.0.0": {
@@ -6913,10 +6913,10 @@
       "path": "../Scorponok.IB.Core/Scorponok.IB.Core.csproj",
       "msbuildProject": "../Scorponok.IB.Core/Scorponok.IB.Core.csproj"
     },
-    "Scorponok.IB.Cqrs.Pagamento.Data/1.0.0": {
+    "Scorponok.IB.Cqrs.Data/1.0.0": {
       "type": "project",
-      "path": "../Scorponok.IB.Cqrs.Pagamento.Data/Scorponok.IB.Cqrs.Pagamento.Data.csproj",
-      "msbuildProject": "../Scorponok.IB.Cqrs.Pagamento.Data/Scorponok.IB.Cqrs.Pagamento.Data.csproj"
+      "path": "../Scorponok.IB.Cqrs.Pagamento.Data/Scorponok.IB.Cqrs.Data.csproj",
+      "msbuildProject": "../Scorponok.IB.Cqrs.Pagamento.Data/Scorponok.IB.Cqrs.Data.csproj"
     },
     "Scorponok.IB.Cross.Cutting.Bus/1.0.0": {
       "type": "project",
@@ -6942,7 +6942,7 @@
       "NUnit >= 3.10.1",
       "NUnit3TestAdapter >= 3.10.0",
       "Scorponok.IB.Core >= 1.0.0",
-      "Scorponok.IB.Cqrs.Pagamento.Data >= 1.0.0",
+      "Scorponok.IB.Cqrs.Data >= 1.0.0",
       "Scorponok.IB.Cross.Cutting.Bus >= 1.0.0",
       "Scorponok.IB.Domain >= 1.0.0"
     ]
@@ -6953,9 +6953,6 @@
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
       "projectUniqueName": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Unit.Integration.Tests\\Scorponok.IB.Unit.Integration.Tests.csproj",
       "projectName": "Scorponok.IB.Unit.Integration.Tests",
@@ -6981,17 +6978,17 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Cqrs.Pagamento.Data\\Scorponok.IB.Cqrs.Pagamento.Data.csproj": {
-              "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Cqrs.Pagamento.Data\\Scorponok.IB.Cqrs.Pagamento.Data.csproj"
+            "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj": {
+              "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj"
             },
-            "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Domain\\Scorponok.IB.Domain.csproj": {
-              "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Domain\\Scorponok.IB.Domain.csproj"
+            "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Cqrs.Pagamento.Data\\Scorponok.IB.Cqrs.Data.csproj": {
+              "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Cqrs.Pagamento.Data\\Scorponok.IB.Cqrs.Data.csproj"
             },
             "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Cross.Cutting.Bus\\Scorponok.IB.Cross.Cutting.Bus.csproj": {
               "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Cross.Cutting.Bus\\Scorponok.IB.Cross.Cutting.Bus.csproj"
             },
-            "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj": {
-              "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Core\\Scorponok.IB.Core.csproj"
+            "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Domain\\Scorponok.IB.Domain.csproj": {
+              "projectPath": "C:\\Users\\scorponok\\Source\\github\\Scorponok.IB.Cqrs\\src\\Scorponok.IB.Domain\\Scorponok.IB.Domain.csproj"
             }
           }
         }
