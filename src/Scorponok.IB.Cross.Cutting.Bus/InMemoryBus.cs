@@ -11,17 +11,13 @@ namespace Scorponok.IB.Cross.Cutting.Bus
 		public static Func<IServiceProvider> ContainerAccessor { get; set; }
 		private static IServiceProvider Container => ContainerAccessor();
 
-		public void RaiseEvent<T>(T theEvent) where T : Event
-		{
-			Publish(theEvent);
-		}
+        public void RaiseEvent<T>(T theEvent) where T : Event 
+            => Publish(theEvent);
 
-		public void SendCommand<T>(T theCommand) where T : Command
-		{
-			Publish(theCommand);
-		}
+        public void SendCommand<T>(T theCommand) where T : Command 
+            => Publish(theCommand);
 
-		private static void Publish<T>(T message) where T : Message
+        private static void Publish<T>(T message) where T : Message
 		{
 			if (Container == null) return;
 
