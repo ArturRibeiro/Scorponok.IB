@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="EntityFramework" Version="6.1.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.3" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
+    <PackageReference Include="Moq" Version="4.8.3" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.2.0" />
     <PackageReference Include="MSTest.TestFramework" Version="1.2.0" />
     <PackageReference Include="NUnit" Version="3.10.1" />
@@ -19,9 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Scorponok.IB.Application\Scorponok.IB.Application.csproj" />
     <ProjectReference Include="..\Scorponok.IB.Core\Scorponok.IB.Core.csproj" />
     <ProjectReference Include="..\Scorponok.IB.Cqrs.Pagamento.Data\Scorponok.IB.Cqrs.Data.csproj" />
     <ProjectReference Include="..\Scorponok.IB.Cross.Cutting.Bus\Scorponok.IB.Cross.Cutting.Bus.csproj" />
+    <ProjectReference Include="..\Scorponok.IB.Cross.Cutting.Identity\Scorponok.IB.Cross.Cutting.Identity.csproj" />
     <ProjectReference Include="..\Scorponok.IB.Domain\Scorponok.IB.Domain.csproj" />
   </ItemGroup>
 

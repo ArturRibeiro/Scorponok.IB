@@ -3,9 +3,9 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Scorponok.IB.Core.Models;
 using Scorponok.IB.Core.Respositorys;
-using Scorponok.IB.Cqrs.Pagamento.Data.Context;
+using Scorponok.IB.Cqrs.Data.Context;
 
-namespace Scorponok.IB.Cqrs.Pagamento.Data.Repositorys
+namespace Scorponok.IB.Cqrs.Data.Repositories
 {
 	public class RepositoryBase<TEntity> : IRespositoryBase<TEntity> where TEntity : Entity
 	{

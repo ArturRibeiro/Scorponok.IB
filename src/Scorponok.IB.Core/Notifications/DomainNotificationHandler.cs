@@ -10,14 +10,14 @@ namespace Scorponok.IB.Core.Notifications
         public DomainNotificationHandler()
 			=> _notifications = new List<DomainNotification>();
         
-        public IList<DomainNotification> GetNotifications()
+        public virtual IList<DomainNotification> GetNotifications()
 			=> _notifications;
 
         public void Handle(DomainNotification message)
 			=> _notifications.Add(message);
 
-        public bool HasNotifications()
-			=> _notifications.Any();
+        public virtual bool HasNotifications()
+			=> GetNotifications().Any();
         
         public void Dispose()
 			=> _notifications = new List<DomainNotification>();

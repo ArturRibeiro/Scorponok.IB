@@ -1,12 +1,9 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Scorponok.IB.Core.Bus;
-using Scorponok.IB.Domain.CommandHandlers;
-using Scorponok.IB.Domain.Models.Churchs.IRespository;
 using Microsoft.Extensions.DependencyInjection;
 using Scorponok.IB.Core.Events;
-using Scorponok.IB.Core.Notifications;
 using Scorponok.IB.Domain.Models.Churchs.Commands;
+using Scorponok.IB.Domain.Models.Churchs.Events;
 
 namespace Scorponok.IB.Unit.Integration.Tests.CommandHandlers
 {
@@ -16,7 +13,7 @@ namespace Scorponok.IB.Unit.Integration.Tests.CommandHandlers
 		[Test]
 		public void Registing_church_with_success()
 		{
-			var bus = Ioc.Provider.GetService<IBus>();
+			var bus = NativeInjectorBootStrapper.Provider.GetService<IBus>();
 
 			var registerChurchCommand = new RegisterChurchCommand
 				(
@@ -29,6 +26,8 @@ namespace Scorponok.IB.Unit.Integration.Tests.CommandHandlers
 				);
 
 			bus.SendCommand(registerChurchCommand);
-		}
+
+		    var test = NativeInjectorBootStrapper.Provider.GetService<IHandler<ChurchRegisteredEvent>>();
+        }
 	}
 }

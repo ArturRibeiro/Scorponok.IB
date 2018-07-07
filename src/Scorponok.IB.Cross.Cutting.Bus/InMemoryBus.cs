@@ -10,11 +10,24 @@ namespace Scorponok.IB.Cross.Cutting.Bus
 	{
 		public static Func<IServiceProvider> ContainerAccessor { get; set; }
 		private static IServiceProvider Container => ContainerAccessor();
+	    private readonly IEventStore _eventStore;
 
-        public void RaiseEvent<T>(T theEvent) where T : Event 
-            => Publish(theEvent);
 
-        public void SendCommand<T>(T theCommand) where T : Command 
+        public InMemoryBus(IEventStore eventStore)
+        {
+            _eventStore = eventStore;
+
+        }
+
+	    public void RaiseEvent<T>(T theEvent) where T : Event
+	    {
+	        if (!theEvent.MessageType.Equals("DomainNotification"))
+	            _eventStore?.Save(theEvent);
+
+	        Publish(theEvent);
+	    }
+
+	    public void SendCommand<T>(T theCommand) where T : Command 
             => Publish(theCommand);
 
         private static void Publish<T>(T message) where T : Message

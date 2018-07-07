@@ -5,6 +5,11 @@ namespace Scorponok.IB.Domain.Models.Churchs.Commands
 {
 	public class RegisterChurchCommand : ChurchCommand
 	{
+	    public RegisterChurchCommand()
+	    {
+	        
+	    }
+
 		public RegisterChurchCommand(string name, string photo, string email, byte region, byte prefix, string number)
 		{
 			Name = name;

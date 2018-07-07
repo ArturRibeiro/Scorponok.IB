@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
   </ItemGroup>
 
@@ -19,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Scorponok.IB.Application\Scorponok.IB.Application.csproj" />
+    <ProjectReference Include="..\Scorponok.IB.Cross.Cutting.Ioc\Scorponok.IB.Cross.Cutting.Ioc.csproj" />
   </ItemGroup>
 
 </Project>

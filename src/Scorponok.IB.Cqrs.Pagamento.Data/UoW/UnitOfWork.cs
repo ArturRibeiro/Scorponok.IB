@@ -1,6 +1,6 @@
 ﻿using Scorponok.IB.Core.Commands;
 using Scorponok.IB.Core.Interfaces;
-using Scorponok.IB.Cqrs.Pagamento.Data.Context;
+using Scorponok.IB.Cqrs.Data.Context;
 
 namespace Scorponok.IB.Cqrs.Pagamento.Data.UoW
 {

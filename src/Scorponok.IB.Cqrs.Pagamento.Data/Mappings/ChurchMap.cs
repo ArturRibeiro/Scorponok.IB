@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Scorponok.IB.Domain.Models.Churchs;
 
-namespace Scorponok.IB.Cqrs.Pagamento.Data.Mappings
+namespace Scorponok.IB.Cqrs.Data.Mappings
 {
 	public class ChurchMap : IEntityTypeConfiguration<Church>
 	{

@@ -2,8 +2,8 @@
 using System.Data.Entity;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
-using Scorponok.IB.Cqrs.Pagamento.Data.Context;
 using Microsoft.Extensions.DependencyInjection;
+using Scorponok.IB.Cqrs.Data.Context;
 
 namespace Scorponok.IB.Unit.Integration.Tests
 {
@@ -16,14 +16,14 @@ namespace Scorponok.IB.Unit.Integration.Tests
 		{
 			Console.Write("SetUp");
 
-			Ioc.Setup();
+			NativeInjectorBootStrapper.Setup();
 
-			CreteDataBase();
+			//CreteDataBase();
 		}
 
 		private void CreteDataBase()
 		{
-			var dbContext = Ioc.Provider.GetService<DataContext>();
+			var dbContext = NativeInjectorBootStrapper.Provider.GetService<DataContext>();
 			dbContext.Database.EnsureDeleted();
 			dbContext.Database.EnsureCreated();
 
