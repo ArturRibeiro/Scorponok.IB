@@ -1,10 +1,4 @@
-﻿//using System.Collections.Generic;
-//using System.Security.Claims;
-//using Equinox.Domain.Interfaces;
-//using Microsoft.AspNetCore.Http;
-//using Scorponok.IB.Domain.Models.Users.Interfaces;
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Scorponok.IB.Domain.Models.Users.Interfaces;

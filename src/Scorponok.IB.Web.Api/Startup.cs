@@ -1,13 +1,14 @@
 ﻿using System.IO;
-using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Scorponok.IB.Application.AutoMapper;
 using Scorponok.IB.Cqrs.Data.Context;
 using Scorponok.IB.Cross.Cutting.Ioc;
+
+//using Swashbuckle.Swagger;
+
 
 namespace Scorponok.IB.Web.Api
 {
@@ -40,6 +41,10 @@ namespace Scorponok.IB.Web.Api
             Setup.RegisterServices(services);
 
             services.AddMvc();
+
+            StartupSwagger.ConfigureServices(services);
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,11 +63,8 @@ namespace Scorponok.IB.Web.Api
 
             app.UseMvc();
 
-            //app.UseSwagger();
-            //app.UseSwaggerUI(s =>
-            //{
-            //    s.SwaggerEndpoint("/swagger/v1/swagger.json", "Equinox Project API v1.1");
-            //});
+            StartupSwagger.Configure(app, env);
+            
         }
     }
 }
