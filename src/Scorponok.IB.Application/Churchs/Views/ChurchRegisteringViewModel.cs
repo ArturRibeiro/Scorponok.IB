@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Scorponok.IB.Application.Churchs.Views
 {
@@ -8,12 +9,14 @@ namespace Scorponok.IB.Application.Churchs.Views
         [DisplayName("Id")]
         public Guid? Id { get; set; }
 
+        [Required(ErrorMessage = "Name invalid.")]
         [DisplayName("Name")]
         public string Name { get; set; }
 
         [DisplayName("Photo")]
         public string Photo { get; set; }
 
+        [Required(ErrorMessage = "Email invalid.")]
         [DisplayName("Email")]
         public string Email { get; set; }
 
