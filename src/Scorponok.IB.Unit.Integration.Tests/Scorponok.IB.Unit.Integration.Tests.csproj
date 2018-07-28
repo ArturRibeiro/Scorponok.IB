@@ -22,7 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Scorponok.IB.Application\Scorponok.IB.Application.csproj" />
     <ProjectReference Include="..\Scorponok.IB.Core\Scorponok.IB.Core.csproj" />
-    <ProjectReference Include="..\Scorponok.IB.Cqrs.Pagamento.Data\Scorponok.IB.Cqrs.Data.csproj" />
+    <ProjectReference Include="..\Scorponok.IB.Cqrs.Data\Scorponok.IB.Cqrs.Data.csproj" />
     <ProjectReference Include="..\Scorponok.IB.Cross.Cutting.Bus\Scorponok.IB.Cross.Cutting.Bus.csproj" />
     <ProjectReference Include="..\Scorponok.IB.Cross.Cutting.Identity\Scorponok.IB.Cross.Cutting.Identity.csproj" />
     <ProjectReference Include="..\Scorponok.IB.Domain\Scorponok.IB.Domain.csproj" />
