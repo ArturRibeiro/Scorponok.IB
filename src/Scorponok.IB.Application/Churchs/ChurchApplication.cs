@@ -3,7 +3,6 @@ using AutoMapper;
 using Scorponok.IB.Application.Churchs.Interfaces;
 using Scorponok.IB.Application.Churchs.Views;
 using Scorponok.IB.Core.Bus;
-using Scorponok.IB.Core.Commands;
 using Scorponok.IB.Domain.Models.Churchs.Commands;
 
 namespace Scorponok.IB.Application.Churchs

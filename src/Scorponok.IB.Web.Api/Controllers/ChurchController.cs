@@ -1,65 +1,64 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Scorponok.IB.Application.Churchs.Interfaces;
-using Scorponok.IB.Application.Churchs.Views;
+using Scorponok.IB.Core.Bus;
 using Scorponok.IB.Core.Notifications;
+using Scorponok.IB.Domain.Models.Churchs.Commands;
+using Scorponok.IB.Web.Api.Churchs.Views;
 
 namespace Scorponok.IB.Web.Api.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/Church")]
+    [Produces("application/json"), Route("api/Church")]
     public class ChurchController : ApiController
     {
-        private readonly IChurchApplication _app;
+        private readonly IMapper _mapper;
+        private readonly IBus _bus;
 
-        public ChurchController(IChurchApplication app, IDomainNotificationHandler<DomainNotification> notifications) 
-            : base(notifications)
-                => _app = app;
-
-        // GET: api/Church
-        [HttpGet]
-        public IEnumerable<string> Get()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mapper">AutoMapper</param>
+        /// <param name="bus">Service bus</param>
+        /// <param name="notifications">Domain Notification</param>
+        public ChurchController(IMapper mapper, IBus bus, IDomainNotificationHandler<DomainNotification> notifications)
+        : base(notifications)
         {
-            return new string[] { "value1", "value2" };
+            _mapper = mapper;
+            _bus = bus;
         }
 
-        // GET: api/Church/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-        
-        // POST: api/Church
         [HttpPost, Route("register")]
         public IActionResult Post([FromBody]RegisterChurchViewModel view)
         {
-            if (!ModelState.IsValid)
-            {
-                NotifyModelStateErrors();
-                return Response(view);
-            }
+            var command = _mapper.Map<RegisterChurchCommand>(view);
+            _bus.SendCommand(command);
 
-            _app.RegisterChurch(view);
+            //if (!ModelState.IsValid)
+            //{
+            //    NotifyModelStateErrors();
+            //    return Response(view);
+            //}
+
+            //_app.RegisterChurch(view);
 
             return Response(view);
         }
-        
-        // PUT: api/Church/5
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody]string value)
+
+        [HttpPut("{id}"), Route("update")]
+        public IActionResult UpdateChurch([FromBody] ChurchUpdatedViewModel view)
         {
-            return new ObjectResult(value);
+            var command = _mapper.Map<RegisterChurchCommand>(view);
+            _bus.SendCommand(command);
+            return Response(view);
         }
-        
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+
+        [HttpDelete("{id}"), Route("delete")]
+        public IActionResult DeletedChurch(ChurchDeletedViewModel view)
         {
-            return new ObjectResult(id);
+            var command = _mapper.Map<DeleteChurchCommand>(view);
+            _bus.SendCommand(command);
+            return Response(view);
         }
+
     }
 }

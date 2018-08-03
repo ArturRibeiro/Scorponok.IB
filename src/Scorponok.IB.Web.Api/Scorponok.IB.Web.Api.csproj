@@ -28,7 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Scorponok.IB.Application\Scorponok.IB.Application.csproj" />
     <ProjectReference Include="..\Scorponok.IB.Cross.Cutting.Ioc\Scorponok.IB.Cross.Cutting.Ioc.csproj" />
   </ItemGroup>
 
