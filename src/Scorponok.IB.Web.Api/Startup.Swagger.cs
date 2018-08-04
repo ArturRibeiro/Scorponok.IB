@@ -20,6 +20,7 @@ namespace Scorponok.IB.Web.Api
             {
                 //TODO:[scorponok][bug]: https://github.com/domaindrivendev/Swashbuckle.AspNetCore/issues/559
                 s.SwaggerEndpoint("/swagger/v1/swagger.json", "Project Cadastro Geral de Membros de Congreção API v1.1");
+                s.RoutePrefix = "swagger/ui";
             });
         }
 

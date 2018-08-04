@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Scorponok.IB.Core.Bus;
 using Scorponok.IB.Core.Notifications;
 using Scorponok.IB.Domain.Models.Churchs.Commands;
 using Scorponok.IB.Web.Api.Churchs.Views;
+using Scorponok.IB.Web.Api.Utils;
 
 namespace Scorponok.IB.Web.Api.Controllers
 {
@@ -27,8 +29,8 @@ namespace Scorponok.IB.Web.Api.Controllers
             _bus = bus;
         }
 
-        [HttpPost, Route("register")]
-        public IActionResult Post([FromBody]RegisterChurchViewModel view)
+        [HttpPost, Route("register"), ValidateMessageRequest]
+        public IActionResult Post([FromBody][Required]RegisterChurchViewModel view)
         {
             var command = _mapper.Map<RegisterChurchCommand>(view);
             _bus.SendCommand(command);
