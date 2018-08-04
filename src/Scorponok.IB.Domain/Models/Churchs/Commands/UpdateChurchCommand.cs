@@ -11,7 +11,7 @@ namespace Scorponok.IB.Domain.Models.Churchs.Commands
 			Name = name;
 			Photo = photo;
 			Email = email;
-			Telephone = telephone;
+			PhoneMobile = telephone;
 		}
 
 		public override bool IsValid()

@@ -17,7 +17,7 @@ namespace Scorponok.IB.Domain.Models.Churchs.Commands
 			Email = email;
 			Region = region;
 			Prefix = prefix;
-			Telephone = number;
+			PhoneMobile = number;
 		}
 
 		public override bool IsValid()

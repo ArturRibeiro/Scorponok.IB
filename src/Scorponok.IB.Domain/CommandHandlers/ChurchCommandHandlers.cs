@@ -67,8 +67,9 @@ namespace Scorponok.IB.Domain.CommandHandlers
 					name: message.Name
 					, photo: message.Photo
 					, email: Email.Factory.CreateNew(message.Email)
-					, telephone: Telephone.Factory.CreateNew(message.Region, message.Prefix, message.Telephone)
-					, endereco: null
+					, telephoneFixed: Telephone.Factory.CreateNew(55, 21, message.PhoneFixed)
+                    , mobileTelephone: Telephone.Factory.CreateNew(55, 21, message.PhoneMobile)
+                    , endereco: null
 				);
 
 		private Church UpdateChurch(
@@ -77,6 +78,6 @@ namespace Scorponok.IB.Domain.CommandHandlers
 				.UpdateName(message.Name)
 				.UpdatePhoto(message.Photo)
 				.UpdateEmail(message.Email)
-				.UpdateTelephone(message.Telephone);
+				.UpdateTelephone(message.PhoneMobile);
 	}
 }

@@ -27,7 +27,7 @@ namespace Scorponok.IB.Core.ValueObjects
 			Mensagem = null;
 		}
 
-		public Email(string email) : this()
+		private Email(string email) : this()
 		{
 			this.Value = email;
 			Validar();

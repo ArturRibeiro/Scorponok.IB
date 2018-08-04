@@ -8,13 +8,14 @@ namespace Scorponok.IB.Web.Api.Churchs.Profiles
     {
         public ChurchRegisterProfile()
         {
-            CreateMap<RegisterChurchViewModel, RegisterChurchCommand>()
+            CreateMap<ChurchRegisteringMessageRequest, RegisterChurchCommand>()
                 .ForMember(dest => dest.Timestamp, origem => origem.Ignore())
                 .ForMember(dest => dest.ValidationResult, origem => origem.Ignore())
                 .ForMember(dest => dest.MessageType, origem => origem.Ignore())
                 .ForMember(dest => dest.AggregateId, origem => origem.Ignore())
-                .ForMember(dest => dest.Telephone, origem => origem.MapFrom(x => x.TelephoneFixed))
-                .ConstructUsing(x => new RegisterChurchCommand(x.Name, x.Photo, x.Email, 55, 21, x.MobileTelephone));
+                .ForMember(dest => dest.PhoneMobile, origem => origem.MapFrom(x => x.MobileTelephone))
+                .ForMember(dest => dest.PhoneFixed, origem => origem.MapFrom(x => x.TelephoneFixed));
+                //.ConstructUsing(x => new RegisterChurchCommand(x.Name, x.Photo, x.Email, 55, 21, x.MobileTelephone));
         }
 
     }

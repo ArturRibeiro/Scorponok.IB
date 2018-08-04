@@ -48,46 +48,16 @@ namespace Scorponok.IB.Domain.Models.Churchs
 		#region Factory
 		public static class Factory
 		{
-			public static Church CreateNew(string name, string photo, Email email, Telephone telephone, Address endereco)
+			public static Church CreateNew(string name, string photo, Email email, Telephone telephoneFixed, Telephone mobileTelephone, Address endereco)
 				=> new Church()
 				{
 					Name = name,
 					Photo = photo,
 					Email = email,
-					MobileTelephone = telephone,
-					Address = endereco
+				    MobileTelephone = mobileTelephone,
+                    TelephoneFixed = telephoneFixed,
+                    Address = endereco
 				};
-
-			public static Church CreateNew(string name, string photo, Email email, Telephone telephone)
-				=> new Church()
-				{
-					Name = name,
-					Photo = photo,
-					Email = email,
-					MobileTelephone = telephone
-				};
-
-			public static Church CreateNew(string name, string photo, Email email)
-				=> new Church()
-				{
-					Name = name,
-					Photo = photo,
-					Email = email
-				};
-
-			public static Church CreateNew(string name, string photo)
-				=> new Church()
-				{
-					Name = name,
-					Photo = photo
-				};
-
-			public static Church CreateNew(string name)
-				=> new Church()
-				{
-					Name = name
-				};
-
 		}
 		#endregion
 	}

@@ -6,8 +6,7 @@
 		{
 			this.ValidateId();
 			this.ValidateName();
-			this.ValidatePhoto();
-			this.ValidateTelephone();
+			this.ValidateMobileTelephone();
 		}
 	}
 }

@@ -55,8 +55,8 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 			churchRegisteredEvent.Name.Should().Be(argument.Name);
 			churchRegisteredEvent.Photo.Should().Be(argument.Photo);
 			churchRegisteredEvent.Email.Should().Be(argument.Email);
-			churchRegisteredEvent.DDD.Should().Be(argument.Prefix);
-			churchRegisteredEvent.Telephone.Should().Be($"{argument.Region}{argument.Prefix}{argument.Telephone}");
+			churchRegisteredEvent.DDD.Should().Be(21);
+			churchRegisteredEvent.Telephone.Should().Be($"5521{argument.PhoneMobile}");
 
 			//Verify that methods were invocation
 			mockChurchRepository.Verify(x => x.Add(It.IsAny<Church>()), Times.Once);
@@ -116,7 +116,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 					, name: "Richmond’s First Baptist Church"
 					, email: "Scorponok@scorponok.com"
 					, photo: "1.jpg"
-					, telephone: "123456789");
+                    , telephone: "123456789");
 
 			ChurchUpdatedEvent churchUpdatedEvent = null;
 			Church church = null;
@@ -142,8 +142,8 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 			churchUpdatedEvent.Name.Should().Be(argument.Name);
 			churchUpdatedEvent.Photo.Should().Be(argument.Photo);
 			churchUpdatedEvent.Email.Should().Be(argument.Email);
-			churchUpdatedEvent.DDD.Should().Be(argument.Prefix);
-			churchUpdatedEvent.Telephone.Should().Be(argument.Telephone);
+			//churchUpdatedEvent.DDD.Should().Be(21);
+			churchUpdatedEvent.Telephone.Should().Be(argument.PhoneMobile);
 
 			//Verify that methods were invocation
 			mockChurchRepository.Verify(x => x.GetById(It.IsAny<Guid>()), Times.Once);

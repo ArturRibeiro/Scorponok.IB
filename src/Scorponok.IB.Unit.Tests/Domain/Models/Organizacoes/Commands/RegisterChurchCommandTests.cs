@@ -35,7 +35,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes.Commands
 			//Arrange's
 			var commandArg = new RegisterChurchCommand("Richmond’s First Baptist Church", 
 				email: "Scorponok@scorponok.com", 
-				photo: "",
+				photo: "namenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamename",
 				region: 55,
 				prefix: 21,
 				number: "219874133");

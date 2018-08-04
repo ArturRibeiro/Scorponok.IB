@@ -5,8 +5,10 @@
 		public RegisterChurchCommandValidator()
 		{
 			this.ValidateName();
-			this.ValidatePhoto();
-			this.ValidateTelephone();
+			this.ValidatePhoneFixed();
+            this.ValidatePhoto();
+            this.ValidateMobileTelephone();
+            this.ValidatePhoneFixed();
 		}
 	}
 }

@@ -31,8 +31,8 @@ namespace Scorponok.IB.Core.ValueObjects
 			this.Number = numero;
 			Valido = Validar();
 		}
-
-		private bool Validar()
+        
+        private bool Validar()
 		{
 			if (this.Region != 55)
 			{
@@ -76,7 +76,13 @@ namespace Scorponok.IB.Core.ValueObjects
 					Prefix = ddd,
 					Number = numero
 				};
-		}
+
+		    public static Telephone CreateNew(string numero)
+		        => new Telephone()
+		        {
+		            Number = numero
+		        };
+        }
 
 		#endregion
 	}

@@ -30,7 +30,7 @@ namespace Scorponok.IB.Web.Api.Controllers
         }
 
         [HttpPost, Route("register"), ValidateMessageRequest]
-        public IActionResult Post([FromBody][Required]RegisterChurchViewModel view)
+        public IActionResult Post([FromBody]ChurchRegisteringMessageRequest view)
         {
             var command = _mapper.Map<RegisterChurchCommand>(view);
             _bus.SendCommand(command);
@@ -47,7 +47,7 @@ namespace Scorponok.IB.Web.Api.Controllers
         }
 
         [HttpPut("{id}"), Route("update")]
-        public IActionResult UpdateChurch([FromBody] ChurchUpdatedViewModel view)
+        public IActionResult UpdateChurch([FromBody] ChurchUpdatedMessageRequest view)
         {
             var command = _mapper.Map<RegisterChurchCommand>(view);
             _bus.SendCommand(command);
@@ -55,7 +55,7 @@ namespace Scorponok.IB.Web.Api.Controllers
         }
 
         [HttpDelete("{id}"), Route("delete")]
-        public IActionResult DeletedChurch(ChurchDeletedViewModel view)
+        public IActionResult DeletedChurch(ChurchDeletedMessageRequest view)
         {
             var command = _mapper.Map<DeleteChurchCommand>(view);
             _bus.SendCommand(command);
