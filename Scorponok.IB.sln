@@ -35,8 +35,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorponok.IB.Web.Api", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorponok.IB.Cqrs.Data", "src\Scorponok.IB.Cqrs.Data\Scorponok.IB.Cqrs.Data.csproj", "{32A60B51-AF45-408E-9EB3-76F28731210D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{ED44A785-C633-4F12-8C8E-95F4F5204C5E}"
-EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Scorponok.IB.Data.Base.Sql.Server", "src\Scorponok.IB.Data.Base.Sql.Server\Scorponok.IB.Data.Base.Sql.Server.sqlproj", "{A6C2F8FF-EFE2-42EB-9385-A7B486C8857E}"
 EndProject
 Global
