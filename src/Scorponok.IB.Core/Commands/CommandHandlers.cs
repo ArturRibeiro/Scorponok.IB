@@ -11,7 +11,7 @@ namespace Scorponok.IB.Core.Commands
 		protected readonly IBus _bus;
 		protected readonly IDomainNotificationHandler<DomainNotification> _notification;
 
-		public CommandHandler(IUnitOfWork uow, IBus bus, IDomainNotificationHandler<DomainNotification> notification)
+	    protected CommandHandler(IUnitOfWork uow, IBus bus, IDomainNotificationHandler<DomainNotification> notification)
 		{
 			_uow = uow;
 			_bus = bus;

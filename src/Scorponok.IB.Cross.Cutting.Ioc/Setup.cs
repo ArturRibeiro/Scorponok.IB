@@ -9,7 +9,7 @@ using Scorponok.IB.Cqrs.Data.Context;
 using Scorponok.IB.Cqrs.Data.EventSourcing;
 using Scorponok.IB.Cqrs.Data.Repositories;
 using Scorponok.IB.Cqrs.Data.Repositories.EventSourcing;
-using Scorponok.IB.Cqrs.Pagamento.Data.UoW;
+using Scorponok.IB.Cqrs.Data.UoW;
 using Scorponok.IB.Cross.Cutting.Bus;
 using Scorponok.IB.Cross.Cutting.Identity.Models;
 using Scorponok.IB.Domain.CommandHandlers;

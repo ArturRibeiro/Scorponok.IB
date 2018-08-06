@@ -2,7 +2,7 @@
 using Scorponok.IB.Core.Interfaces;
 using Scorponok.IB.Cqrs.Data.Context;
 
-namespace Scorponok.IB.Cqrs.Pagamento.Data.UoW
+namespace Scorponok.IB.Cqrs.Data.UoW
 {
 	public class UnitOfWork : IUnitOfWork
 	{
