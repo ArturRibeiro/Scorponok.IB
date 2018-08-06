@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorponok.IB.Domain", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorponok.IB.Cross.Cutting.Bus", "src\Scorponok.IB.Cross.Cutting.Bus\Scorponok.IB.Cross.Cutting.Bus.csproj", "{FC404B7A-BD4A-47C2-A0C3-EA2CB2DC31F1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Application", "3.Application", "{934A7CCA-132A-4D9A-8175-DD0FCFCB5B67}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorponok.IB.Cross.Cutting.Ioc", "src\Scorponok.IB.Cross.Cutting.Ioc\Scorponok.IB.Cross.Cutting.Ioc.csproj", "{5D82F341-330C-41D8-91F9-E09DB8BA45D9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1.Data", "5.1.Data", "{713C9C56-C311-4C98-8F29-94CB136F05EE}"
