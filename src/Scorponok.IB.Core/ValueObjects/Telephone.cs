@@ -64,7 +64,7 @@ namespace Scorponok.IB.Core.ValueObjects
 
 		public static class Factory
 		{
-			public static Telephone CreateNew(byte region, byte ddd, string number)
+            public static Telephone CreateNew(byte region, byte ddd, string number)
 				=> new Telephone(region, ddd, number);
 
 			public static Telephone Empty()

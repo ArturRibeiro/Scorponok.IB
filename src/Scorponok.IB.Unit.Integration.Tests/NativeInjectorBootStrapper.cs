@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Security.Principal;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +22,7 @@ using Scorponok.IB.Domain.Models.Churchs.Events;
 using Scorponok.IB.Domain.Models.Churchs.IRespository;
 using Scorponok.IB.Domain.Models.Users.Interfaces;
 using Scorponok.IB.Cross.Cutting.Identity.Models;
+using Scorponok.IB.Web.Api.Controllers;
 
 namespace Scorponok.IB.Unit.Integration.Tests
 {
@@ -29,7 +31,7 @@ namespace Scorponok.IB.Unit.Integration.Tests
         private static ServiceCollection _services;
         private static ServiceProvider _serviceProvider;
 
-        public static ServiceProvider Provider => _serviceProvider;
+        public static ServiceProvider Container => _serviceProvider;
 
         public static void Setup()
         {
@@ -44,6 +46,11 @@ namespace Scorponok.IB.Unit.Integration.Tests
         private static void RegistraTodos()
         {
             _services.AddDbContext<DataContext>(options => options.UseSqlServer("Data Source=DESKTOP-T5U2T7J;Initial Catalog=Scorponok.IB.Db;Integrated Security=True"));
+
+            _services.AddAutoMapper();
+            RegisterAutoMapper();
+
+            _services.AddScoped(typeof(ChurchController));
 
             RegistraRepositorys();
             RegistraCommandHandlers();
@@ -65,6 +72,13 @@ namespace Scorponok.IB.Unit.Integration.Tests
             _services.AddScoped<IUser>(_ => new AspNetUser(mockIHttpContextAccessor.Object));
         }
 
+        private static void RegisterAutoMapper()
+        {
+            var config = Mapper.Configuration;
+            _services.AddSingleton(config);
+            _services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
+        }
+        
         private static void RegistraCommandHandlers()
         {
             _services.AddScoped<IDomainNotificationHandler<DomainNotification>, DomainNotificationHandler>();
@@ -95,6 +109,11 @@ namespace Scorponok.IB.Unit.Integration.Tests
             _services.AddScoped<IEventStoreRepository, EventStoreRepository>();
             _services.AddScoped<IEventStore, EventStore>();
             _services.AddScoped<EventStoreContext>();
+        }
+
+        public static object GetInstance<T>() where T : class
+        {
+            return Container.GetService(typeof(T));
         }
     }
 }

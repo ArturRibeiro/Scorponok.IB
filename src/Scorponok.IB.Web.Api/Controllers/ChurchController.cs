@@ -30,7 +30,7 @@ namespace Scorponok.IB.Web.Api.Controllers
         }
 
         [HttpPost, Route("register"), ValidateMessageRequest]
-        public IActionResult Post([FromBody]ChurchRegisteringMessageRequest view)
+        public IActionResult Register([FromBody]ChurchRegisteringMessageRequest view)
         {
             var command = _mapper.Map<RegisterChurchCommand>(view);
             _bus.SendCommand(command);

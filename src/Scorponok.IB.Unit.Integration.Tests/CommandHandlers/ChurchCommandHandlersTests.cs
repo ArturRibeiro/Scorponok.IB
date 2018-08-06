@@ -13,7 +13,7 @@ namespace Scorponok.IB.Unit.Integration.Tests.CommandHandlers
 		[Test]
 		public void Registing_church_with_success()
 		{
-			var bus = NativeInjectorBootStrapper.Provider.GetService<IBus>();
+			var bus = NativeInjectorBootStrapper.Container.GetService<IBus>();
 
 			var registerChurchCommand = new RegisterChurchCommand
 				(
@@ -27,7 +27,7 @@ namespace Scorponok.IB.Unit.Integration.Tests.CommandHandlers
 
 			bus.SendCommand(registerChurchCommand);
 
-		    var test = NativeInjectorBootStrapper.Provider.GetService<IHandler<ChurchRegisteredEvent>>();
+		    var test = NativeInjectorBootStrapper.Container.GetService<IHandler<ChurchRegisteredEvent>>();
         }
 	}
 }

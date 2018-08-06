@@ -23,7 +23,7 @@ namespace Scorponok.IB.Unit.Integration.Tests
 
 		private void CreteDataBase()
 		{
-			var dbContext = NativeInjectorBootStrapper.Provider.GetService<DataContext>();
+			var dbContext = NativeInjectorBootStrapper.Container.GetService<DataContext>();
 			dbContext.Database.EnsureDeleted();
 			dbContext.Database.EnsureCreated();
 
