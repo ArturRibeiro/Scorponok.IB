@@ -5,6 +5,11 @@ namespace Scorponok.IB.Domain.Models.Churchs.Commands
 {
 	public class UpdateChurchCommand : ChurchCommand
 	{
+	    public UpdateChurchCommand()
+	    {
+	        
+	    }
+
 		public UpdateChurchCommand(Guid id, string name, string photo, string email, string telephone)
 		{
 			Id = id;

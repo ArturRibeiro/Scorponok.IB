@@ -46,10 +46,10 @@ namespace Scorponok.IB.Web.Api.Controllers
             return Response(view);
         }
 
-        [HttpPut("{id}"), Route("update")]
+        [HttpPut, Route("update"), ValidateMessageRequest]
         public IActionResult UpdateChurch([FromBody] ChurchUpdatedMessageRequest view)
         {
-            var command = _mapper.Map<RegisterChurchCommand>(view);
+            var command = _mapper.Map<UpdateChurchCommand>(view);
             _bus.SendCommand(command);
             return Response(view);
         }

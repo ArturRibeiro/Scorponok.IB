@@ -28,5 +28,19 @@ namespace Scorponok.IB.Unit.Integration.Tests
 
             return await _httpClient.SendAsync(request);
         }
+
+        public static async Task<HttpResponseMessage> PutAsync(object messageRequest, string route)
+        {
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(messageRequest);
+
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Put,
+                RequestUri = new Uri($"http://localhost:{PortWebApi}/api/{ route }"),
+                Content = new StringContent(json, Encoding.UTF8, "application/json")
+            };
+
+            return await _httpClient.SendAsync(request);
+        }
     }
 }

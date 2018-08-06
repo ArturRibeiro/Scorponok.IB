@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Scorponok.IB.Core.Bus;
@@ -23,6 +24,8 @@ namespace Scorponok.IB.Cross.Cutting.Ioc
 {
     public static class Setup
     {
+        public static IServiceProvider Container { get; private set; }
+
         public static void RegisterServices(IServiceCollection services)
         {
             // ASP.NET HttpContext dependency
@@ -35,11 +38,14 @@ namespace Scorponok.IB.Cross.Cutting.Ioc
             // Domain - Events
             services.AddScoped<IDomainNotificationHandler<DomainNotification>, DomainNotificationHandler>();
             services.AddScoped<IHandler<ChurchRegisteredEvent>, ChurchEventHandlers>();
+            services.AddScoped<IHandler<ChurchUpdatedEvent>, ChurchEventHandlers>();
+            
 
             //Commands
             services.AddScoped<IHandler<RegisterChurchCommand>, ChurchCommandHandlers>();
-            
-            
+            services.AddScoped<IHandler<UpdateChurchCommand>, ChurchCommandHandlers>();
+
+
             //Repositorys
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IChurchRepository, ChurchRepository>();
@@ -55,6 +61,8 @@ namespace Scorponok.IB.Cross.Cutting.Ioc
 
             // Infra - Identity
             services.AddScoped<IUser, AspNetUser>();
+
+            Container = services.BuildServiceProvider();
 
         }
 

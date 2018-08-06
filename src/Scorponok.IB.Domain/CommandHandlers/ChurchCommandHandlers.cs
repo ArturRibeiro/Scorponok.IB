@@ -13,8 +13,9 @@ namespace Scorponok.IB.Domain.CommandHandlers
 {
 	public class ChurchCommandHandlers : CommandHandler
 		, IHandler<RegisterChurchCommand>
-		
-	{
+	    , IHandler<UpdateChurchCommand>
+
+    {
 		private readonly IChurchRepository _churchRepository;
 
 		public ChurchCommandHandlers(IUnitOfWork uow, IBus bus, IDomainNotificationHandler<DomainNotification> notification,
@@ -60,24 +61,26 @@ namespace Scorponok.IB.Domain.CommandHandlers
 			if (Commit()) _bus.RaiseEvent(new ChurchDeletedEvent(message.Id));
 		}
 
-		private static Church CreateNewChurch(
-			RegisterChurchCommand message)
-			=> Church.Factory.CreateNew
-				(
-					name: message.Name
-					, photo: message.Photo
-					, email: Email.Factory.CreateNew(message.Email)
-					, telephoneFixed: Telephone.Factory.CreateNew(55, 21, message.PhoneFixed)
-                    , mobileTelephone: Telephone.Factory.CreateNew(55, 21, message.PhoneMobile)
-                    , endereco: null
-				);
+        #region Private Methods
+        private static Church CreateNewChurch(
+            RegisterChurchCommand message)
+    => Church.Factory.CreateNew
+        (
+            name: message.Name
+            , photo: message.Photo
+            , email: Email.Factory.CreateNew(message.Email)
+            , telephoneFixed: Telephone.Factory.CreateNew(55, 21, message.PhoneFixed)
+            , mobileTelephone: Telephone.Factory.CreateNew(55, 21, message.PhoneMobile)
+            , endereco: null
+        );
 
-		private Church UpdateChurch(
-			UpdateChurchCommand message)
-			=> _churchRepository.GetById(message.Id)
-				.UpdateName(message.Name)
-				.UpdatePhoto(message.Photo)
-				.UpdateEmail(message.Email)
-				.UpdateTelephone(message.PhoneMobile);
-	}
+        private Church UpdateChurch(
+            UpdateChurchCommand message)
+            => _churchRepository.GetById(message.Id)
+                .UpdateName(message.Name)
+                .UpdatePhoto(message.Photo)
+                .UpdateEmail(message.Email)
+                .UpdateTelephone(message.PhoneMobile); 
+        #endregion
+    }
 }

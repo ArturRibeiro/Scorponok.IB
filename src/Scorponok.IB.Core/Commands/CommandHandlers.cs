@@ -1,11 +1,10 @@
-﻿using FluentValidation.Results;
-using Scorponok.IB.Core.Bus;
+﻿using Scorponok.IB.Core.Bus;
 using Scorponok.IB.Core.Interfaces;
 using Scorponok.IB.Core.Notifications;
 
 namespace Scorponok.IB.Core.Commands
 {
-	public abstract class CommandHandler
+    public abstract class CommandHandler
 	{
 		protected readonly IUnitOfWork _uow;
 		protected readonly IBus _bus;

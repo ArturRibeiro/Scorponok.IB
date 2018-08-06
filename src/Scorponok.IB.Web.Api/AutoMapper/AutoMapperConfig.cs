@@ -10,6 +10,7 @@ namespace Scorponok.IB.Web.Api.AutoMapper
             return new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new ChurchRegisterProfile());
+                cfg.AddProfile(new ChurchUpdatedProfile());
             });
         }
     }
