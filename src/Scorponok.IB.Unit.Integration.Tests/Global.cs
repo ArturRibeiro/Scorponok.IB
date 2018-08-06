@@ -21,35 +21,34 @@ namespace Scorponok.IB.Unit.Integration.Tests
 		{
 			Console.Write("SetUp");
 
-		    // Devemos configurar o caminho real do projeto direcionado
-		    var appRootPath = @"E:\Projetos\Git\Scorponok\Scorponok.IB.Cqrs\src\Scorponok.IB.Web.Api\";
+		    Func<string> GetPathWebApi = () =>
+		    {
+		        var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+		        var start = baseDirectory.LastIndexOf(@"Scorponok.IB.Cqrs", StringComparison.Ordinal);
+		        var path = $"{AppDomain.CurrentDomain.BaseDirectory.Remove(start)}Scorponok.IB.Cqrs\\src\\Scorponok.IB.Web.Api";
 
-		    // define variáveis ​​de ambiente
+		        if (!Directory.Exists(path)) throw new DirectoryNotFoundException($"{path}");
+
+		        return path;
+            };
+
+
 		    Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Development");
-		    Environment.SetEnvironmentVariable("REGISTRY_CONFIG_FILE", Path.Combine(appRootPath, "appsettings.json"));
+		    Environment.SetEnvironmentVariable("REGISTRY_CONFIG_FILE", Path.Combine(GetPathWebApi(), "appsettings.json"));
 		    //Environment.SetEnvironmentVariable("REGISTRY_DB_PASSWORD_SECRET_FILE", Path.Combine(appRootPath, "InsecureSecretFiles", "RegistryDbPassword.txt"));
 		    Environment.SetEnvironmentVariable("REGISTRY_USE_DOCKER_SECRETS", "false");
 
 		    var webHosting = new WebHostBuilder()
 		        .UseEnvironment("Development")
-		        .UseContentRoot(appRootPath)
+		        .UseContentRoot(GetPathWebApi())
 		        .UseConfiguration(new ConfigurationBuilder()
-		            .SetBasePath(appRootPath)
+		            .SetBasePath(GetPathWebApi())
 		            .AddJsonFile("appsettings.json")
 		            .Build())
 		        .UseStartup<Startup>();
 
 		    BaseIntegrationTest.Server = new TestServer(webHosting);
         }
-
-		//private void CreteDataBase()
-		//{
-		//	var dbContext = NativeInjectorBootStrapper.Container.GetService<DataContext>();
-		//	dbContext.Database.EnsureDeleted();
-		//	dbContext.Database.EnsureCreated();
-
-		//	Console.WriteLine("Database created");
-		//}
 
 		[OneTimeTearDown]
 		public void End()
