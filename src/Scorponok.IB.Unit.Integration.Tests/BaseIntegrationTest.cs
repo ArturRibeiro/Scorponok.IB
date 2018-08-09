@@ -1,11 +1,36 @@
 ﻿using System;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.TestHost;
+using Newtonsoft.Json;
 
 namespace Scorponok.IB.Unit.Integration.Tests
 {
+
+    public static class HttpClientExtensions
+    {
+        public static Task<HttpResponseMessage> DeleteAsJsonAsync<T>(this HttpClient httpClient, string requestUri, T data)
+        {
+            return httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Delete, requestUri)
+            {
+                Content = Serialize(data)
+            });
+        }
+
+        public static Task<HttpResponseMessage> DeleteAsJsonAsync<T>(this HttpClient httpClient, string requestUri, T data, CancellationToken cancellationToken)
+            => httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Delete, requestUri) { Content = Serialize(data) }, cancellationToken);
+
+        public static Task<HttpResponseMessage> DeleteAsJsonAsync<T>(this HttpClient httpClient, Uri requestUri, T data)
+            => httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Delete, requestUri) { Content = Serialize(data) });
+
+        public static Task<HttpResponseMessage> DeleteAsJsonAsync<T>(this HttpClient httpClient, Uri requestUri, T data, CancellationToken cancellationToken)
+            => httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Delete, requestUri) { Content = Serialize(data) }, cancellationToken);
+
+        private static HttpContent Serialize(object data) => new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+    }
+
     public static class BaseIntegrationTest
     {
         private const int PortWebApi = 51052;
@@ -42,5 +67,13 @@ namespace Scorponok.IB.Unit.Integration.Tests
 
             return await _httpClient.SendAsync(request);
         }
+
+        public static async Task<HttpResponseMessage> DeleteAsync(object messageRequest, string route)
+        {
+            return await _httpClient.DeleteAsJsonAsync($"http://localhost:{PortWebApi}/api/{route}", messageRequest);
+
+            //return await _httpClient.SendAsync(request);
+        }
+
     }
 }

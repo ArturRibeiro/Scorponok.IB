@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Threading.Tasks;
 using FizzWare.NBuilder;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,11 +14,12 @@ using Scorponok.IB.Web.Api.Churchs.Views;
 
 namespace Scorponok.IB.Unit.Integration.Tests
 {
-    [TestFixture]
+    [TestFixture, Category("EndPoints")]
     public class ChurchControllerTests
     {
-        [TestCase("scorponok", "scorponok@gmail.com", "scorponok.jpg", 21, 55, "27605555", "999999999")]
-        public void Register(string name, string email, string photo, byte prefix, byte region, string telephoneFixed, string mobileTelephone)
+        [TestCase("scorponok-1", "scorponok-1@gmail.com", "scorponok-1.jpg", 21, 55, "27605555", "999999999")]
+        [TestCase("scorponok-2", "scorponok-2@gmail.com", "scorponok-2.jpg", 55, 21, "22222222", "999999999")]
+        public async Task Register_church(string name, string email, string photo, byte prefix, byte region, string telephoneFixed, string mobileTelephone)
         {
             //Arrang's
             var requestMessage = new ChurchRegisteringMessageRequest()
@@ -32,17 +34,16 @@ namespace Scorponok.IB.Unit.Integration.Tests
             };
 
             //Act
-            var response = BaseIntegrationTest.PostAsync(requestMessage, "Church/register");
-            response.Wait();
+            var response = await BaseIntegrationTest.PostAsync(requestMessage, "Church/register");
 
             //Assert's
-            response.Result.Should().NotBeNull();
-            response.Result.IsSuccessStatusCode.Should().BeTrue();
-            response.Result.StatusCode.Should().Be(HttpStatusCode.OK);
+            response.Should().NotBeNull();
+            response.IsSuccessStatusCode.Should().BeTrue();
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
 
         [Test]
-        public void Update_church()
+        public async Task Update_church()
         {
             //Arrang's
             var churchId = CreateChurch();
@@ -82,12 +83,23 @@ namespace Scorponok.IB.Unit.Integration.Tests
             assert();
         }
 
-        [Ignore("")]
-        public void Deleted_church()
+        [Test]
+        public async Task Deleted_church()
         {
+            //Arrang's
+            var churchId = CreateChurch();
+
+            //Act
+            var response = BaseIntegrationTest.DeleteAsync(churchId, $"Church/delete/{churchId}");
+            response.Wait();
+
+            //Assert's
+            response.Result.Should().NotBeNull();
+            response.Result.IsSuccessStatusCode.Should().BeTrue();
+            response.Result.StatusCode.Should().Be(HttpStatusCode.OK);
         }
 
-        private Guid CreateChurch()
+        private static Guid CreateChurch()
         {
             var churchRepository = Setup.Container.GetService<IChurchRepository>();
             var unitOfWork = Setup.Container.GetService<IUnitOfWork>();
@@ -95,15 +107,13 @@ namespace Scorponok.IB.Unit.Integration.Tests
             BuilderSetup.SetCreatePersistenceMethod<Church>(churchRepository.Add);
             var church = Builder<Church>
                 .CreateNew()
-                .With(x => x.TelephoneFixed, Telephone.Factory.CreateNew(21, "55555555"))
-                .With(x => x.MobileTelephone, Telephone.Factory.CreateNew(21, "987413333"))
+                    .With(x => x.TelephoneFixed, Telephone.Factory.CreateNew(21, "55555555"))
+                    .With(x => x.MobileTelephone, Telephone.Factory.CreateNew(21, "987413333"))
                 .Persist();
 
             unitOfWork.Commit();
 
             return church.Id;
         }
-
-
     }
 }

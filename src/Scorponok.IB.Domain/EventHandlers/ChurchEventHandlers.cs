@@ -5,6 +5,7 @@ namespace Scorponok.IB.Domain.EventHandlers
 {
 	public class ChurchEventHandlers : IHandler<ChurchRegisteredEvent>
 	    , IHandler<ChurchUpdatedEvent>
+	    , IHandler<ChurchDeletedEvent>
     {
 		public void Handle(ChurchRegisteredEvent message)
 		{
@@ -12,6 +13,11 @@ namespace Scorponok.IB.Domain.EventHandlers
 		}
 
         public void Handle(ChurchUpdatedEvent message)
+        {
+            
+        }
+
+        public void Handle(ChurchDeletedEvent message)
         {
             
         }

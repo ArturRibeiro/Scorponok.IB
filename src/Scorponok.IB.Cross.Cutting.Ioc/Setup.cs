@@ -35,17 +35,19 @@ namespace Scorponok.IB.Cross.Cutting.Ioc
 
             RegisterAutoMapper(services);
 
-            // Domain - Events
+            #region Register domain events
             services.AddScoped<IDomainNotificationHandler<DomainNotification>, DomainNotificationHandler>();
             services.AddScoped<IHandler<ChurchRegisteredEvent>, ChurchEventHandlers>();
             services.AddScoped<IHandler<ChurchUpdatedEvent>, ChurchEventHandlers>();
+            services.AddScoped<IHandler<ChurchDeletedEvent>, ChurchEventHandlers>(); 
+            #endregion
             
-
-            //Commands
+            #region Register domain Command's
             services.AddScoped<IHandler<RegisterChurchCommand>, ChurchCommandHandlers>();
             services.AddScoped<IHandler<UpdateChurchCommand>, ChurchCommandHandlers>();
-
-
+            services.AddScoped<IHandler<DeleteChurchCommand>, ChurchCommandHandlers>(); 
+            #endregion
+            
             //Repositorys
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IChurchRepository, ChurchRepository>();

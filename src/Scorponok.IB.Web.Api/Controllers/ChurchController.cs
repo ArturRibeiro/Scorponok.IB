@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Scorponok.IB.Core.Bus;
@@ -10,6 +9,9 @@ using Scorponok.IB.Web.Api.Utils;
 
 namespace Scorponok.IB.Web.Api.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [Produces("application/json"), Route("api/Church")]
     public class ChurchController : ApiController
     {
@@ -29,6 +31,11 @@ namespace Scorponok.IB.Web.Api.Controllers
             _bus = bus;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="view"></param>
+        /// <returns></returns>
         [HttpPost, Route("register"), ValidateMessageRequest]
         public IActionResult Register([FromBody]ChurchRegisteringMessageRequest view)
         {
@@ -45,7 +52,12 @@ namespace Scorponok.IB.Web.Api.Controllers
 
             return Response(view);
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="view"></param>
+        /// <returns></returns>
         [HttpPut, Route("update"), ValidateMessageRequest]
         public IActionResult UpdateChurch([FromBody] ChurchUpdatedMessageRequest view)
         {
@@ -54,12 +66,17 @@ namespace Scorponok.IB.Web.Api.Controllers
             return Response(view);
         }
 
-        [HttpDelete("{id}"), Route("delete")]
-        public IActionResult DeletedChurch(ChurchDeletedMessageRequest view)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="churchId"></param>
+        /// <returns></returns>
+        [HttpDelete, Route("delete/{churchId:Guid}")]
+        public IActionResult DeletedChurch(Guid churchId)
         {
-            var command = _mapper.Map<DeleteChurchCommand>(view);
-            _bus.SendCommand(command);
-            return Response(view);
+            var deleteChurchCommand = new DeleteChurchCommand(churchId);
+            _bus.SendCommand(deleteChurchCommand);
+            return Response($"Church: {churchId} deleted.");
         }
 
     }
