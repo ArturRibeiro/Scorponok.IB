@@ -24,8 +24,8 @@ namespace Scorponok.IB.Unit.Integration.Tests
 		    Func<string> GetPathWebApi = () =>
 		    {
 		        var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-		        var start = baseDirectory.LastIndexOf(@"Scorponok.IB.Cqrs", StringComparison.Ordinal);
-		        var path = $"{AppDomain.CurrentDomain.BaseDirectory.Remove(start)}Scorponok.IB.Cqrs\\src\\Scorponok.IB.Web.Api";
+		        var start = baseDirectory.LastIndexOf(@"Scorponok.IB.Unit.Integration.Tests", StringComparison.Ordinal);
+		        var path = $"{AppDomain.CurrentDomain.BaseDirectory.Remove(start)}Scorponok.IB.Web.Api";
 
 		        if (!Directory.Exists(path)) throw new DirectoryNotFoundException($"{path}");
 

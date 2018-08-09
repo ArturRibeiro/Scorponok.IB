@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using FizzWare.NBuilder;
@@ -70,7 +71,7 @@ namespace Scorponok.IB.Unit.Integration.Tests
             Action assert = () =>
             {
                 //var unitOfWork = Setup.Container.GetService<IUnitOfWork>();
-                //var churchUpdate = unitOfWork.Repository<Church>().GetById(churchId);
+                //var churchUpdate = unitOfWork.DbSet<Church>().FirstOrDefault(x => x.Id == churchId);
 
                 //churchUpdate.Id.Should().Be(churchId);
                 //churchUpdate.Name.Should().Be(requestMessage.Name);
