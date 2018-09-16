@@ -5,30 +5,24 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netcoreapp2.0\Scorponok.IB.Web.Api.xml</DocumentationFile>
+    <DocumentationFile>S:\scorponok\Projetos\Scorponok\Scorponok.IB.Cqrs\src\Scorponok.IB.Web.Api\Scorponok.IB.Web.Api.xml</DocumentationFile>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="Controllers\ValuesController.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Scorponok.IB.Cross.Cutting.Ioc\Scorponok.IB.Cross.Cutting.Ioc.csproj" />
+    <ProjectReference Include="..\Scorponok.IB.Core\Scorponok.IB.Core.csproj" />
+    <ProjectReference Include="..\Scorponok.IB.Cqrs.Data\Scorponok.IB.Cqrs.Data.csproj" />
+    <ProjectReference Include="..\Scorponok.IB.Cross.Cutting.Bus\Scorponok.IB.Cross.Cutting.Bus.csproj" />
+    <ProjectReference Include="..\Scorponok.IB.Domain\Scorponok.IB.Domain.csproj" />
   </ItemGroup>
 
 </Project>

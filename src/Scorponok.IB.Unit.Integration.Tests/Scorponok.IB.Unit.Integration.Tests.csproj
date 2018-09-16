@@ -31,7 +31,6 @@
     <ProjectReference Include="..\Scorponok.IB.Cross.Cutting.Bus\Scorponok.IB.Cross.Cutting.Bus.csproj" />
     <ProjectReference Include="..\Scorponok.IB.Cross.Cutting.Identity\Scorponok.IB.Cross.Cutting.Identity.csproj" />
     <ProjectReference Include="..\Scorponok.IB.Domain\Scorponok.IB.Domain.csproj" />
-    <ProjectReference Include="..\Scorponok.IB.Web.Api\Scorponok.IB.Web.Api.csproj" />
   </ItemGroup>
 
   <ItemGroup>

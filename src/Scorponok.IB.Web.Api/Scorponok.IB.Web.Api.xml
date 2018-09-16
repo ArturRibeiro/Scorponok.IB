@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Scorponok.IB.Web.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Scorponok.IB.Web.Api.Controllers.ChurchController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Scorponok.IB.Web.Api.Controllers.ChurchController.#ctor(AutoMapper.IMapper,Scorponok.IB.Core.Bus.IBus,Scorponok.IB.Core.Notifications.IDomainNotificationHandler{Scorponok.IB.Core.Notifications.DomainNotification})">
+            <summary>
+            
+            </summary>
+            <param name="mapper">AutoMapper</param>
+            <param name="bus">Service bus</param>
+            <param name="notifications">Domain Notification</param>
+        </member>
+        <member name="M:Scorponok.IB.Web.Api.Controllers.ChurchController.Register(Scorponok.IB.Web.Api.Churchs.Views.ChurchRegisteringMessageRequest)">
+            <summary>
+            
+            </summary>
+            <param name="view"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Scorponok.IB.Web.Api.Controllers.ChurchController.UpdateChurch(Scorponok.IB.Web.Api.Churchs.Views.ChurchUpdatedMessageRequest)">
+            <summary>
+            
+            </summary>
+            <param name="view"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Scorponok.IB.Web.Api.Controllers.ChurchController.DeletedChurch(System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="churchId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Scorponok.IB.Web.Api.Utils.ValidateMessageRequestAttribute">
+            <inheritdoc />
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Scorponok.IB.Web.Api.Utils.ValidateMessageRequestError">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Scorponok.IB.Web.Api.Utils.ValidateMessageRequestFailedResult">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Scorponok.IB.Web.Api.Utils.ValidateMessageRequestResult">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

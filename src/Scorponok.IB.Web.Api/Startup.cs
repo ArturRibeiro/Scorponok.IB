@@ -1,49 +1,51 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Scorponok.IB.Cqrs.Data.Context;
-using Scorponok.IB.Cross.Cutting.Ioc;
-
-//using Swashbuckle.Swagger;
-
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Scorponok.IB.Web.Api
 {
     public class Startup
     {
-        public IConfigurationRoot Configuration { get; }
-
-        public Startup(IHostingEnvironment configuration)
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{configuration.EnvironmentName}.json", optional: true);
-
-            //if (configuration.IsDevelopment()) builder.AddUserSecrets<Startup>();
-            
-            builder.AddEnvironmentVariables();
-
-            Configuration = builder.Build();
+            Configuration = configuration;
         }
+
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            //Registering interfaces
-            Setup.RegisterServices(services);
+            services.AddSwaggerGen(s =>
+            {
+                s.SwaggerDoc("v1", new Info
+                {
+                    Version = "v1",
+                    Title = " Project - Cadastro Geral de Membros de Congreção",
+                    Description = "Cadastro Geral de Membros de Congreção API Swagger surface",
+                    Contact = new Contact { Name = "Artur Rineiro", Email = "arturrj@gmail.com", Url = "https://github.com/ArturRibeiro/Scorponok.IB.Cqrs" },
+                    License = new License { Name = "MIT", Url = "https://github.com/ArturRibeiro/Scorponok.IB.Cqrs" }
+                });
+            });
 
-            services.AddMvc();
-
-            StartupSwagger.ConfigureServices(services);
-
+            
 
         }
 
@@ -51,20 +53,22 @@ namespace Scorponok.IB.Web.Api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
-            
+            }
+            else
+            {
+                app.UseHsts();
+            }
 
-            //app.UseCors(c =>
-            //{
-            //    c.AllowAnyHeader();
-            //    c.AllowAnyMethod();
-            //    c.AllowAnyOrigin();
-            //});
-
+            app.UseHttpsRedirection();
             app.UseMvc();
 
-            StartupSwagger.Configure(app, env);
-            
+            app.UseSwagger();
+            app.UseSwaggerUI(s =>
+            {
+                s.SwaggerEndpoint("/swagger/v1/swagger.json", "Cadastro Geral de Membros de Congreção API v1.1");
+            });
         }
     }
 }
