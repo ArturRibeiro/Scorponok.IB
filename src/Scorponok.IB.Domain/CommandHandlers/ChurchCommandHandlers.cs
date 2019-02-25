@@ -7,7 +7,7 @@ using Scorponok.IB.Core.ValueObjects;
 using Scorponok.IB.Domain.Models.Churchs;
 using Scorponok.IB.Domain.Models.Churchs.Commands;
 using Scorponok.IB.Domain.Models.Churchs.Events;
-using Scorponok.IB.Domain.Models.Churchs.IRespository;
+using Scorponok.IB.Domain.Models.Churchs.IRepository;
 
 namespace Scorponok.IB.Domain.CommandHandlers
 {

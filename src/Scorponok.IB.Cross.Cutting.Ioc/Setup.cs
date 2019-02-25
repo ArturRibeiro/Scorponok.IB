@@ -17,7 +17,7 @@ using Scorponok.IB.Domain.CommandHandlers;
 using Scorponok.IB.Domain.EventHandlers;
 using Scorponok.IB.Domain.Models.Churchs.Commands;
 using Scorponok.IB.Domain.Models.Churchs.Events;
-using Scorponok.IB.Domain.Models.Churchs.IRespository;
+using Scorponok.IB.Domain.Models.Churchs.IRepository;
 using Scorponok.IB.Domain.Models.Users.Interfaces;
 
 namespace Scorponok.IB.Cross.Cutting.Ioc

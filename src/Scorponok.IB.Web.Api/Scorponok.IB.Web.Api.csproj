@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>S:\scorponok\Projetos\Scorponok\Scorponok.IB.Cqrs\src\Scorponok.IB.Web.Api\Scorponok.IB.Web.Api.xml</DocumentationFile>
+    <DocumentationFile>\Scorponok.IB.Cqrs\src\Scorponok.IB.Web.Api\Scorponok.IB.Web.Api.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
   </ItemGroup>

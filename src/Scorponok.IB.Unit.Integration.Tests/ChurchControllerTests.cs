@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using FizzWare.NBuilder;
 using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using Scorponok.IB.Core.Interfaces;
 using Scorponok.IB.Core.ValueObjects;
 using Scorponok.IB.Cross.Cutting.Ioc;
 using Scorponok.IB.Domain.Models.Churchs;
-using Scorponok.IB.Domain.Models.Churchs.IRespository;
+using Scorponok.IB.Domain.Models.Churchs.IRepository;
 using Scorponok.IB.Web.Api.Churchs.Views;
 
 namespace Scorponok.IB.Unit.Integration.Tests
@@ -102,8 +100,8 @@ namespace Scorponok.IB.Unit.Integration.Tests
 
         private static Guid CreateChurch()
         {
-            var churchRepository = Setup.Container.GetService<IChurchRepository>();
-            var unitOfWork = Setup.Container.GetService<IUnitOfWork>();
+            var churchRepository = Setup.Container.GetInstance<IChurchRepository>();
+            var unitOfWork = Setup.Container.GetInstance<IUnitOfWork>();
 
             BuilderSetup.SetCreatePersistenceMethod<Church>(churchRepository.Add);
             var church = Builder<Church>

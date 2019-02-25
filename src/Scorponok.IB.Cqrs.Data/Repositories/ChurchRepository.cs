@@ -1,6 +1,6 @@
 ﻿using Scorponok.IB.Cqrs.Data.Context;
 using Scorponok.IB.Domain.Models.Churchs;
-using Scorponok.IB.Domain.Models.Churchs.IRespository;
+using Scorponok.IB.Domain.Models.Churchs.IRepository;
 
 namespace Scorponok.IB.Cqrs.Data.Repositories
 {
