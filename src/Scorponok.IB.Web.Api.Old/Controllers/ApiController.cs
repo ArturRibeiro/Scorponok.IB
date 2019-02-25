@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Scorponok.IB.Core.Notifications;
 
@@ -55,12 +56,12 @@ namespace Scorponok.IB.Web.Api.Controllers
             _notifications.Handle(new DomainNotification(code, message));
         }
 
-        //protected void AddIdentityErrors(IdentityResult result)
-        //{
-        //    foreach (var error in result.Errors)
-        //    {
-        //        NotifyError(result.ToString(), error.Description);
-        //    }
-        //}
+        protected void AddIdentityErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                NotifyError(result.ToString(), error.Description);
+            }
+        }
     }
 }

@@ -24,15 +24,19 @@ namespace Scorponok.IB.Cross.Cutting.Ioc
 {
     public static class Setup
     {
-        public static IServiceProvider Container { get; private set; }
+        internal static IServiceProvider _container;
+
+        public static T GetInstance<T>()
+        {
+            var instance = (T)_container.GetService(typeof(T));
+            return instance;
+        }
 
         public static void RegisterServices(IServiceCollection services)
         {
             // ASP.NET HttpContext dependency
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-            services.AddAutoMapper();
-
+            
             RegisterAutoMapper(services);
 
             #region Register domain events
@@ -64,15 +68,15 @@ namespace Scorponok.IB.Cross.Cutting.Ioc
             // Infra - Identity
             services.AddScoped<IUser, AspNetUser>();
 
-            Container = services.BuildServiceProvider();
+            _container = services.BuildServiceProvider();
 
         }
 
         private static void RegisterAutoMapper(IServiceCollection services)
         {
-            var config = Mapper.Configuration;
-            services.AddSingleton(config);
-            services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
+            //var config = Mapper.Configuration;
+            //services.AddSingleton(config);
+            //services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
         }
 
         private static void RegistraRepositorys()

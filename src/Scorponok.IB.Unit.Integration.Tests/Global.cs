@@ -13,49 +13,39 @@ using Scorponok.IB.Web.Api;
 namespace Scorponok.IB.Unit.Integration.Tests
 {
 
-	[SetUpFixture, Category("Global")]
-	public class Global 
+    [SetUpFixture, Category("Global")]
+    public class Global
     {
-		[OneTimeSetUp]
-		public void SetUp()
-		{
-			Console.Write("SetUp");
+        [OneTimeSetUp]
+        public void SetUp()
+        {
+            Console.Write("SetUp");
 
-		    Func<string> GetPathWebApi = () =>
-		    {
-		        var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-		        var start = baseDirectory.LastIndexOf(@"Scorponok.IB.Unit.Integration.Tests", StringComparison.Ordinal);
-		        var path = $"{AppDomain.CurrentDomain.BaseDirectory.Remove(start)}Scorponok.IB.Web.Api";
+            var pathServices = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "Scorponok.IB.Web.Api"));
+            if (!Directory.Exists(pathServices)) throw new DirectoryNotFoundException($"{pathServices}");
 
-		        if (!Directory.Exists(path)) throw new DirectoryNotFoundException($"{path}");
+            //Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Development");
+            //Environment.SetEnvironmentVariable("REGISTRY_CONFIG_FILE", Path.Combine(pathServices, "appsettings.json"));
+            //Environment.SetEnvironmentVariable("REGISTRY_DB_PASSWORD_SECRET_FILE", Path.Combine(appRootPath, "InsecureSecretFiles", "RegistryDbPassword.txt"));
+            //Environment.SetEnvironmentVariable("REGISTRY_USE_DOCKER_SECRETS", "false");
 
-		        return path;
-            };
+            var webHosting = new WebHostBuilder()
+                .UseEnvironment("Development")
+                .UseContentRoot(pathServices)
+                .UseConfiguration(new ConfigurationBuilder()
+                    .SetBasePath(pathServices)
+                    .AddJsonFile("appsettings.json")
+                    .Build())
+                .UseStartup<Startup>();
 
-
-		    Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Development");
-		    Environment.SetEnvironmentVariable("REGISTRY_CONFIG_FILE", Path.Combine(GetPathWebApi(), "appsettings.json"));
-		    //Environment.SetEnvironmentVariable("REGISTRY_DB_PASSWORD_SECRET_FILE", Path.Combine(appRootPath, "InsecureSecretFiles", "RegistryDbPassword.txt"));
-		    Environment.SetEnvironmentVariable("REGISTRY_USE_DOCKER_SECRETS", "false");
-
-		    var webHosting = new WebHostBuilder()
-		        .UseEnvironment("Development")
-		        .UseContentRoot(GetPathWebApi())
-		        .UseConfiguration(new ConfigurationBuilder()
-		            .SetBasePath(GetPathWebApi())
-		            .AddJsonFile("appsettings.json")
-		            .Build())
-		        .UseStartup<Startup>();
-
-		    BaseIntegrationTest.Server = new TestServer(webHosting);
+            BaseIntegrationTest.Server = new TestServer(webHosting);
         }
 
-		[OneTimeTearDown]
-		public void End()
-		{
-			Console.Write("TearDown");
-		}
-	}
+        [OneTimeTearDown]
+        public void End()
+        {
+            Console.Write("TearDown");
+        }
+    }
 }
 
-	

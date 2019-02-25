@@ -58,13 +58,12 @@ namespace Scorponok.IB.Unit.Integration.Tests
             };
 
             //Act
-            var response = BaseIntegrationTest.PutAsync(requestMessage, "Church/update");
-            response.Wait();
+            var response = await BaseIntegrationTest.PutAsync(requestMessage, "Church/update");
 
             //Assert's
-            response.Result.Should().NotBeNull();
-            response.Result.IsSuccessStatusCode.Should().BeTrue();
-            response.Result.StatusCode.Should().Be(HttpStatusCode.OK);
+            response.Should().NotBeNull();
+            response.IsSuccessStatusCode.Should().BeTrue();
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
 
             Action assert = () =>
             {
@@ -89,19 +88,18 @@ namespace Scorponok.IB.Unit.Integration.Tests
             var churchId = CreateChurch();
 
             //Act
-            var response = BaseIntegrationTest.DeleteAsync(churchId, $"Church/delete/{churchId}");
-            response.Wait();
+            var response = await BaseIntegrationTest.DeleteAsync(churchId, $"Church/delete/{churchId}");
 
             //Assert's
-            response.Result.Should().NotBeNull();
-            response.Result.IsSuccessStatusCode.Should().BeTrue();
-            response.Result.StatusCode.Should().Be(HttpStatusCode.OK);
+            response.Should().NotBeNull();
+            response.IsSuccessStatusCode.Should().BeTrue();
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
 
         private static Guid CreateChurch()
         {
-            var churchRepository = Setup.Container.GetInstance<IChurchRepository>();
-            var unitOfWork = Setup.Container.GetInstance<IUnitOfWork>();
+            var churchRepository = Setup.GetInstance<IChurchRepository>();
+            var unitOfWork = Setup.GetInstance<IUnitOfWork>();
 
             BuilderSetup.SetCreatePersistenceMethod<Church>(churchRepository.Add);
             var church = Builder<Church>
