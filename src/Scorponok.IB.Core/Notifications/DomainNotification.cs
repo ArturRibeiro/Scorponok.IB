@@ -13,13 +13,18 @@ namespace Scorponok.IB.Core.Notifications
 
         public int Version { get; private set; }
 
-        public DomainNotification(string key, string value, int version = 1)
+        public static class Factory
         {
-            this.DomainNotificationId = Guid.NewGuid();
-            this.Version = version;
-            this.Key = key;
-            this.Value = value;
+            public static DomainNotification Create(string key, string value, int version = 1)
+                => new DomainNotification()
+                {
+                    DomainNotificationId = Guid.NewGuid(),
+                    Version = version,
+                    Key = key,
+                    Value = value
+                };
         }
-
     }
+
 }
+

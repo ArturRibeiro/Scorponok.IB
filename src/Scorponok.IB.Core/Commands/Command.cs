@@ -9,15 +9,11 @@ namespace Scorponok.IB.Core.Commands
 		public DateTime Timestamp
 		{
 			get;
-			private set;
 		}
 
 		public ValidationResult ValidationResult { get; set; }
 
-		public Command()
-		{
-			this.Timestamp = new DateTime();
-		}
+	    protected Command() => this.Timestamp = new DateTime();
 
 		public abstract bool IsValid();
 	}

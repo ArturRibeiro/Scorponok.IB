@@ -1,5 +1,4 @@
 ﻿using System;
-using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,7 +22,7 @@ using Scorponok.IB.Domain.Models.Users.Interfaces;
 
 namespace Scorponok.IB.Cross.Cutting.Ioc
 {
-    public static class Setup
+    public static class NativeInjectionDependency
     {
         internal static IServiceProvider _container;
 
@@ -39,6 +38,7 @@ namespace Scorponok.IB.Cross.Cutting.Ioc
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             
             RegisterAutoMapper(services);
+            RegistraRepositorys(services);
 
             #region Register domain events
             services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
@@ -53,10 +53,6 @@ namespace Scorponok.IB.Cross.Cutting.Ioc
             services.AddScoped<IRequestHandler<DeleteChurchCommand>, ChurchCommandHandlers>(); 
             #endregion
             
-            //Repositorys
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IChurchRepository, ChurchRepository>();
-
             // Infra - Data EventSourcing
             services.AddScoped<IEventStoreRepository, EventStoreRepository>();
             services.AddScoped<IEventStore, EventStore>();
@@ -80,9 +76,11 @@ namespace Scorponok.IB.Cross.Cutting.Ioc
             //services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
         }
 
-        private static void RegistraRepositorys()
+        private static void RegistraRepositorys(IServiceCollection services)
         {
-
+            //Repositorys
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IChurchRepository, ChurchRepository>();
         }
     }
 }

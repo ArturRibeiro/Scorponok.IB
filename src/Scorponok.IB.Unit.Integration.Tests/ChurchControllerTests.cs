@@ -98,8 +98,8 @@ namespace Scorponok.IB.Unit.Integration.Tests
 
         private static Guid CreateChurch()
         {
-            var churchRepository = Setup.GetInstance<IChurchRepository>();
-            var unitOfWork = Setup.GetInstance<IUnitOfWork>();
+            var churchRepository = NativeInjectionDependency.GetInstance<IChurchRepository>();
+            var unitOfWork = NativeInjectionDependency.GetInstance<IUnitOfWork>();
 
             BuilderSetup.SetCreatePersistenceMethod<Church>(churchRepository.Add);
             var church = Builder<Church>

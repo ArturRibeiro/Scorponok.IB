@@ -6,10 +6,7 @@
 
         public static CommandResult Fail = new CommandResult(false);
 
-        public CommandResult(bool success = false)
-        {
-            this.Success = success;
-        }
+        public CommandResult(bool success = false) => this.Success = success;
 
         public bool Success
         {

@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using MediatR;
 using Scorponok.IB.Core.Bus;
 using Scorponok.IB.Core.Commands;
-using Scorponok.IB.Core.Events;
 using Scorponok.IB.Core.Interfaces;
 using Scorponok.IB.Core.Notifications;
 using Scorponok.IB.Core.ValueObjects;
@@ -18,7 +17,6 @@ namespace Scorponok.IB.Domain.CommandHandlers
         , IRequestHandler<RegisterChurchCommand>
         , IRequestHandler<UpdateChurchCommand>
         , IRequestHandler<DeleteChurchCommand>
-
     {
         private readonly IChurchRepository _churchRepository;
 

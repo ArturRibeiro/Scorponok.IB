@@ -53,7 +53,7 @@ namespace Scorponok.IB.Web.Api.Controllers
         }
 
         protected async Task NotifyError(string code, string message)
-            => await _notifications.Handle(new DomainNotification(code, message), default(CancellationToken));
+            => await _notifications.Handle(DomainNotification.Factory.Create(code, message), default(CancellationToken));
 
         //protected void AddIdentityErrors(IdentityResult result)
         //{

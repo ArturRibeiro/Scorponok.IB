@@ -7,8 +7,8 @@ namespace Scorponok.IB.Core.Commands
 {
     public abstract class CommandHandler
 	{
-		protected readonly IUnitOfWork _uow;
-		protected readonly IBus _bus;
+	    private readonly IUnitOfWork _uow;
+	    protected readonly IBus _bus;
 	    private readonly DomainNotificationHandler _notifications;
 
         protected CommandHandler(IUnitOfWork uow, IBus bus, INotificationHandler<DomainNotification> notification)
@@ -21,7 +21,7 @@ namespace Scorponok.IB.Core.Commands
 		protected void NotifyErrors(Command command)
 		{
 			foreach (var error in command.ValidationResult.Errors)
-				_bus.RaiseEvent(new DomainNotification(error.PropertyName, error.ErrorMessage));
+				_bus.RaiseEvent(DomainNotification.Factory.Create(error.PropertyName, error.ErrorMessage));
 		}
 
 		public bool Commit()
@@ -30,7 +30,7 @@ namespace Scorponok.IB.Core.Commands
 
 			var commandResult = _uow.Commit();
 
-			if (!commandResult.Success) _bus.RaiseEvent(new DomainNotification("Commit", "Ocorreu um erro ao  salvar os dados no banco."));
+			if (!commandResult.Success) _bus.RaiseEvent(DomainNotification.Factory.Create("Commit", "Ocorreu um erro ao  salvar os dados no banco."));
 
 			return commandResult.Success;
 		}

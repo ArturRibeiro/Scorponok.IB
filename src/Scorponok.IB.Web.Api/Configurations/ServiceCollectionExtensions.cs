@@ -10,7 +10,7 @@ namespace Scorponok.IB.Web.Api.Configurations
     {
         public static IServiceCollection RegisterServices(this IServiceCollection services)
         {
-            Setup.RegisterServices(services);
+            NativeInjectionDependency.RegisterServices(services);
             return services;
         }
 
