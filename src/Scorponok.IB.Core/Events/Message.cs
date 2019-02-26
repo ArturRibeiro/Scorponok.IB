@@ -1,8 +1,9 @@
 ﻿using System;
+using MediatR;
 
 namespace Scorponok.IB.Core.Events
 {
-    public abstract class Message
+    public abstract class Message : IRequest
     {
         public string MessageType
         {

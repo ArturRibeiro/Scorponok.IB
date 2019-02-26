@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Scorponok.IB.Core.Bus;
@@ -37,10 +38,10 @@ namespace Scorponok.IB.Web.Api.Controllers
         /// <param name="view"></param>
         /// <returns></returns>
         [HttpPost, Route("register"), ValidateMessageRequest]
-        public IActionResult Register([FromBody]ChurchRegisteringMessageRequest view)
+        public async Task<IActionResult> Register([FromBody]ChurchRegisteringMessageRequest view)
         {
             var command = _mapper.Map<RegisterChurchCommand>(view);
-            _bus.SendCommand(command);
+            await _bus.SendCommand(command);
 
             //if (!ModelState.IsValid)
             //{
@@ -59,10 +60,10 @@ namespace Scorponok.IB.Web.Api.Controllers
         /// <param name="view"></param>
         /// <returns></returns>
         [HttpPut, Route("update"), ValidateMessageRequest]
-        public IActionResult UpdateChurch([FromBody] ChurchUpdatedMessageRequest view)
+        public async Task<IActionResult> UpdateChurch([FromBody] ChurchUpdatedMessageRequest view)
         {
             var command = _mapper.Map<UpdateChurchCommand>(view);
-            _bus.SendCommand(command);
+            await _bus.SendCommand(command);
             return Response(view);
         }
 
@@ -72,10 +73,10 @@ namespace Scorponok.IB.Web.Api.Controllers
         /// <param name="churchId"></param>
         /// <returns></returns>
         [HttpDelete, Route("delete/{churchId:Guid}")]
-        public IActionResult DeletedChurch(Guid churchId)
+        public async Task<IActionResult> DeletedChurch(Guid churchId)
         {
             var deleteChurchCommand = new DeleteChurchCommand(churchId);
-            _bus.SendCommand(deleteChurchCommand);
+            await _bus.SendCommand(deleteChurchCommand);
             return Response($"Church: {churchId} deleted.");
         }
 

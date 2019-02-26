@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using FizzWare.NBuilder;
 using FluentAssertions;
 using Moq;
@@ -19,7 +21,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 	public class ChurchCommandHandlersTests
 	{
 		[Test]
-		public void Registering_church_successfully()
+		public async Task Registering_church_successfully()
 		{
 			//Arrange's
 			var uow = new Mock<IUnitOfWork>();
@@ -46,7 +48,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 			var commandHandler = new ChurchCommandHandlers(
 				uow.Object, bus.Object
 				, notification.Object, mockChurchRepository.Object);
-			commandHandler.Handle(argument);
+			await commandHandler.Handle(argument, CancellationToken.None);
 
 			//Assert's
 			commandHandler.Commit().Should().BeTrue();
@@ -66,7 +68,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 		}
 
 		[Test]
-		public void Registering_church_with_argument_invalid()
+		public async Task Registering_church_with_argument_invalid()
 		{
 			//Arrange's
 			var uow = new Mock<IUnitOfWork>();
@@ -93,7 +95,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 			var commandHandler = new ChurchCommandHandlers(
 				uow.Object, bus.Object
 				, domainNotification.Object, mockChurchRepository.Object);
-			commandHandler.Handle(arguments);
+			await commandHandler.Handle(arguments, CancellationToken.None);
 
 			//Assert's
 			domainNotification.Should().NotBeNull();
@@ -104,7 +106,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 		}
 
 		[Test]
-		public void Updating_church_successfully()
+		public async Task Updating_church_successfully()
 		{
 			//Arrange's
 			var uow = new Mock<IUnitOfWork>();
@@ -133,7 +135,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 			//Act's
 			var commandHandler = new ChurchCommandHandlers(uow.Object, bus.Object
 				, notification.Object, mockChurchRepository.Object);
-			commandHandler.Handle(argument);
+			await commandHandler.Handle(argument, CancellationToken.None);
 
 			//Assert's
 			commandHandler.Commit().Should().BeTrue();
@@ -154,7 +156,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 		}
 
 		[Test]
-		public void Updating_church_with_argument_invalid()
+		public async Task Updating_church_with_argument_invalid()
 		{
 			//Arrange's
 			var uow = new Mock<IUnitOfWork>();
@@ -180,7 +182,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 			var commandHandler = new ChurchCommandHandlers(
 				uow.Object, bus.Object
 				, domainNotification.Object, mockChurchRepository.Object);
-			commandHandler.Handle(arguments);
+			await commandHandler.Handle(arguments, CancellationToken.None);
 
 			//Assert's
 			domainNotification.Should().NotBeNull();
@@ -191,7 +193,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 		}
 
 		[Test]
-		public void Deleting_church_successfully()
+		public async Task Deleting_church_successfully()
 		{
 			//Arrange's
 			var uow = new Mock<IUnitOfWork>();
@@ -212,7 +214,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 			//Act's
 			var commandHandler = new ChurchCommandHandlers(uow.Object, bus.Object
 				, domainNotification.Object, mockChurchRepository.Object);
-			commandHandler.Handle(argument);
+			await commandHandler.Handle(argument, CancellationToken.None);
 
 			//Assert's
 			commandHandler.Commit().Should().BeTrue();
@@ -230,7 +232,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 		}
 
 		[Test]
-		public void Deleting_church_with_id_incorrect()
+		public async Task Deleting_church_with_id_incorrect()
 		{
 			//Arrange's
 			var uow = new Mock<IUnitOfWork>();
@@ -250,7 +252,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 			var commandHandler = new ChurchCommandHandlers(
 				uow.Object, bus.Object
 				, domainNotification.Object, mockChurchRepository.Object);
-			commandHandler.Handle(arguments);
+			await commandHandler.Handle(arguments, CancellationToken.None);
 
 			//Assert's
 			domainNotification.Should().NotBeNull();

@@ -1,5 +1,6 @@
 ﻿using System;
 using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Scorponok.IB.Core.Bus;
@@ -47,9 +48,9 @@ namespace Scorponok.IB.Cross.Cutting.Ioc
             #endregion
             
             #region Register domain Command's
-            services.AddScoped<IHandler<RegisterChurchCommand>, ChurchCommandHandlers>();
-            services.AddScoped<IHandler<UpdateChurchCommand>, ChurchCommandHandlers>();
-            services.AddScoped<IHandler<DeleteChurchCommand>, ChurchCommandHandlers>(); 
+            services.AddScoped<IRequestHandler<RegisterChurchCommand>, ChurchCommandHandlers>();
+            services.AddScoped<IRequestHandler<UpdateChurchCommand>, ChurchCommandHandlers>();
+            services.AddScoped<IRequestHandler<DeleteChurchCommand>, ChurchCommandHandlers>(); 
             #endregion
             
             //Repositorys
