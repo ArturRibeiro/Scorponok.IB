@@ -37,7 +37,7 @@ namespace Scorponok.IB.Domain.CommandHandlers
 
             var church = CreateNewChurch(message);
             if (church.IsValid()) _churchRepository.Add(church);
-            if (Commit()) _bus.RaiseEvent(new ChurchRegisteredEvent(church.Id, church.Name, church.Photo, church.Email.Value, church.MobileTelephone.Prefix, church.MobileTelephone.Number));
+            if (Commit()) await _bus.RaiseEvent(ChurchRegisteredEvent.Factory.Create(church.Id, church.Name, church.Photo, church.Email.Value, church.MobileTelephone.Prefix, church.MobileTelephone.Number));
 
             return Unit.Value;
         }
@@ -52,7 +52,7 @@ namespace Scorponok.IB.Domain.CommandHandlers
 
             var church = UpdateChurch(message);
             if (church.IsValid()) _churchRepository.Update(church);
-            if (Commit()) _bus.RaiseEvent(new ChurchUpdatedEvent(church.Id, church.Name, church.Photo, church.Email.Value, church.MobileTelephone.Prefix, church.MobileTelephone.Number));
+            if (Commit()) await _bus.RaiseEvent(ChurchUpdatedEvent.Factory.Create(church.Id, church.Name, church.Photo, church.Email.Value, church.MobileTelephone.Prefix, church.MobileTelephone.Number));
 
             return Unit.Value;
         }
@@ -66,7 +66,7 @@ namespace Scorponok.IB.Domain.CommandHandlers
             }
 
             _churchRepository.Remove(message.Id);
-            if (Commit()) _bus.RaiseEvent(new ChurchDeletedEvent(message.Id));
+            if (Commit()) await _bus.RaiseEvent(ChurchDeletedEvent.Factory.Create(message.Id));
 
             return Unit.Value;
         }

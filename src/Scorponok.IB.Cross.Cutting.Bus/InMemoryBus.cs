@@ -23,12 +23,12 @@ namespace Scorponok.IB.Cross.Cutting.Bus
             if (!theEvent.MessageType.Equals("DomainNotification"))
                 _eventStore?.Save(theEvent);
 
-            Publish(theEvent, default(CancellationToken));
+            Publish(theEvent);
         }
 
-        public async Task SendCommand<T>(T theCommand) where T : Command => Publish(theCommand, default(CancellationToken));
+        public async Task SendCommand<T>(T theCommand) where T : Command => Publish(theCommand);
 
-        private static void Publish<T>(T message, CancellationToken cancellationToken) where T : Message
+        private static void Publish<T>(T message) where T : Message
         {
             if (Container == null) return;
 
@@ -38,7 +38,7 @@ namespace Scorponok.IB.Cross.Cutting.Bus
 
             var handler = (IRequestHandler<T>)obj;
 
-            handler.Handle(message, cancellationToken);
+            handler.Handle(message, default(CancellationToken));
         }
 
     }

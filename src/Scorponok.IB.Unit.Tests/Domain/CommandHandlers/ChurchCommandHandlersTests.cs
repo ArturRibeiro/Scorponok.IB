@@ -17,251 +17,216 @@ using Scorponok.IB.Domain.Models.Churchs.IRepository;
 
 namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
 {
-	[TestFixture, Category("Domain/CommandHandlers/Church")]
-	public class ChurchCommandHandlersTests
-	{
-		[Test]
-		public async Task Registering_church_successfully()
-		{
-			//Arrange's
-			var uow = new Mock<IUnitOfWork>();
-			var bus = new Mock<IBus>();
-			var notification = new Mock<IDomainNotificationHandler<DomainNotification>>();
-			var mockChurchRepository = new Mock<IChurchRepository>();
+    [TestFixture, Category("Domain/CommandHandlers/Church")]
+    public class ChurchCommandHandlersTests
+    {
+        [Test]
+        public async Task Registering_church_successfully()
+        {
+            //Arrange's
+            var uow = new Mock<IUnitOfWork>();
+            var bus = new Mock<IBus>();
+            var notification = new Mock<IDomainNotificationHandler<DomainNotification>>();
+            var mockChurchRepository = new Mock<IChurchRepository>();
 
-			var argument = new RegisterChurchCommand("Richmond’s First Baptist Church",
-				email: "Scorponok@scorponok.com",
-				photo: "1.jpg",
-				region: 55,
-				prefix: 21,
-				number: "123456789");
+            var argument = new RegisterChurchCommand("Richmond’s First Baptist Church",
+                email: "Scorponok@scorponok.com",
+                photo: "1.jpg",
+                region: 55,
+                prefix: 21,
+                number: "123456789");
 
-			ChurchRegisteredEvent churchRegisteredEvent = null;
-			Church church = null;
+            //Setup
+            uow.Setup(x => x.Commit()).Returns(new CommandResult(success: true));
 
-			//Setup
-			uow.Setup(x => x.Commit()).Returns(new CommandResult(success: true));
-			bus.Setup(x => x.RaiseEvent(It.IsAny<ChurchRegisteredEvent>()))
-				.Callback<ChurchRegisteredEvent>(x => { churchRegisteredEvent = x; });
+            //Act's
+            var commandHandler = new ChurchCommandHandlers(uow.Object, bus.Object, notification.Object, mockChurchRepository.Object);
+            await commandHandler.Handle(argument, CancellationToken.None);
 
-			//Act's
-			var commandHandler = new ChurchCommandHandlers(
-				uow.Object, bus.Object
-				, notification.Object, mockChurchRepository.Object);
-			await commandHandler.Handle(argument, CancellationToken.None);
+            //Assert's
+            commandHandler.Commit().Should().BeTrue();
 
-			//Assert's
-			commandHandler.Commit().Should().BeTrue();
-			churchRegisteredEvent.Should().NotBeNull();
-			churchRegisteredEvent.Id.Should().NotBeEmpty();
-			churchRegisteredEvent.Name.Should().Be(argument.Name);
-			churchRegisteredEvent.Photo.Should().Be(argument.Photo);
-			churchRegisteredEvent.Email.Should().Be(argument.Email);
-			churchRegisteredEvent.DDD.Should().Be(21);
-			churchRegisteredEvent.Telephone.Should().Be($"5521{argument.PhoneMobile}");
+            //Verify that methods were invocation
+            mockChurchRepository.Verify(x => x.Add(It.IsAny<Church>()), Times.Once);
+            bus.Verify(x => x.RaiseEvent(It.IsAny<DomainNotification>()), Times.Never());
+            uow.Verify(x => x.Commit());
+            bus.Verify(x => x.RaiseEvent(It.IsAny<ChurchRegisteredEvent>()), Times.Once);
+        }
 
-			//Verify that methods were invocation
-			mockChurchRepository.Verify(x => x.Add(It.IsAny<Church>()), Times.Once);
-			bus.Verify(x => x.RaiseEvent(It.IsAny<DomainNotification>()), Times.Never());
-			uow.Verify(x => x.Commit());
-			bus.Verify(x => x.RaiseEvent(It.IsAny<ChurchRegisteredEvent>()), Times.Once);
-		}
+        [Test]
+        public async Task Registering_church_with_argument_invalid()
+        {
+            //Arrange's
+            var uow = new Mock<IUnitOfWork>();
+            var bus = new Mock<IBus>();
+            var domainNotification = new Mock<IDomainNotificationHandler<DomainNotification>>();
+            var mockChurchRepository = new Mock<IChurchRepository>();
 
-		[Test]
-		public async Task Registering_church_with_argument_invalid()
-		{
-			//Arrange's
-			var uow = new Mock<IUnitOfWork>();
-			var bus = new Mock<IBus>();
-			var domainNotification = new Mock<IDomainNotificationHandler<DomainNotification>>();
-			var mockChurchRepository = new Mock<IChurchRepository>();
-
-			var arguments = new RegisterChurchCommand(
-				name: @"Richmond’s First Baptist ChurchRichmond’s First Baptist ChurchRichmond’s 
+            var arguments = new RegisterChurchCommand(
+                name: @"Richmond’s First Baptist ChurchRichmond’s First Baptist ChurchRichmond’s 
 						First Baptist ChurchRichmond’s First Baptist ChurchRichmond’s First Baptist Church
 						Richmond’s First Baptist Church"
-				, email: "Scorponok@scorponok.com"
-				, photo: "1.jpg"
-				, region: 55
-				, prefix: 21
-				, number: "123456789");
+                , email: "Scorponok@scorponok.com"
+                , photo: "1.jpg"
+                , region: 55
+                , prefix: 21
+                , number: "123456789");
 
-			DomainNotification domainNotificationResult = null;
+            DomainNotification domainNotificationResult = null;
 
-			bus.Setup(x => x.RaiseEvent(It.IsAny<DomainNotification>()))
-				.Callback<DomainNotification>(notification => domainNotificationResult = notification);
+            bus.Setup(x => x.RaiseEvent(It.IsAny<DomainNotification>()))
+                .Callback<DomainNotification>(notification => domainNotificationResult = notification);
 
-			//Act's
-			var commandHandler = new ChurchCommandHandlers(
-				uow.Object, bus.Object
-				, domainNotification.Object, mockChurchRepository.Object);
-			await commandHandler.Handle(arguments, CancellationToken.None);
+            //Act's
+            var commandHandler = new ChurchCommandHandlers(
+                uow.Object, bus.Object
+                , domainNotification.Object, mockChurchRepository.Object);
+            await commandHandler.Handle(arguments, CancellationToken.None);
 
-			//Assert's
-			domainNotification.Should().NotBeNull();
-			domainNotificationResult.AggregateId.Should().Be(Guid.Empty);
-			domainNotificationResult.Key.Should().Be("Name");
-			domainNotificationResult.MessageType.Should().Be("DomainNotification");
-			domainNotificationResult.Value.Should().Be("Name must be between 2 and 150 characters.");
-		}
+            //Assert's
+            domainNotification.Should().NotBeNull();
+            domainNotificationResult.AggregateId.Should().Be(Guid.Empty);
+            domainNotificationResult.Key.Should().Be("Name");
+            domainNotificationResult.MessageType.Should().Be("DomainNotification");
+            domainNotificationResult.Value.Should().Be("Name must be between 2 and 150 characters.");
+        }
 
-		[Test]
-		public async Task Updating_church_successfully()
-		{
-			//Arrange's
-			var uow = new Mock<IUnitOfWork>();
-			var bus = new Mock<IBus>();
-			var notification = new Mock<IDomainNotificationHandler<DomainNotification>>();
-			var mockChurchRepository = new Mock<IChurchRepository>();
+        [Test]
+        public async Task Updating_church_successfully()
+        {
+            //Arrange's
+            var uow = new Mock<IUnitOfWork>();
+            var bus = new Mock<IBus>();
+            var notification = new Mock<IDomainNotificationHandler<DomainNotification>>();
+            var mockChurchRepository = new Mock<IChurchRepository>();
 
-			var argument = new UpdateChurchCommand(id: Guid.NewGuid()
-					, name: "Richmond’s First Baptist Church"
-					, email: "Scorponok@scorponok.com"
-					, photo: "1.jpg"
+            var argument = new UpdateChurchCommand(id: Guid.NewGuid()
+                    , name: "Richmond’s First Baptist Church"
+                    , email: "Scorponok@scorponok.com"
+                    , photo: "1.jpg"
                     , telephone: "123456789");
 
-			ChurchUpdatedEvent churchUpdatedEvent = null;
-			Church church = null;
+            //Setup
+            uow.Setup(x => x.Commit()).Returns(new CommandResult(success: true));
+            mockChurchRepository.Setup(x => x.GetById(argument.Id))
+                .Returns(Builder<Church>
+                    .CreateNew()
+                .Build);
 
-			//Setup
-			uow.Setup(x => x.Commit()).Returns(new CommandResult(success: true));
-			mockChurchRepository.Setup(x => x.GetById(argument.Id))
-				.Returns(Builder<Church>
-					.CreateNew()
-				.Build);
-			bus.Setup(x => x.RaiseEvent(It.IsAny<ChurchUpdatedEvent>()))
-				.Callback<ChurchUpdatedEvent>(x => { churchUpdatedEvent = x; });
+            //Act's
+            var commandHandler = new ChurchCommandHandlers(uow.Object, bus.Object, notification.Object, mockChurchRepository.Object);
+            await commandHandler.Handle(argument, CancellationToken.None);
 
-			//Act's
-			var commandHandler = new ChurchCommandHandlers(uow.Object, bus.Object
-				, notification.Object, mockChurchRepository.Object);
-			await commandHandler.Handle(argument, CancellationToken.None);
+            //Assent's
+            commandHandler.Commit().Should().BeTrue();
 
-			//Assert's
-			commandHandler.Commit().Should().BeTrue();
-			churchUpdatedEvent.Should().NotBeNull();
-			churchUpdatedEvent.Id.Should().NotBeEmpty();
-			churchUpdatedEvent.Name.Should().Be(argument.Name);
-			churchUpdatedEvent.Photo.Should().Be(argument.Photo);
-			churchUpdatedEvent.Email.Should().Be(argument.Email);
-			//churchUpdatedEvent.DDD.Should().Be(21);
-			churchUpdatedEvent.Telephone.Should().Be(argument.PhoneMobile);
+            //Verify that methods were invocation
+            mockChurchRepository.Verify(x => x.GetById(It.IsAny<Guid>()), Times.Once);
+            mockChurchRepository.Verify(x => x.Update(It.IsAny<Church>()), Times.Once);
+            bus.Verify(x => x.RaiseEvent(It.IsAny<DomainNotification>()), Times.Never());
+            uow.Verify(x => x.Commit());
+            bus.Verify(x => x.RaiseEvent(It.IsAny<ChurchUpdatedEvent>()), Times.Once);
+        }
 
-			//Verify that methods were invocation
-			mockChurchRepository.Verify(x => x.GetById(It.IsAny<Guid>()), Times.Once);
-			mockChurchRepository.Verify(x => x.Update(It.IsAny<Church>()), Times.Once);
-			bus.Verify(x => x.RaiseEvent(It.IsAny<DomainNotification>()), Times.Never());
-			uow.Verify(x => x.Commit());
-			bus.Verify(x => x.RaiseEvent(It.IsAny<ChurchUpdatedEvent>()), Times.Once);
-		}
+        [Test]
+        public async Task Updating_church_with_argument_invalid()
+        {
+            //Arrange's
+            var uow = new Mock<IUnitOfWork>();
+            var bus = new Mock<IBus>();
+            var domainNotification = new Mock<IDomainNotificationHandler<DomainNotification>>();
+            var mockChurchRepository = new Mock<IChurchRepository>();
 
-		[Test]
-		public async Task Updating_church_with_argument_invalid()
-		{
-			//Arrange's
-			var uow = new Mock<IUnitOfWork>();
-			var bus = new Mock<IBus>();
-			var domainNotification = new Mock<IDomainNotificationHandler<DomainNotification>>();
-			var mockChurchRepository = new Mock<IChurchRepository>();
-
-			var arguments = new UpdateChurchCommand(
-				id: Guid.NewGuid(),
-				name: @"Richmond’s First Baptist ChurchRichmond’s First Baptist ChurchRichmond’s 
+            var arguments = new UpdateChurchCommand(
+                id: Guid.NewGuid(),
+                name: @"Richmond’s First Baptist ChurchRichmond’s First Baptist ChurchRichmond’s 
 						First Baptist ChurchRichmond’s First Baptist ChurchRichmond’s First Baptist Church
 						Richmond’s First Baptist Church"
-				, email: "Scorponok@scorponok.com"
-				, photo: "1.jpg"
-				, telephone: "123456789");
+                , email: "Scorponok@scorponok.com"
+                , photo: "1.jpg"
+                , telephone: "123456789");
 
-			DomainNotification domainNotificationResult = null;
+            DomainNotification domainNotificationResult = null;
 
-			bus.Setup(x => x.RaiseEvent(It.IsAny<DomainNotification>()))
-				.Callback<DomainNotification>(notification => domainNotificationResult = notification);
+            bus.Setup(x => x.RaiseEvent(It.IsAny<DomainNotification>()))
+                .Callback<DomainNotification>(notification => domainNotificationResult = notification);
 
-			//Act's
-			var commandHandler = new ChurchCommandHandlers(
-				uow.Object, bus.Object
-				, domainNotification.Object, mockChurchRepository.Object);
-			await commandHandler.Handle(arguments, CancellationToken.None);
+            //Act's
+            var commandHandler = new ChurchCommandHandlers(
+                uow.Object, bus.Object
+                , domainNotification.Object, mockChurchRepository.Object);
+            await commandHandler.Handle(arguments, CancellationToken.None);
 
-			//Assert's
-			domainNotification.Should().NotBeNull();
-			domainNotificationResult.AggregateId.Should().Be(Guid.Empty);
-			domainNotificationResult.Key.Should().Be("Name");
-			domainNotificationResult.MessageType.Should().Be("DomainNotification");
-			domainNotificationResult.Value.Should().Be("Name must be between 2 and 150 characters.");
-		}
+            //Assert's
+            domainNotification.Should().NotBeNull();
+            domainNotificationResult.AggregateId.Should().Be(Guid.Empty);
+            domainNotificationResult.Key.Should().Be("Name");
+            domainNotificationResult.MessageType.Should().Be("DomainNotification");
+            domainNotificationResult.Value.Should().Be("Name must be between 2 and 150 characters.");
+        }
 
-		[Test]
-		public async Task Deleting_church_successfully()
-		{
-			//Arrange's
-			var uow = new Mock<IUnitOfWork>();
-			var bus = new Mock<IBus>();
-			var domainNotification = new Mock<IDomainNotificationHandler<DomainNotification>>();
-			var mockChurchRepository = new Mock<IChurchRepository>();
+        [Test]
+        public async Task Deleting_church_successfully()
+        {
+            //Arrange's
+            var uow = new Mock<IUnitOfWork>();
+            var bus = new Mock<IBus>();
+            var domainNotification = new Mock<IDomainNotificationHandler<DomainNotification>>();
+            var mockChurchRepository = new Mock<IChurchRepository>();
 
-			var argument = new DeleteChurchCommand(id: Guid.NewGuid());
+            var argument = new DeleteChurchCommand(id: Guid.NewGuid());
 
-			ChurchDeletedEvent churchDeletedEvent = null;
-			Church church = null;
+            //Setup
+            uow.Setup(x => x.Commit()).Returns(new CommandResult(success: true));
 
-			//Setup
-			uow.Setup(x => x.Commit()).Returns(new CommandResult(success: true));
-			bus.Setup(x => x.RaiseEvent(It.IsAny<ChurchDeletedEvent>()))
-				.Callback<ChurchDeletedEvent>(x => { churchDeletedEvent = x; });
+            //Act's
+            var commandHandler = new ChurchCommandHandlers(uow.Object, bus.Object
+                , domainNotification.Object, mockChurchRepository.Object);
+            await commandHandler.Handle(argument, CancellationToken.None);
 
-			//Act's
-			var commandHandler = new ChurchCommandHandlers(uow.Object, bus.Object
-				, domainNotification.Object, mockChurchRepository.Object);
-			await commandHandler.Handle(argument, CancellationToken.None);
+            //Assent's
+            commandHandler.Commit().Should().BeTrue();
 
-			//Assert's
-			commandHandler.Commit().Should().BeTrue();
-			churchDeletedEvent.Should().NotBeNull();
-			churchDeletedEvent.Id.Should().NotBeEmpty();
-			churchDeletedEvent.Id.Should().Be(argument.Id);
+            //Verify that methods were invocation
+            mockChurchRepository.Verify(x => x.GetById(It.IsAny<Guid>()), Times.Never);
+            mockChurchRepository.Verify(x => x.Update(It.IsAny<Church>()), Times.Never);
+            mockChurchRepository.Verify(x => x.Remove(It.IsAny<Guid>()), Times.Once);
+            bus.Verify(x => x.RaiseEvent(It.IsAny<DomainNotification>()), Times.Never());
+            bus.Verify(x => x.RaiseEvent(It.IsAny<ChurchDeletedEvent>()), Times.Once);
+            uow.Verify(x => x.Commit());
+        }
 
-			//Verify that methods were invocation
-			mockChurchRepository.Verify(x => x.GetById(It.IsAny<Guid>()), Times.Never);
-			mockChurchRepository.Verify(x => x.Update(It.IsAny<Church>()), Times.Never);
-			mockChurchRepository.Verify(x => x.Remove(It.IsAny<Guid>()), Times.Once);
-			bus.Verify(x => x.RaiseEvent(It.IsAny<DomainNotification>()), Times.Never());
-			bus.Verify(x => x.RaiseEvent(It.IsAny<ChurchDeletedEvent>()), Times.Once);
-			uow.Verify(x => x.Commit());
-		}
+        [Test]
+        public async Task Deleting_church_with_id_incorrect()
+        {
+            //Arrange's
+            var uow = new Mock<IUnitOfWork>();
+            var bus = new Mock<IBus>();
+            var domainNotification = new Mock<IDomainNotificationHandler<DomainNotification>>();
+            var mockChurchRepository = new Mock<IChurchRepository>();
 
-		[Test]
-		public async Task Deleting_church_with_id_incorrect()
-		{
-			//Arrange's
-			var uow = new Mock<IUnitOfWork>();
-			var bus = new Mock<IBus>();
-			var domainNotification = new Mock<IDomainNotificationHandler<DomainNotification>>();
-			var mockChurchRepository = new Mock<IChurchRepository>();
+            var arguments = new DeleteChurchCommand(
+                id: Guid.Empty);
 
-			var arguments = new DeleteChurchCommand(
-				id: Guid.Empty);
+            DomainNotification domainNotificationResult = null;
 
-			DomainNotification domainNotificationResult = null;
+            bus.Setup(x => x.RaiseEvent(It.IsAny<DomainNotification>()))
+                .Callback<DomainNotification>(notification => domainNotificationResult = notification);
 
-			bus.Setup(x => x.RaiseEvent(It.IsAny<DomainNotification>()))
-				.Callback<DomainNotification>(notification => domainNotificationResult = notification);
+            //Act's
+            var commandHandler = new ChurchCommandHandlers(
+                uow.Object, bus.Object
+                , domainNotification.Object, mockChurchRepository.Object);
+            await commandHandler.Handle(arguments, CancellationToken.None);
 
-			//Act's
-			var commandHandler = new ChurchCommandHandlers(
-				uow.Object, bus.Object
-				, domainNotification.Object, mockChurchRepository.Object);
-			await commandHandler.Handle(arguments, CancellationToken.None);
-
-			//Assert's
-			domainNotification.Should().NotBeNull();
-			domainNotificationResult.AggregateId.Should().Be(Guid.Empty);
-			domainNotificationResult.Key.Should().Be("Id");
-			domainNotificationResult.MessageType.Should().Be("DomainNotification");
-			domainNotificationResult.Value.Should().Be("Please make sure you entered the id correctly.");
-		}
+            //Assert's
+            domainNotification.Should().NotBeNull();
+            domainNotificationResult.AggregateId.Should().Be(Guid.Empty);
+            domainNotificationResult.Key.Should().Be("Id");
+            domainNotificationResult.MessageType.Should().Be("DomainNotification");
+            domainNotificationResult.Value.Should().Be("Please make sure you entered the id correctly.");
+        }
 
 
-	}
+    }
 }

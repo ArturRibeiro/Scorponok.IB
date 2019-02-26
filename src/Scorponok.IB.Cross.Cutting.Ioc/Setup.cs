@@ -42,9 +42,9 @@ namespace Scorponok.IB.Cross.Cutting.Ioc
 
             #region Register domain events
             services.AddScoped<IDomainNotificationHandler<DomainNotification>, DomainNotificationHandler>();
-            services.AddScoped<IHandler<ChurchRegisteredEvent>, ChurchEventHandlers>();
-            services.AddScoped<IHandler<ChurchUpdatedEvent>, ChurchEventHandlers>();
-            services.AddScoped<IHandler<ChurchDeletedEvent>, ChurchEventHandlers>(); 
+            services.AddScoped<INotificationHandler<ChurchRegisteredEvent>, ChurchEventHandlers>();
+            services.AddScoped<INotificationHandler<ChurchUpdatedEvent>, ChurchEventHandlers>();
+            services.AddScoped<INotificationHandler<ChurchDeletedEvent>, ChurchEventHandlers>(); 
             #endregion
             
             #region Register domain Command's

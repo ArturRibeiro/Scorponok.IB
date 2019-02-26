@@ -1,23 +1,25 @@
-﻿using Scorponok.IB.Core.Events;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using MediatR;
 using Scorponok.IB.Domain.Models.Churchs.Events;
 
 namespace Scorponok.IB.Domain.EventHandlers
 {
-	public class ChurchEventHandlers : IHandler<ChurchRegisteredEvent>
-	    , IHandler<ChurchUpdatedEvent>
-	    , IHandler<ChurchDeletedEvent>
+    public class ChurchEventHandlers : INotificationHandler<ChurchRegisteredEvent>
+	    , INotificationHandler<ChurchUpdatedEvent>
+	    , INotificationHandler<ChurchDeletedEvent>
     {
-		public void Handle(ChurchRegisteredEvent message)
-		{
-			
-		}
+        public async Task Handle(ChurchRegisteredEvent notification, CancellationToken cancellationToken)
+        {
 
-        public void Handle(ChurchUpdatedEvent message)
+        }
+
+        public async Task Handle(ChurchUpdatedEvent notification, CancellationToken cancellationToken)
         {
             
         }
 
-        public void Handle(ChurchDeletedEvent message)
+        public async Task Handle(ChurchDeletedEvent notification, CancellationToken cancellationToken)
         {
             
         }
