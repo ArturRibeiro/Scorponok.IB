@@ -20,12 +20,19 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/admin-lte"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/admin-lte/css/AdminLTE.min.css",
+              "src/assets/admin-lte/css/skins/_all-skins.min.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/assets/admin-lte/js/adminlte.min.js",
+              "src/assets/admin-lte/js/pages/dashboard.js",
+              "src/assets/admin-lte/js/pages/dashboard2.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
