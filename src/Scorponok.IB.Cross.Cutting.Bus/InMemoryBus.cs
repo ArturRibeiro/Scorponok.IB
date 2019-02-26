@@ -33,7 +33,8 @@ namespace Scorponok.IB.Cross.Cutting.Bus
             if (Container == null) return;
 
             var obj = Container.GetService(message.MessageType.Equals("DomainNotification")
-                ? typeof(IDomainNotificationHandler<T>)
+                //? typeof(IDomainNotificationHandler<T>)
+                ? typeof(INotificationHandler<DomainNotification>)
                 : typeof(IRequestHandler<T>));
 
             var handler = (IRequestHandler<T>)obj;

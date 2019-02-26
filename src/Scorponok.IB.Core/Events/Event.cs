@@ -11,9 +11,7 @@ namespace Scorponok.IB.Core.Events
             private set;
         }
 
-        public Event()
-        {
-            this.Timestamp = DateTime.Now;
-        }
+        protected Event()
+            => this.Timestamp = DateTime.Now;
     }
 }

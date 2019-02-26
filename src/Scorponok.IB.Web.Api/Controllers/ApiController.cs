@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Scorponok.IB.Core.Notifications;
 
@@ -9,12 +12,12 @@ namespace Scorponok.IB.Web.Api.Controllers
     {
         private readonly DomainNotificationHandler _notifications;
 
-        protected ApiController(IDomainNotificationHandler<DomainNotification> notifications)
+        protected ApiController(INotificationHandler<DomainNotification> notifications)
         {
             _notifications = (DomainNotificationHandler)notifications;
         }
 
-        protected IEnumerable<DomainNotification> Notifications 
+        protected IEnumerable<DomainNotification> Notifications
             => _notifications.GetNotifications();
 
         protected bool IsValidOperation()
@@ -40,20 +43,17 @@ namespace Scorponok.IB.Web.Api.Controllers
             });
         }
 
-        protected void NotifyModelStateErrors()
+        protected async Task NotifyModelStateErrors()
         {
-            var erros = ModelState.Values.SelectMany(v => v.Errors);
-            foreach (var erro in erros)
+            foreach (var err in ModelState.Values.SelectMany(v => v.Errors))
             {
-                var erroMsg = erro.Exception == null ? erro.ErrorMessage : erro.Exception.Message;
-                NotifyError(string.Empty, erroMsg);
+                var errMsg = err.Exception == null ? err.ErrorMessage : err.Exception.Message;
+                await NotifyError(string.Empty, errMsg);
             }
         }
 
-        protected void NotifyError(string code, string message)
-        {
-            _notifications.Handle(new DomainNotification(code, message));
-        }
+        protected async Task NotifyError(string code, string message)
+            => await _notifications.Handle(new DomainNotification(code, message), default(CancellationToken));
 
         //protected void AddIdentityErrors(IdentityResult result)
         //{

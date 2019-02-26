@@ -41,7 +41,7 @@ namespace Scorponok.IB.Cross.Cutting.Ioc
             RegisterAutoMapper(services);
 
             #region Register domain events
-            services.AddScoped<IDomainNotificationHandler<DomainNotification>, DomainNotificationHandler>();
+            services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
             services.AddScoped<INotificationHandler<ChurchRegisteredEvent>, ChurchEventHandlers>();
             services.AddScoped<INotificationHandler<ChurchUpdatedEvent>, ChurchEventHandlers>();
             services.AddScoped<INotificationHandler<ChurchDeletedEvent>, ChurchEventHandlers>(); 

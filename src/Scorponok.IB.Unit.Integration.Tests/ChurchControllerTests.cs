@@ -89,7 +89,7 @@ namespace Scorponok.IB.Unit.Integration.Tests
 
             //Act
             var response = await BaseIntegrationTest.DeleteAsync(churchId, $"Church/delete/{churchId}");
-
+            var result = response.Content.ReadAsStringAsync().Result;
             //Assert's
             response.Should().NotBeNull();
             response.IsSuccessStatusCode.Should().BeTrue();

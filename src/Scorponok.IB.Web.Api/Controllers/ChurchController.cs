@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Scorponok.IB.Core.Bus;
 using Scorponok.IB.Core.Notifications;
@@ -25,7 +26,7 @@ namespace Scorponok.IB.Web.Api.Controllers
         /// <param name="mapper">AutoMapper</param>
         /// <param name="bus">Service bus</param>
         /// <param name="notifications">Domain Notification</param>
-        public ChurchController(IMapper mapper, IBus bus, IDomainNotificationHandler<DomainNotification> notifications)
+        public ChurchController(IMapper mapper, IBus bus, INotificationHandler<DomainNotification> notifications)
         : base(notifications)
         {
             _mapper = mapper;

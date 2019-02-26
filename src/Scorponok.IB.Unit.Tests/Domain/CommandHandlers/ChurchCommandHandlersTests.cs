@@ -26,7 +26,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
             //Arrange's
             var uow = new Mock<IUnitOfWork>();
             var bus = new Mock<IBus>();
-            var notification = new Mock<IDomainNotificationHandler<DomainNotification>>();
+            var notification = new Mock<DomainNotificationHandler>();
             var mockChurchRepository = new Mock<IChurchRepository>();
 
             var argument = new RegisterChurchCommand("Richmond’s First Baptist Church",
@@ -59,7 +59,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
             //Arrange's
             var uow = new Mock<IUnitOfWork>();
             var bus = new Mock<IBus>();
-            var domainNotification = new Mock<IDomainNotificationHandler<DomainNotification>>();
+            var domainNotification = new Mock<DomainNotificationHandler>();
             var mockChurchRepository = new Mock<IChurchRepository>();
 
             var arguments = new RegisterChurchCommand(
@@ -97,7 +97,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
             //Arrange's
             var uow = new Mock<IUnitOfWork>();
             var bus = new Mock<IBus>();
-            var notification = new Mock<IDomainNotificationHandler<DomainNotification>>();
+            var notification = new Mock<DomainNotificationHandler>();
             var mockChurchRepository = new Mock<IChurchRepository>();
 
             var argument = new UpdateChurchCommand(id: Guid.NewGuid()
@@ -134,7 +134,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
             //Arrange's
             var uow = new Mock<IUnitOfWork>();
             var bus = new Mock<IBus>();
-            var domainNotification = new Mock<IDomainNotificationHandler<DomainNotification>>();
+            var domainNotification = new Mock<DomainNotificationHandler>();
             var mockChurchRepository = new Mock<IChurchRepository>();
 
             var arguments = new UpdateChurchCommand(
@@ -171,7 +171,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
             //Arrange's
             var uow = new Mock<IUnitOfWork>();
             var bus = new Mock<IBus>();
-            var domainNotification = new Mock<IDomainNotificationHandler<DomainNotification>>();
+            var domainNotification = new Mock<DomainNotificationHandler>();
             var mockChurchRepository = new Mock<IChurchRepository>();
 
             var argument = new DeleteChurchCommand(id: Guid.NewGuid());
@@ -202,7 +202,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
             //Arrange's
             var uow = new Mock<IUnitOfWork>();
             var bus = new Mock<IBus>();
-            var domainNotification = new Mock<IDomainNotificationHandler<DomainNotification>>();
+            var domainNotification = new Mock<DomainNotificationHandler>();
             var mockChurchRepository = new Mock<IChurchRepository>();
 
             var arguments = new DeleteChurchCommand(

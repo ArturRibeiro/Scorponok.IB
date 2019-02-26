@@ -1,26 +1,30 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using MediatR;
 
 namespace Scorponok.IB.Core.Notifications
 {
-    public class DomainNotificationHandler : IDomainNotificationHandler<DomainNotification>
+    public class DomainNotificationHandler : INotificationHandler<DomainNotification>
     {
         private List<DomainNotification> _notifications;
 
         public DomainNotificationHandler()
-			=> _notifications = new List<DomainNotification>();
-        
-        public virtual IList<DomainNotification> GetNotifications()
-			=> _notifications;
+            => _notifications = new List<DomainNotification>();
 
-        public void Handle(DomainNotification message)
-			=> _notifications.Add(message);
+        public virtual IList<DomainNotification> GetNotifications()
+            => _notifications;
+
+        public virtual async Task Handle(DomainNotification notification, CancellationToken cancellationToken)
+            => _notifications.Add(notification);
 
         public virtual bool HasNotifications()
-			=> GetNotifications().Any();
-        
+            => GetNotifications().Any();
+
         public void Dispose()
-			=> _notifications = new List<DomainNotification>();
-        
+            => _notifications = new List<DomainNotification>();
+
+
     }
 }

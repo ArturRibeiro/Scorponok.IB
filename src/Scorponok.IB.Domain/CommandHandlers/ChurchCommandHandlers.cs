@@ -22,7 +22,7 @@ namespace Scorponok.IB.Domain.CommandHandlers
     {
         private readonly IChurchRepository _churchRepository;
 
-        public ChurchCommandHandlers(IUnitOfWork uow, IBus bus, IDomainNotificationHandler<DomainNotification> notification,
+        public ChurchCommandHandlers(IUnitOfWork uow, IBus bus, INotificationHandler<DomainNotification> notification,
             IChurchRepository churchRepository)
             : base(uow, bus, notification)
             => _churchRepository = churchRepository;

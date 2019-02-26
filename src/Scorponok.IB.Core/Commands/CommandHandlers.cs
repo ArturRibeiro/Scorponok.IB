@@ -1,4 +1,5 @@
-﻿using Scorponok.IB.Core.Bus;
+﻿using MediatR;
+using Scorponok.IB.Core.Bus;
 using Scorponok.IB.Core.Interfaces;
 using Scorponok.IB.Core.Notifications;
 
@@ -8,14 +9,14 @@ namespace Scorponok.IB.Core.Commands
 	{
 		protected readonly IUnitOfWork _uow;
 		protected readonly IBus _bus;
-		protected readonly IDomainNotificationHandler<DomainNotification> _notification;
+	    private readonly DomainNotificationHandler _notifications;
 
-	    protected CommandHandler(IUnitOfWork uow, IBus bus, IDomainNotificationHandler<DomainNotification> notification)
+        protected CommandHandler(IUnitOfWork uow, IBus bus, INotificationHandler<DomainNotification> notification)
 		{
 			_uow = uow;
 			_bus = bus;
-			_notification = notification;
-		}
+		    _notifications = (DomainNotificationHandler)notification;
+        }
 
 		protected void NotifyErrors(Command command)
 		{
@@ -25,7 +26,7 @@ namespace Scorponok.IB.Core.Commands
 
 		public bool Commit()
 		{
-			if (_notification.HasNotifications()) return false;
+			if (_notifications.HasNotifications()) return false;
 
 			var commandResult = _uow.Commit();
 
