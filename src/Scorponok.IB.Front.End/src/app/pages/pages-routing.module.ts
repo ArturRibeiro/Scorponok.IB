@@ -9,10 +9,12 @@ import { NotFoundComponent } from './miscellaneous/not-found/not-found.component
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
-  children: [{
-    path: 'dashboard',
-    component: ECommerceComponent,
-  }, {
+  children: [
+  //{
+    //path: 'dashboard',
+    //component: ECommerceComponent,
+  //},
+  {
     path: 'iot-dashboard',
     component: DashboardComponent,
   }, {
