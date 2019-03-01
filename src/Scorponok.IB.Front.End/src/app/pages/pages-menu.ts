@@ -16,6 +16,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
     title: 'FEATURES',
     group: true,
   },
+  {
+    title: "Igreja",
+    icon: "nb-star",
+    children:[{
+      title: "Cadastrar Igreja",
+      link: '/pages/churchs'
+    }]
+  },
   //{
   //   title: 'Extra Components',
   //   icon: 'nb-star',

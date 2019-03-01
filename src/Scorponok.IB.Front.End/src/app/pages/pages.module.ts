@@ -4,19 +4,21 @@ import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { ThemeModule } from '../@theme/theme.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
+import { ChurchModule } from './churchs/church.module';
 
 const PAGES_COMPONENTS = [
-  PagesComponent,
+  PagesComponent
 ];
 
 @NgModule({
   imports: [
-    PagesRoutingModule,
-    ThemeModule,
-    MiscellaneousModule,
+    PagesRoutingModule
+    , ThemeModule
+    , MiscellaneousModule
+    , ChurchModule
   ],
   declarations: [
-    ...PAGES_COMPONENTS,
+    ...PAGES_COMPONENTS    
   ],
 })
 export class PagesModule {

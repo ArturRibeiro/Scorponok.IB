@@ -8,14 +8,19 @@ const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
-  {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
-  }, {
-    path: '**',
-    component: NotFoundComponent,
-  }],
+    {
+      path: 'churchs', 
+      //Definir exatamente onde o modulo se encontra, caso contrario dar erro...
+      loadChildren: 'app/pages/churchs/church.module#ChurchModule'
+    },
+    {
+      path: '',
+      redirectTo: 'dashboard',
+      pathMatch: 'full',
+    }, {
+      path: '**',
+      component: NotFoundComponent,
+    }],
 }];
 
 @NgModule({
