@@ -5,7 +5,7 @@
  */
 export const Environment =
 {
-  baseBackEndUri:  "http://localhost:5001/api",
+  baseBackEndUri:  "https://localhost:44312/api/",
   baseFrontEndUri: "http://localhost:4200",
   production : true
 }

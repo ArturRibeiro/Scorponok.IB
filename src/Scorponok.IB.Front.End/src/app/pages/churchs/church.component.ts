@@ -10,7 +10,11 @@ import { ChurchService } from './church.service';
 export class ChurchComponent implements OnInit {
 
   constructor(private churchService : ChurchService) { 
-    console.log(this.churchService.getChurch());
+    this.churchService.getChurch()
+    .subscribe(result => {
+      console.log(result);
+    });
+    
   }
 
   ngOnInit() {

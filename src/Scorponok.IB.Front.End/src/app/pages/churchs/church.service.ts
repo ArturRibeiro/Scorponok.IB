@@ -12,9 +12,9 @@ export class ChurchService {
 
     }
 
-    public getChurch(): string // Observable<any>
+    public getChurch():  Observable<any>
     {
-        return "teste";
+        return this.httpServiceClient.get('Church/get');
     }
 }
 

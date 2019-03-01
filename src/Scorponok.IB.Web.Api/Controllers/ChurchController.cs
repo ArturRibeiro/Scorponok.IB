@@ -20,6 +20,15 @@ namespace Scorponok.IB.Web.Api.Controllers
         private readonly IMapper _mapper;
         private readonly IBus _bus;
 
+        [HttpGet, Route("get")]
+        public async Task<IActionResult> GetChurch()
+        {
+            return Ok(new
+            {
+                Name = "Artur"
+            });
+        }
+
         /// <summary>
         /// 
         /// </summary>

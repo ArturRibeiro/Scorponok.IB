@@ -2,7 +2,7 @@ import { Injectable, Injector } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Environment as environment  } from '../../../environments/environment';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule, HttpClient } from '@angular/common/http'; 
 import { HttpModule } from '@angular/http';
 
 class Data {
@@ -13,20 +13,21 @@ class Data {
 
 @Injectable({ providedIn: 'root' })
 export class HttpServiceClient {
-    private http = this.injector.get(HttpServiceClient);
+    private http = this.injector.get(HttpClient);
 
     constructor(private injector: Injector) {
 
     }
 
-    // public handleResponse(response: Data | any) {
-    //     return (response.success) ? response.data : null;
-    // }
+    public handleResponse(response: Data | any) {
+        return (response.success) ? response.data : null;
+    }
 
-    // public get(url: string, body?): Observable<any> {
-    //     return this.http.get(this.environment.baseBackEndUri + url)
-    //         .pipe(map((response: Response) => this.handleResponse(response)));
-    // }
+    public get(url: string, body?): Observable<any> {
+        console.log(environment.baseBackEndUri + url);
+        return this.http.get(environment.baseBackEndUri + url)
+            .pipe(map((response: Response) => this.handleResponse(response)));
+    }
 
     // public post(url: string, body): Observable<any> {
     //     return this.http.post(this.environment.baseBackEndUri + url, body)
