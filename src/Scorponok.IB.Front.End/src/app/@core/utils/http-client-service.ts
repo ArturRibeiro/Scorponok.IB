@@ -24,7 +24,6 @@ export class HttpServiceClient {
     }
 
     public get(url: string, body?): Observable<any> {
-        console.log(environment.baseBackEndUri + url);
         return this.http.get(environment.baseBackEndUri + url)
             .pipe(map((response: Response) => this.handleResponse(response)));
     }

@@ -44,6 +44,15 @@ namespace Scorponok.IB.Web.Api
             services.AddMediatR(typeof(Startup));
 
             NativeInjectionDependency.RegisterServices(services);
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("BaseCorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
