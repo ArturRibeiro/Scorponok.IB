@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Churchs\Commands\ChurchCommandTest.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentValidation" Version="7.1.1" />
     <PackageReference Include="MediatR" Version="6.0.0" />
     <PackageReference Include="System.Security.Claims" Version="4.3.0" />
@@ -12,6 +16,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Scorponok.IB.Core\Scorponok.IB.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Contributions\Events\" />
   </ItemGroup>
 
 </Project>

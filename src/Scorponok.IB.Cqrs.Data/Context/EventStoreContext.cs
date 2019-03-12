@@ -1,7 +1,6 @@
-﻿using System.IO;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
 using Scorponok.IB.Core.Events;
+using Scorponok.IB.Core.Interfaces;
 using Scorponok.IB.Cqrs.Data.Mappings;
 
 namespace Scorponok.IB.Cqrs.Data.Context
@@ -10,6 +9,11 @@ namespace Scorponok.IB.Cqrs.Data.Context
     {
         public DbSet<StoredEvent> StoredEvent { get; set; }
 
+        public EventStoreContext(DbContextOptions<EventStoreContext> options)
+            : base(options)
+        {
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new StoredEventMap());
@@ -17,16 +21,17 @@ namespace Scorponok.IB.Cqrs.Data.Context
             base.OnModelCreating(modelBuilder);
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            // get the configuration from the app settings
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    // get the configuration from the app settings
+        //    var config = new ConfigurationBuilder()
+        //        .SetBasePath(Directory.GetCurrentDirectory())
+        //        .AddJsonFile("appsettings.json")
+        //        .Build();
 
-            // define the database to use
-            optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
-        }
+        //    // define the database to use
+        //    optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
+        //}
+
     }
 }

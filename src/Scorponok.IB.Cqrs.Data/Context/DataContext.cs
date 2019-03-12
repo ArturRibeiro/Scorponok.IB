@@ -14,7 +14,8 @@ namespace Scorponok.IB.Cqrs.Data.Context
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.ApplyConfiguration(new ChurchMap());
+            modelBuilder.ApplyConfiguration(new ChurchMap());
+			modelBuilder.ApplyConfiguration(new MemberMap());
 
 			base.OnModelCreating(modelBuilder);
 		}

@@ -33,7 +33,8 @@ namespace Scorponok.IB.Unit.Integration.Tests
 
     public static class BaseIntegrationTest
     {
-        private const int PortWebApi = 51052;
+
+        private const int PortWebApi = 44312;
 
         public static TestServer Server { get; set; }
 
@@ -42,12 +43,12 @@ namespace Scorponok.IB.Unit.Integration.Tests
 
         public static async Task<HttpResponseMessage> PostAsync(object messageRequest, string route)
         {
-            var json = Newtonsoft.Json.JsonConvert.SerializeObject(messageRequest);
+            var json = JsonConvert.SerializeObject(messageRequest);
 
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri($"http://localhost:{PortWebApi}/api/{ route }"),
+                RequestUri = new Uri($"https://localhost:{PortWebApi}/api/{ route }"),
                 Content = new StringContent(json, Encoding.UTF8, "application/json")
             };
 

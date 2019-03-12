@@ -36,6 +36,9 @@ namespace Scorponok.IB.Web.Api
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddDbContext<EventStoreContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddAutoMapper();
             services.RegisterServices();
             services.ConfigureSwagger();

@@ -18,6 +18,8 @@ using Scorponok.IB.Domain.EventHandlers;
 using Scorponok.IB.Domain.Models.Churchs.Commands;
 using Scorponok.IB.Domain.Models.Churchs.Events;
 using Scorponok.IB.Domain.Models.Churchs.IRepository;
+using Scorponok.IB.Domain.Models.Contributions.Commands;
+using Scorponok.IB.Domain.Models.Contributions.IRepository;
 using Scorponok.IB.Domain.Models.Users.Interfaces;
 
 namespace Scorponok.IB.Cross.Cutting.Ioc
@@ -48,15 +50,18 @@ namespace Scorponok.IB.Cross.Cutting.Ioc
             #endregion
             
             #region Register domain Command's
-            services.AddScoped<IRequestHandler<RegisterChurchCommand>, ChurchCommandHandlers>();
-            services.AddScoped<IRequestHandler<UpdateChurchCommand>, ChurchCommandHandlers>();
-            services.AddScoped<IRequestHandler<DeleteChurchCommand>, ChurchCommandHandlers>(); 
+            services.AddScoped<IRequestHandler<RegisterChurchCommand>, ChurchCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateChurchCommand>, ChurchCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteChurchCommand>, ChurchCommandHandler>(); 
+
+
+            services.AddScoped<IRequestHandler<RegisterContributionCommand>, ContributionCommandHandler>(); 
             #endregion
             
             // Infra - Data EventSourcing
             services.AddScoped<IEventStoreRepository, EventStoreRepository>();
             services.AddScoped<IEventStore, EventStore>();
-            services.AddScoped<EventStoreContext>();
+            //services.AddScoped<EventStoreContext>();
 
             //InMemoryBus
             services.AddScoped<IBus, InMemoryBus>();
@@ -81,6 +86,7 @@ namespace Scorponok.IB.Cross.Cutting.Ioc
             //Repositorys
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IChurchRepository, ChurchRepository>();
+            services.AddScoped<IContributionRepository, ContributionRepository>();
         }
     }
 }

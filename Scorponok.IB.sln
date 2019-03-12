@@ -35,7 +35,7 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Scorponok.IB.Data.Base.Sql.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Services", "2.Services", "{B01DDDCE-F7F8-4A6A-8331-8C34D960C661}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scorponok.IB.Web.Api", "src\Scorponok.IB.Web.Api\Scorponok.IB.Web.Api.csproj", "{80CEE8DE-86D5-426B-9AA6-2BEFF15DE1D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scorponok.IB.Web.Api", "src\Scorponok.IB.Web.Api\Scorponok.IB.Web.Api.csproj", "{80CEE8DE-86D5-426B-9AA6-2BEFF15DE1D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

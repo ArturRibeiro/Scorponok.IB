@@ -106,6 +106,7 @@ namespace Scorponok.IB.Unit.Integration.Tests
                 .CreateNew()
                     .With(x => x.TelephoneFixed, Telephone.Factory.CreateNew(21, "55555555"))
                     .With(x => x.MobileTelephone, Telephone.Factory.CreateNew(21, "987413333"))
+                    .With(x => x.Email, Email.Factory.CreateNew($"scorponok{Guid.NewGuid()}@gmail.com"))
                 .Persist();
 
             unitOfWork.Commit();

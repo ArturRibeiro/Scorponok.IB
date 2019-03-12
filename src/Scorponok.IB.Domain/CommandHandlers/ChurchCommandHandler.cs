@@ -13,14 +13,14 @@ using Scorponok.IB.Domain.Models.Churchs.IRepository;
 
 namespace Scorponok.IB.Domain.CommandHandlers
 {
-    public class ChurchCommandHandlers : CommandHandler
+    public class ChurchCommandHandler : CommandHandler
         , IRequestHandler<RegisterChurchCommand>
         , IRequestHandler<UpdateChurchCommand>
         , IRequestHandler<DeleteChurchCommand>
     {
         private readonly IChurchRepository _churchRepository;
 
-        public ChurchCommandHandlers(IUnitOfWork uow, IBus bus, INotificationHandler<DomainNotification> notification,
+        public ChurchCommandHandler(IUnitOfWork uow, IBus bus, INotificationHandler<DomainNotification> notification,
             IChurchRepository churchRepository)
             : base(uow, bus, notification)
             => _churchRepository = churchRepository;

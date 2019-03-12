@@ -40,7 +40,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
             uow.Setup(x => x.Commit()).Returns(new CommandResult(success: true));
 
             //Act's
-            var commandHandler = new ChurchCommandHandlers(uow.Object, bus.Object, notification.Object, mockChurchRepository.Object);
+            var commandHandler = new ChurchCommandHandler(uow.Object, bus.Object, notification.Object, mockChurchRepository.Object);
             await commandHandler.Handle(argument, CancellationToken.None);
 
             //Assert's
@@ -78,7 +78,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
                 .Callback<DomainNotification>(notification => domainNotificationResult = notification);
 
             //Act's
-            var commandHandler = new ChurchCommandHandlers(
+            var commandHandler = new ChurchCommandHandler(
                 uow.Object, bus.Object
                 , domainNotification.Object, mockChurchRepository.Object);
             await commandHandler.Handle(arguments, CancellationToken.None);
@@ -114,7 +114,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
                 .Build);
 
             //Act's
-            var commandHandler = new ChurchCommandHandlers(uow.Object, bus.Object, notification.Object, mockChurchRepository.Object);
+            var commandHandler = new ChurchCommandHandler(uow.Object, bus.Object, notification.Object, mockChurchRepository.Object);
             await commandHandler.Handle(argument, CancellationToken.None);
 
             //Assent's
@@ -152,7 +152,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
                 .Callback<DomainNotification>(notification => domainNotificationResult = notification);
 
             //Act's
-            var commandHandler = new ChurchCommandHandlers(
+            var commandHandler = new ChurchCommandHandler(
                 uow.Object, bus.Object
                 , domainNotification.Object, mockChurchRepository.Object);
             await commandHandler.Handle(arguments, CancellationToken.None);
@@ -180,7 +180,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
             uow.Setup(x => x.Commit()).Returns(new CommandResult(success: true));
 
             //Act's
-            var commandHandler = new ChurchCommandHandlers(uow.Object, bus.Object
+            var commandHandler = new ChurchCommandHandler(uow.Object, bus.Object
                 , domainNotification.Object, mockChurchRepository.Object);
             await commandHandler.Handle(argument, CancellationToken.None);
 
@@ -214,7 +214,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
                 .Callback<DomainNotification>(notification => domainNotificationResult = notification);
 
             //Act's
-            var commandHandler = new ChurchCommandHandlers(
+            var commandHandler = new ChurchCommandHandler(
                 uow.Object, bus.Object
                 , domainNotification.Object, mockChurchRepository.Object);
             await commandHandler.Handle(arguments, CancellationToken.None);
