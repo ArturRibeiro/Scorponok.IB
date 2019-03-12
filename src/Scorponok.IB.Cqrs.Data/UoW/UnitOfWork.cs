@@ -1,9 +1,10 @@
 ﻿using Scorponok.IB.Core.Commands;
-using Scorponok.IB.Core.Interfaces;
-using Scorponok.IB.Core.Models;
-using Scorponok.IB.Core.Respositorys;
 using Scorponok.IB.Cqrs.Data.Context;
 using Scorponok.IB.Cqrs.Data.Repositories;
+using Scorponok.IB.Domain.Interfaces;
+using Scorponok.IB.Domain.Models.Churchs.IRepository;
+using Scorponok.IB.Domain.Models.Contributions.IRepository;
+using Scorponok.IB.Domain.Models.Members.IRepository;
 
 namespace Scorponok.IB.Cqrs.Data.UoW
 {
@@ -14,10 +15,9 @@ namespace Scorponok.IB.Cqrs.Data.UoW
 		public UnitOfWork(DataContext context)
 			=> _context = context;
 
-	    public IRespositoryBase<TEntity> Repository<TEntity>() where TEntity : Entity
-	    {
-            return new RepositoryBase<TEntity>(_context);
-	    }
+	    public IChurchRepository ChurchRepository => new ChurchRepository(_context);
+	    public IMemberRepository MemberRepository => new MemberRepository(_context);
+	    public IContributionRepository ContributionRepository => new ContributionRepository(_context);
 
         public CommandResult Commit()
 		{

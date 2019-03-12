@@ -6,7 +6,6 @@ using Scorponok.IB.Core.Bus;
 using Scorponok.IB.Core.Events;
 using Scorponok.IB.Core.Interfaces;
 using Scorponok.IB.Core.Notifications;
-using Scorponok.IB.Cqrs.Data.Context;
 using Scorponok.IB.Cqrs.Data.EventSourcing;
 using Scorponok.IB.Cqrs.Data.Repositories;
 using Scorponok.IB.Cqrs.Data.Repositories.EventSourcing;
@@ -15,11 +14,13 @@ using Scorponok.IB.Cross.Cutting.Bus;
 using Scorponok.IB.Cross.Cutting.Identity.Models;
 using Scorponok.IB.Domain.CommandHandlers;
 using Scorponok.IB.Domain.EventHandlers;
+using Scorponok.IB.Domain.Interfaces;
 using Scorponok.IB.Domain.Models.Churchs.Commands;
 using Scorponok.IB.Domain.Models.Churchs.Events;
 using Scorponok.IB.Domain.Models.Churchs.IRepository;
 using Scorponok.IB.Domain.Models.Contributions.Commands;
 using Scorponok.IB.Domain.Models.Contributions.IRepository;
+using Scorponok.IB.Domain.Models.Members.IRepository;
 using Scorponok.IB.Domain.Models.Users.Interfaces;
 
 namespace Scorponok.IB.Cross.Cutting.Ioc
@@ -87,6 +88,7 @@ namespace Scorponok.IB.Cross.Cutting.Ioc
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IChurchRepository, ChurchRepository>();
             services.AddScoped<IContributionRepository, ContributionRepository>();
+            services.AddScoped<IMemberRepository, MemberRepository>();
         }
     }
 }

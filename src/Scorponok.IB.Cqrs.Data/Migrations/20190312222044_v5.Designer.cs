@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Scorponok.IB.Cqrs.Data.Context;
 
 namespace Scorponok.IB.Cqrs.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20190312222044_v5")]
+    partial class v5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,13 +43,10 @@ namespace Scorponok.IB.Cqrs.Data.Migrations
 
             modelBuilder.Entity("Scorponok.IB.Domain.Models.Contributions.Contribution", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<Guid>("Id");
 
                     b.Property<DateTime>("DeliveryDate")
                         .HasColumnName("DeliveryDate");
-
-                    b.Property<Guid>("MemberId");
 
                     b.Property<DateTime>("Registered")
                         .HasColumnName("Registered");
@@ -60,8 +59,6 @@ namespace Scorponok.IB.Cqrs.Data.Migrations
 
                     b.HasKey("Id")
                         .HasName("ContributionId");
-
-                    b.HasIndex("MemberId");
 
                     b.ToTable("Contribution");
                 });
@@ -141,7 +138,7 @@ namespace Scorponok.IB.Cqrs.Data.Migrations
                 {
                     b.HasOne("Scorponok.IB.Domain.Models.Members.Member", "Member")
                         .WithMany("Contributions")
-                        .HasForeignKey("MemberId")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

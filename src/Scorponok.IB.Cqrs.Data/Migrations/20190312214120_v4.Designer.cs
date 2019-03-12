@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Scorponok.IB.Cqrs.Data.Context;
 
 namespace Scorponok.IB.Cqrs.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20190312214120_v4")]
+    partial class v4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,7 +49,8 @@ namespace Scorponok.IB.Cqrs.Data.Migrations
                     b.Property<DateTime>("DeliveryDate")
                         .HasColumnName("DeliveryDate");
 
-                    b.Property<Guid>("MemberId");
+                    b.Property<int>("MemberId")
+                        .HasColumnName("MemberId");
 
                     b.Property<DateTime>("Registered")
                         .HasColumnName("Registered");
@@ -60,8 +63,6 @@ namespace Scorponok.IB.Cqrs.Data.Migrations
 
                     b.HasKey("Id")
                         .HasName("ContributionId");
-
-                    b.HasIndex("MemberId");
 
                     b.ToTable("Contribution");
                 });
@@ -135,14 +136,6 @@ namespace Scorponok.IB.Cqrs.Data.Migrations
                                 .HasForeignKey("Scorponok.IB.Core.ValueObjects.Telephone", "ChurchId")
                                 .OnDelete(DeleteBehavior.Cascade);
                         });
-                });
-
-            modelBuilder.Entity("Scorponok.IB.Domain.Models.Contributions.Contribution", b =>
-                {
-                    b.HasOne("Scorponok.IB.Domain.Models.Members.Member", "Member")
-                        .WithMany("Contributions")
-                        .HasForeignKey("MemberId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

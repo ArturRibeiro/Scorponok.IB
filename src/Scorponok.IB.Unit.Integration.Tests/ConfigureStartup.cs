@@ -35,7 +35,8 @@ namespace Scorponok.IB.Unit.Integration.Tests
                     var env = services.GetService<IHostingEnvironment>();
                     var dataContextSeed = new Seed();
                     dataContextSeed.SeedAsync(context, env).Wait();
-                });
+                })
+                .MigrateDbContext<EventStoreContext>();
 
             return testServer;
         }

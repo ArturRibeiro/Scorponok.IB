@@ -18,7 +18,7 @@ namespace Scorponok.IB.Unit.Integration.Tests
             var request = new ValueMessageRequest()
             {
                 Value = 10,
-                MemberId = 1,
+                MemberId = Guid.NewGuid(),
                 Name = "Space ghost",
                 TypeContribution = 1,
                 ContributionDate = DateTime.Now

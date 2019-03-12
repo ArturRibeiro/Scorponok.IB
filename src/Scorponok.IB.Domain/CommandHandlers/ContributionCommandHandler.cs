@@ -3,10 +3,13 @@ using System.Threading.Tasks;
 using MediatR;
 using Scorponok.IB.Core.Bus;
 using Scorponok.IB.Core.Commands;
-using Scorponok.IB.Core.Interfaces;
 using Scorponok.IB.Core.Notifications;
+using Scorponok.IB.Domain.Interfaces;
+using Scorponok.IB.Domain.Models.Contributions;
 using Scorponok.IB.Domain.Models.Contributions.Commands;
 using Scorponok.IB.Domain.Models.Contributions.IRepository;
+using Scorponok.IB.Domain.Models.Members;
+using Scorponok.IB.Domain.Models.Members.IRepository;
 
 namespace Scorponok.IB.Domain.CommandHandlers
 {
@@ -24,6 +27,17 @@ namespace Scorponok.IB.Domain.CommandHandlers
 
         public async Task<Unit> Handle(RegisterContributionCommand message, CancellationToken cancellationToken)
         {
+            var member = _uow.MemberRepository.GetById(message.MemberId);
+
+            var contribution = Contribution.Factory.Create(member
+                , message.DeliveryDate
+                , message.Value
+                , (TypeContribution)message.TypeContribution);
+
+            _memberRepository.Add(contribution);
+
+            Commit();
+
             return Unit.Value;
         }
     }

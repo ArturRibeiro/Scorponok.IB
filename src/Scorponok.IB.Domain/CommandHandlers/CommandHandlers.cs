@@ -1,8 +1,8 @@
 ﻿using System;
 using MediatR;
 using Scorponok.IB.Core.Bus;
-using Scorponok.IB.Core.Interfaces;
 using Scorponok.IB.Core.Notifications;
+using Scorponok.IB.Domain.Interfaces;
 
 namespace Scorponok.IB.Core.Commands
 {

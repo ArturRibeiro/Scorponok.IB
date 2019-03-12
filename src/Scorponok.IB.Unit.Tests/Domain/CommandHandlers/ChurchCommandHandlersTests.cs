@@ -10,6 +10,7 @@ using Scorponok.IB.Core.Commands;
 using Scorponok.IB.Core.Interfaces;
 using Scorponok.IB.Core.Notifications;
 using Scorponok.IB.Domain.CommandHandlers;
+using Scorponok.IB.Domain.Interfaces;
 using Scorponok.IB.Domain.Models.Churchs;
 using Scorponok.IB.Domain.Models.Churchs.Commands;
 using Scorponok.IB.Domain.Models.Churchs.Events;

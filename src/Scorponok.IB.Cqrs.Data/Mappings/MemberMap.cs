@@ -15,6 +15,12 @@ namespace Scorponok.IB.Cqrs.Data.Mappings
                 .HasColumnName("Name")
                 .HasMaxLength(100)
                 .IsRequired();
+
+
+            builder.HasMany(x => x.Contributions)
+                .WithOne(x => x.Member)
+                .HasForeignKey("MemberId")
+                .IsRequired();
         }
     }
 }

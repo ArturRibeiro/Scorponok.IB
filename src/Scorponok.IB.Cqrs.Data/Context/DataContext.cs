@@ -16,6 +16,7 @@ namespace Scorponok.IB.Cqrs.Data.Context
 		{
             modelBuilder.ApplyConfiguration(new ChurchMap());
 			modelBuilder.ApplyConfiguration(new MemberMap());
+			modelBuilder.ApplyConfiguration(new ContributionMap());
 
 			base.OnModelCreating(modelBuilder);
 		}

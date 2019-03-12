@@ -13,7 +13,7 @@ namespace Scorponok.IB.Web.Api.App.Contributions
         public string Name { get; set; }
 
         [DataMember(Name = "MemberId")]
-        public int MemberId { get; set; }
+        public Guid MemberId { get; set; }
 
         [DataMember(Name = "TypeContribution")]
         public short TypeContribution { get; set; }

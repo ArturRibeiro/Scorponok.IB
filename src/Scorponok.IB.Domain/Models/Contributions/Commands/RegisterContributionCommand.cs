@@ -7,11 +7,11 @@ namespace Scorponok.IB.Domain.Models.Contributions.Commands
     {
         public double Value { get; private set; }
 
-        public int MemberId { get; private set; }
+        public Guid MemberId { get; private set; }
 
         public short TypeContribution { get; private set; }
 
-        public DateTime ContributionDate { get; private set; }
+        public DateTime DeliveryDate { get; private set; }
 
         public override bool IsValid()
             => true;
