@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Scorponok.IB.Core.Bus;
 using Scorponok.IB.Core.Notifications;
 using Scorponok.IB.Domain.Models.Churchs.Commands;
-using Scorponok.IB.Web.Api.Churchs.Views;
+using Scorponok.IB.Web.Api.App.Churchs.Views;
 using Scorponok.IB.Web.Api.Utils;
 
 namespace Scorponok.IB.Web.Api.Controllers

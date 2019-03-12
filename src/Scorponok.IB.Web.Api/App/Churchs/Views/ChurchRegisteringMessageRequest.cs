@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
-namespace Scorponok.IB.Web.Api.Churchs.Views
+namespace Scorponok.IB.Web.Api.App.Churchs.Views
 {
     [DataContract(Namespace = "Scorponok.IB.Web.Api")]
     public class ChurchRegisteringMessageRequest

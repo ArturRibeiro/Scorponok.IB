@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Scorponok.IB.Web.Api.Inputs
+namespace Scorponok.IB.Web.Api.App.Contributions
 {
     [DataContract(Namespace = "Scorponok.IB.Web.Api")]
     public class ValueMessageRequest

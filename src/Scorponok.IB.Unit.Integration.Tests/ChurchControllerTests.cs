@@ -9,7 +9,7 @@ using Scorponok.IB.Core.ValueObjects;
 using Scorponok.IB.Cross.Cutting.Ioc;
 using Scorponok.IB.Domain.Models.Churchs;
 using Scorponok.IB.Domain.Models.Churchs.IRepository;
-using Scorponok.IB.Web.Api.Churchs.Views;
+using Scorponok.IB.Web.Api.App.Churchs.Views;
 
 namespace Scorponok.IB.Unit.Integration.Tests
 {

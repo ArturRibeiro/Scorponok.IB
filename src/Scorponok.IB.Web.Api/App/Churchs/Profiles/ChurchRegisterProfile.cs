@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Scorponok.IB.Domain.Models.Churchs.Commands;
-using Scorponok.IB.Web.Api.Churchs.Views;
+using Scorponok.IB.Web.Api.App.Churchs.Views;
 
-namespace Scorponok.IB.Web.Api.Churchs.Profiles
+namespace Scorponok.IB.Web.Api.App.Churchs.Profiles
 {
     public class ChurchRegisterProfile : Profile
     {

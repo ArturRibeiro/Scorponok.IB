@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
-using Scorponok.IB.Web.Api.Inputs;
+using Scorponok.IB.Web.Api.App.Contributions;
 
 namespace Scorponok.IB.Unit.Integration.Tests
 {
