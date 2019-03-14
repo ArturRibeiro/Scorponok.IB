@@ -26,8 +26,6 @@ namespace Scorponok.IB.Web.Api.Controllers
         [HttpPost, Route("addValue"), ValidateMessageRequest]
         public async Task<IActionResult> Register([FromBody] ValueMessageRequest request)
         {
-            if (!request.IsMember) return Ok();
-
             var command = _mapper.Map<RegisterContributionCommand>(request);
             await _bus.SendCommand(command);
 

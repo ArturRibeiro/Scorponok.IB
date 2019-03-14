@@ -7,9 +7,9 @@ using Scorponok.IB.Core.Notifications;
 using Scorponok.IB.Domain.Interfaces;
 using Scorponok.IB.Domain.Models.Contributions;
 using Scorponok.IB.Domain.Models.Contributions.Commands;
+using Scorponok.IB.Domain.Models.Contributions.Events;
 using Scorponok.IB.Domain.Models.Contributions.IRepository;
 using Scorponok.IB.Domain.Models.Members;
-using Scorponok.IB.Domain.Models.Members.IRepository;
 
 namespace Scorponok.IB.Domain.CommandHandlers
 {
@@ -27,7 +27,8 @@ namespace Scorponok.IB.Domain.CommandHandlers
 
         public async Task<Unit> Handle(RegisterContributionCommand message, CancellationToken cancellationToken)
         {
-            var member = _uow.MemberRepository.GetById(message.MemberId);
+            var member = Member.Factory.Create(message.Name, message.MemberId);
+            await _bus.RaiseEvent(ContributionRegisterNameMemberEvent.Factory.Create(member));
 
             var contribution = Contribution.Factory.Create(member
                 , message.DeliveryDate

@@ -13,6 +13,8 @@ namespace Scorponok.IB.Domain.Models.Contributions.Commands
 
         public DateTime DeliveryDate { get; private set; }
 
+        public string Name { get; private set; }
+
         public override bool IsValid()
             => true;
     }

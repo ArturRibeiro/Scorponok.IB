@@ -9,8 +9,8 @@ namespace Scorponok.IB.Domain.Models.Churchs
 		public string Name { get; private set; }
 		public string Photo { get; private set; }
 		public Email Email { get; private set; } = Email.Factory.Empty();
-		public Telephone MobileTelephone { get; private set; } = Telephone.Factory.Empty();
-		public Telephone TelephoneFixed { get; private set; } = Telephone.Factory.Empty();
+		public Telephone CellPhone { get; private set; } = Telephone.Factory.Empty();
+		public Telephone HomePhone { get; private set; } = Telephone.Factory.Empty();
 		public Address Address { get; private set; } = Address.Factory.Empty();
 		#endregion
 
@@ -34,13 +34,19 @@ namespace Scorponok.IB.Domain.Models.Churchs
 			return this;
 		}
 
-		public Church UpdateTelephone(string telephone)
+		public Church UpdateTelephone(string cellPhone)
 		{
-			this.MobileTelephone.Update(telephone);
+			this.CellPhone.Update(cellPhone);
 			return this;
 		}
 
-		public Church UpdateAddress(string address)
+	    public Church UpdateHomePhone(string homePhone)
+	    {
+	        this.HomePhone.Update(homePhone);
+	        return this;
+	    }
+
+        public Church UpdateAddress(string address)
 		{
 			return this;
 		}
@@ -54,8 +60,8 @@ namespace Scorponok.IB.Domain.Models.Churchs
 					Name = name,
 					Photo = photo,
 					Email = email,
-				    MobileTelephone = mobileTelephone,
-                    TelephoneFixed = telephoneFixed,
+				    CellPhone = mobileTelephone,
+                    HomePhone = telephoneFixed,
                     Address = endereco
 				};
 		}

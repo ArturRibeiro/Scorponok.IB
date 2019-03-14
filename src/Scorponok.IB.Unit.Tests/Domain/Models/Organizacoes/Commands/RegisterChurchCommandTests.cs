@@ -11,7 +11,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes.Commands
 		public void Registering_church_with_the_150_largest_name_should_fail()
 		{
 			//Arrange's
-			var commandArg = new RegisterChurchCommand(@"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+			var commandArg = RegisterChurchCommand.Factory.Create(@"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 														 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 														 ssssssssssssssssssssssssssssssssssssssssssssss
 														 aaaaaaaaaaaaaaaaaaaaaaaaasssssssssssssssssssss
@@ -20,7 +20,8 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes.Commands
 														 photo: "...",
 														 region: 55,
 														 prefix: 21,
-														 number: "219874133");
+														 cellPhone: "219874133",
+			                                             homePhone: "22222222");
 
 			//Assert's
 			commandArg.IsValid().Should().BeFalse();
@@ -33,12 +34,13 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes.Commands
 		public void Registering_church_with_photo_large_than_15_should_fail()
 		{
 			//Arrange's
-			var commandArg = new RegisterChurchCommand("Richmond’s First Baptist Church", 
+			var commandArg = RegisterChurchCommand.Factory.Create("Richmond’s First Baptist Church", 
 				email: "Scorponok@scorponok.com", 
 				photo: "namenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamenamename",
 				region: 55,
 				prefix: 21,
-				number: "219874133");
+				cellPhone: "219874133",
+			    homePhone: "22222222");
 
 
 			//Assert's
@@ -52,12 +54,13 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes.Commands
 		public void Registering_church_with_telephone_larger_than_9_should_fail()
 		{
 			//Arrange's
-			var commandArg = new RegisterChurchCommand("Richmond’s First Baptist Church", 
+			var commandArg = RegisterChurchCommand.Factory.Create("Richmond’s First Baptist Church", 
 				email: "Scorponok@scorponok.com", 
 				photo: "test.jpg",
 				region: 55,
 				prefix: 21,
-				number: "98741397855");
+				cellPhone: "98741397855",
+			    homePhone: "22222222");
 
 
 			//Assert's
@@ -71,12 +74,13 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes.Commands
 		public void Registering_church_with_telephone_less_than_8_should_fail()
 		{
 			//Arrange's
-			var commandArg = new RegisterChurchCommand("Richmond’s First Baptist Church", 
+			var commandArg = RegisterChurchCommand.Factory.Create("Richmond’s First Baptist Church", 
 				email: "Scorponok@scorponok.com", 
 				photo: "test.jpg",
 				region: 55,
 				prefix: 21,
-				number: "0123456");
+				cellPhone: "0123456",
+			    homePhone: "22222222");
 
 
 			//Assert's

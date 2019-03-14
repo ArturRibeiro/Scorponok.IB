@@ -39,48 +39,48 @@ namespace Scorponok.IB.Cqrs.Data.Mappings
 
 			#region Mapping complex - Telephone
 			builder
-				.OwnsOne(p => p.MobileTelephone)
+				.OwnsOne(p => p.CellPhone)
 				.Ignore(p => p.Region);
 
 			builder
-				.OwnsOne(p => p.MobileTelephone)
+				.OwnsOne(p => p.CellPhone)
 				.Ignore(p => p.Prefix);
 
 			builder
-				.OwnsOne(p => p.MobileTelephone)
+				.OwnsOne(p => p.CellPhone)
 				.Property(p => p.Number)
 				.HasColumnName("PhoneMobile")
 				.IsRequired();
 
 			builder
-				.OwnsOne(p => p.MobileTelephone)
+				.OwnsOne(p => p.CellPhone)
 				.Ignore(x => x.Mensagem);
 
 			builder
-				.OwnsOne(p => p.MobileTelephone)
+				.OwnsOne(p => p.CellPhone)
 				.Ignore(x => x.Valido);
 			#endregion
 
 			#region Mapping complex - FixedTelephone
 			builder
-				.OwnsOne(p => p.TelephoneFixed)
+				.OwnsOne(p => p.HomePhone)
 				.Ignore(p => p.Region);
 
 			builder
-				.OwnsOne(p => p.TelephoneFixed)
+				.OwnsOne(p => p.HomePhone)
 				.Ignore(p => p.Prefix);
 
 			builder
-				.OwnsOne(p => p.TelephoneFixed)
+				.OwnsOne(p => p.HomePhone)
 				.Property(p => p.Number)
 				.HasColumnName("PhoneFixed");
 
 			builder
-				.OwnsOne(p => p.TelephoneFixed)
+				.OwnsOne(p => p.HomePhone)
 				.Ignore(x => x.Mensagem);
 
 			builder
-				.OwnsOne(p => p.TelephoneFixed)
+				.OwnsOne(p => p.HomePhone)
 				.Ignore(x => x.Valido);
 			#endregion
 

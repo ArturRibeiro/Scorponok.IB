@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Contributions\Events\" />
+    <Folder Include="Models\Members\Events\" />
   </ItemGroup>
 
 </Project>

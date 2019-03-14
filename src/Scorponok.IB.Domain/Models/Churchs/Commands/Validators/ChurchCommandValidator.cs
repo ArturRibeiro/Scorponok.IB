@@ -18,12 +18,12 @@ namespace Scorponok.IB.Domain.Models.Churchs.Commands.Validators
                     .WithMessage("Photo must be between 1 and 15 characters.");
 
         protected void ValidateMobileTelephone()
-			=> RuleFor(c => c.PhoneMobile)
+			=> RuleFor(c => c.CellPhone)
 				.Length(9)
 					.WithMessage("Telephone must be between 8 and 9 characters.");
 
 	    protected void ValidatePhoneFixed()
-	        => RuleFor(c => c.PhoneFixed)
+	        => RuleFor(c => c.HomePhone)
 	            .Length(8)
 	            .WithMessage("The phone must be a maximum of 8 characters.");
 

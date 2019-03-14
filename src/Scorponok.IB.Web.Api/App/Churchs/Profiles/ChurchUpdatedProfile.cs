@@ -9,6 +9,7 @@ namespace Scorponok.IB.Web.Api.App.Churchs.Profiles
         public ChurchUpdatedProfile()
         {
             CreateMap<ChurchUpdatedMessageRequest, UpdateChurchCommand>();
+
         }
     }
 }

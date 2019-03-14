@@ -5,10 +5,6 @@ namespace Scorponok.IB.Domain.Models.Churchs.Commands
 {
 	public class DeleteChurchCommand : ChurchCommand
 	{
-		public DeleteChurchCommand(Guid id)
-			=> Id = id;
-		
-
 		public override bool IsValid()
 		{
 			var commandValidator = new DeleteChurchCommandValidator();
@@ -16,5 +12,20 @@ namespace Scorponok.IB.Domain.Models.Churchs.Commands
 
 			return this.ValidationResult.IsValid;
 		}
-	}
+
+	    #region Factory
+
+	    public static class Factory
+	    {
+	        public static DeleteChurchCommand Create(Guid id)
+	        {
+	            return new DeleteChurchCommand()
+	            {
+	                Id = id
+                };
+	        }
+	    }
+
+	    #endregion
+    }
 }

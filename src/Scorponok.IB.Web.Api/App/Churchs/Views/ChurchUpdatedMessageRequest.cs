@@ -23,11 +23,11 @@ namespace Scorponok.IB.Web.Api.App.Churchs.Views
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Mobile invalid.")]
-        [DataMember(Name = "MobileTelephone")]
-        public string MobileTelephone { get; set; }
+        [DataMember(Name = "CellPhone")]
+        public string CellPhone { get; set; }
 
         [Required(ErrorMessage = "Telephone fixed invalid.")]
-        [DataMember(Name = "TelephoneFixed")]
-        public string TelephoneFixed { get; set; }
+        [DataMember(Name = "HomePhone")]
+        public string HomePhone { get; set; }
     }
 }

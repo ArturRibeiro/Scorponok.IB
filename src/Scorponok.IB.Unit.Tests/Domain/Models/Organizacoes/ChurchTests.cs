@@ -27,11 +27,11 @@ namespace Scorponok.IB.Unit.Tests.Domain.Models.Organizacoes
             church.Email.Should().NotBeNull();
             church.Email.Value.Should().Be(email);
 
-            church.TelephoneFixed.Should().NotBeNull();
-            church.TelephoneFixed.Number.Should().Be(telephoneFixed);
+            church.HomePhone.Should().NotBeNull();
+            church.HomePhone.Number.Should().Be(telephoneFixed);
 
-            church.MobileTelephone.Should().NotBeNull();
-            church.MobileTelephone.Number.Should().Be(mobileTelephone);
+            church.CellPhone.Should().NotBeNull();
+            church.CellPhone.Number.Should().Be(mobileTelephone);
 
             church.Address.Should().NotBeNull();
         }

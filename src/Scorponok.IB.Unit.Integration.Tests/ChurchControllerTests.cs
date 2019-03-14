@@ -53,8 +53,8 @@ namespace Scorponok.IB.Unit.Integration.Tests
                 Name = "Name updated",
                 Photo =  "Photo updated",
                 Email = "teste@gmail.com",
-                MobileTelephone = "21999999999",
-                TelephoneFixed = "2166666666"
+                CellPhone = "999999999", //Telephone must be between 8 and 9 characters.
+                HomePhone = "2166666666"
             };
 
             //Act
@@ -104,8 +104,8 @@ namespace Scorponok.IB.Unit.Integration.Tests
             BuilderSetup.SetCreatePersistenceMethod<Church>(churchRepository.Add);
             var church = Builder<Church>
                 .CreateNew()
-                    .With(x => x.TelephoneFixed, Telephone.Factory.CreateNew(21, "55555555"))
-                    .With(x => x.MobileTelephone, Telephone.Factory.CreateNew(21, "987413333"))
+                    .With(x => x.HomePhone, Telephone.Factory.CreateNew(21, "55555555"))
+                    .With(x => x.CellPhone, Telephone.Factory.CreateNew(21, "987413333"))
                     .With(x => x.Email, Email.Factory.CreateNew($"scorponok{Guid.NewGuid()}@gmail.com"))
                 .Persist();
 

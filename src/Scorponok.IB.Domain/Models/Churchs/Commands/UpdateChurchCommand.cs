@@ -3,29 +3,35 @@ using Scorponok.IB.Domain.Models.Churchs.Commands.Validators;
 
 namespace Scorponok.IB.Domain.Models.Churchs.Commands
 {
-	public class UpdateChurchCommand : ChurchCommand
-	{
-	    public UpdateChurchCommand()
-	    {
-	        
-	    }
+    public class UpdateChurchCommand : ChurchCommand
+    {
+        public override bool IsValid()
+        {
+            var commandValidator = new UpdateChurchCommandValidator();
+            this.ValidationResult = commandValidator.Validate(this);
 
-		public UpdateChurchCommand(Guid id, string name, string photo, string email, string telephone)
-		{
-			Id = id;
-			Name = name;
-			Photo = photo;
-			Email = email;
-			PhoneMobile = telephone;
-		}
+            return this.ValidationResult.IsValid;
+        }
 
-		public override bool IsValid()
-		{
-			var commandValidator = new UpdateChurchCommandValidator();
-			this.ValidationResult = commandValidator.Validate(this);
+        #region Factory
 
-			return this.ValidationResult.IsValid;
-		}
+        public static class Factory
+        {
+            public static UpdateChurchCommand Create(Guid id, string name, string photo, string email, string cellPhone, string homePhone)
+            {
+                return new UpdateChurchCommand()
+                {
+                    Id = id,
+                    Name = name,
+                    Photo = photo,
+                    Email = email,
+                    CellPhone = cellPhone,
+                    HomePhone = homePhone
+                };
+            }
+        }
 
-	}
+        #endregion
+
+    }
 }

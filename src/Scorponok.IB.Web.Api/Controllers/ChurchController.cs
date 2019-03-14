@@ -85,7 +85,7 @@ namespace Scorponok.IB.Web.Api.Controllers
         [HttpDelete, Route("delete/{churchId:Guid}")]
         public async Task<IActionResult> DeletedChurch(Guid churchId)
         {
-            var deleteChurchCommand = new DeleteChurchCommand(churchId);
+            var deleteChurchCommand = DeleteChurchCommand.Factory.Create(churchId);
             await _bus.SendCommand(deleteChurchCommand);
             return Response($"Church: {churchId} deleted.");
         }

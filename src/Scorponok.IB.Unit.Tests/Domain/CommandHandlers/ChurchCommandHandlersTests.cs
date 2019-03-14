@@ -30,12 +30,13 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
             var notification = new Mock<DomainNotificationHandler>();
             var mockChurchRepository = new Mock<IChurchRepository>();
 
-            var argument = new RegisterChurchCommand("Richmond’s First Baptist Church",
+            var argument = RegisterChurchCommand.Factory.Create("Richmond’s First Baptist Church",
                 email: "Scorponok@scorponok.com",
                 photo: "1.jpg",
                 region: 55,
                 prefix: 21,
-                number: "123456789");
+                cellPhone: "123456789",
+                homePhone: "22222222");
 
             //Setup
             uow.Setup(x => x.Commit()).Returns(new CommandResult(success: true));
@@ -63,7 +64,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
             var domainNotification = new Mock<DomainNotificationHandler>();
             var mockChurchRepository = new Mock<IChurchRepository>();
 
-            var arguments = new RegisterChurchCommand(
+            var arguments = RegisterChurchCommand.Factory.Create(
                 name: @"Richmond’s First Baptist ChurchRichmond’s First Baptist ChurchRichmond’s 
 						First Baptist ChurchRichmond’s First Baptist ChurchRichmond’s First Baptist Church
 						Richmond’s First Baptist Church"
@@ -71,7 +72,8 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
                 , photo: "1.jpg"
                 , region: 55
                 , prefix: 21
-                , number: "123456789");
+                , cellPhone: "123456789"
+                , homePhone: "22222222");
 
             DomainNotification domainNotificationResult = null;
 
@@ -101,11 +103,12 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
             var notification = new Mock<DomainNotificationHandler>();
             var mockChurchRepository = new Mock<IChurchRepository>();
 
-            var argument = new UpdateChurchCommand(id: Guid.NewGuid()
+            var argument = UpdateChurchCommand.Factory.Create(id: Guid.NewGuid()
                     , name: "Richmond’s First Baptist Church"
                     , email: "Scorponok@scorponok.com"
                     , photo: "1.jpg"
-                    , telephone: "123456789");
+                    , cellPhone: "123456789",
+                homePhone: "22222222");
 
             //Setup
             uow.Setup(x => x.Commit()).Returns(new CommandResult(success: true));
@@ -138,14 +141,15 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
             var domainNotification = new Mock<DomainNotificationHandler>();
             var mockChurchRepository = new Mock<IChurchRepository>();
 
-            var arguments = new UpdateChurchCommand(
+            var arguments = UpdateChurchCommand.Factory.Create(
                 id: Guid.NewGuid(),
                 name: @"Richmond’s First Baptist ChurchRichmond’s First Baptist ChurchRichmond’s 
 						First Baptist ChurchRichmond’s First Baptist ChurchRichmond’s First Baptist Church
 						Richmond’s First Baptist Church"
                 , email: "Scorponok@scorponok.com"
                 , photo: "1.jpg"
-                , telephone: "123456789");
+                , cellPhone: "123456789"
+                , homePhone: "22222222");
 
             DomainNotification domainNotificationResult = null;
 
@@ -175,7 +179,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
             var domainNotification = new Mock<DomainNotificationHandler>();
             var mockChurchRepository = new Mock<IChurchRepository>();
 
-            var argument = new DeleteChurchCommand(id: Guid.NewGuid());
+            var argument = DeleteChurchCommand.Factory.Create(id: Guid.NewGuid());
 
             //Setup
             uow.Setup(x => x.Commit()).Returns(new CommandResult(success: true));
@@ -206,7 +210,7 @@ namespace Scorponok.IB.Unit.Tests.Domain.CommandHandlers
             var domainNotification = new Mock<DomainNotificationHandler>();
             var mockChurchRepository = new Mock<IChurchRepository>();
 
-            var arguments = new DeleteChurchCommand(
+            var arguments = DeleteChurchCommand.Factory.Create(
                 id: Guid.Empty);
 
             DomainNotification domainNotificationResult = null;

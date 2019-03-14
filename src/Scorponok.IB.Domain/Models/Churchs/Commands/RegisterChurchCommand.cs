@@ -5,21 +5,6 @@ namespace Scorponok.IB.Domain.Models.Churchs.Commands
 {
 	public class RegisterChurchCommand : ChurchCommand
 	{
-	    public RegisterChurchCommand()
-	    {
-	        
-	    }
-
-		public RegisterChurchCommand(string name, string photo, string email, byte region, byte prefix, string number)
-		{
-			Name = name;
-			Photo = photo;
-			Email = email;
-			Region = region;
-			Prefix = prefix;
-			PhoneMobile = number;
-		}
-
 		public override bool IsValid()
 		{
 			var commandValidator = new RegisterChurchCommandValidator();
@@ -27,5 +12,26 @@ namespace Scorponok.IB.Domain.Models.Churchs.Commands
 
 			return this.ValidationResult.IsValid;
 		}
-	}
+
+	    #region Factory
+
+	    public static class Factory
+	    {
+            public static RegisterChurchCommand Create(string name, string photo, string email, byte region, byte prefix, string cellPhone, string homePhone)
+            {
+                return new RegisterChurchCommand()
+                {
+                    Name = name,
+                    Photo = photo,
+                    Email = email,
+                    Region = region,
+                    Prefix = prefix,
+                    CellPhone = cellPhone,
+                    HomePhone = homePhone
+                };
+            }
+        }
+
+        #endregion
+    }
 }

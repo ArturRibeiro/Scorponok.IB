@@ -35,7 +35,7 @@ namespace Scorponok.IB.Domain.CommandHandlers
 
             var church = CreateNewChurch(message);
             if (church.IsValid()) _churchRepository.Add(church);
-            if (Commit()) await _bus.RaiseEvent(ChurchRegisteredEvent.Factory.Create(church.Id, church.Name, church.Photo, church.Email.Value, church.MobileTelephone.Prefix, church.MobileTelephone.Number));
+            if (Commit()) await _bus.RaiseEvent(ChurchRegisteredEvent.Factory.Create(church.Id, church.Name, church.Photo, church.Email.Value, church.CellPhone.Prefix, church.CellPhone.Number));
 
             return Unit.Value;
         }
@@ -50,7 +50,7 @@ namespace Scorponok.IB.Domain.CommandHandlers
 
             var church = UpdateChurch(message);
             if (church.IsValid()) _churchRepository.Update(church);
-            if (Commit()) await _bus.RaiseEvent(ChurchUpdatedEvent.Factory.Create(church.Id, church.Name, church.Photo, church.Email.Value, church.MobileTelephone.Prefix, church.MobileTelephone.Number));
+            if (Commit()) await _bus.RaiseEvent(ChurchUpdatedEvent.Factory.Create(church.Id, church.Name, church.Photo, church.Email.Value, church.CellPhone.Prefix, church.CellPhone.Number));
 
             return Unit.Value;
         }
@@ -77,8 +77,8 @@ namespace Scorponok.IB.Domain.CommandHandlers
                         name: message.Name
                         , photo: message.Photo
                         , email: Email.Factory.CreateNew(message.Email)
-                        , telephoneFixed: Telephone.Factory.CreateNew(55, 21, message.PhoneFixed)
-                        , mobileTelephone: Telephone.Factory.CreateNew(55, 21, message.PhoneMobile)
+                        , telephoneFixed: Telephone.Factory.CreateNew(55, 21, message.HomePhone)
+                        , mobileTelephone: Telephone.Factory.CreateNew(55, 21, message.CellPhone)
                         , endereco: null
                     );
 
@@ -88,7 +88,8 @@ namespace Scorponok.IB.Domain.CommandHandlers
                 .UpdateName(message.Name)
                 .UpdatePhoto(message.Photo)
                 .UpdateEmail(message.Email)
-                .UpdateTelephone(message.PhoneMobile);
+                .UpdateTelephone(message.CellPhone)
+                .UpdateTelephone(message.HomePhone);
 
         #endregion
     }

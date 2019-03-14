@@ -19,6 +19,7 @@ using Scorponok.IB.Domain.Models.Churchs.Commands;
 using Scorponok.IB.Domain.Models.Churchs.Events;
 using Scorponok.IB.Domain.Models.Churchs.IRepository;
 using Scorponok.IB.Domain.Models.Contributions.Commands;
+using Scorponok.IB.Domain.Models.Contributions.Events;
 using Scorponok.IB.Domain.Models.Contributions.IRepository;
 using Scorponok.IB.Domain.Models.Members.IRepository;
 using Scorponok.IB.Domain.Models.Users.Interfaces;
@@ -47,16 +48,18 @@ namespace Scorponok.IB.Cross.Cutting.Ioc
             services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
             services.AddScoped<INotificationHandler<ChurchRegisteredEvent>, ChurchEventHandlers>();
             services.AddScoped<INotificationHandler<ChurchUpdatedEvent>, ChurchEventHandlers>();
-            services.AddScoped<INotificationHandler<ChurchDeletedEvent>, ChurchEventHandlers>(); 
+            services.AddScoped<INotificationHandler<ChurchDeletedEvent>, ChurchEventHandlers>();
+            
+            services.AddScoped<INotificationHandler<ContributionRegisterNameMemberEvent>, ContributionEventHandlers>(); 
             #endregion
             
             #region Register domain Command's
-            services.AddScoped<IRequestHandler<RegisterChurchCommand>, ChurchCommandHandler>();
-            services.AddScoped<IRequestHandler<UpdateChurchCommand>, ChurchCommandHandler>();
-            services.AddScoped<IRequestHandler<DeleteChurchCommand>, ChurchCommandHandler>(); 
+            services.AddScoped<IRequestHandler<RegisterChurchCommand, Unit>, ChurchCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateChurchCommand, Unit>, ChurchCommandHandler>();
+            services.AddScoped<IRequestHandler<DeleteChurchCommand, Unit>, ChurchCommandHandler>(); 
 
 
-            services.AddScoped<IRequestHandler<RegisterContributionCommand>, ContributionCommandHandler>(); 
+            services.AddScoped<IRequestHandler<RegisterContributionCommand, Unit>, ContributionCommandHandler>(); 
             #endregion
             
             // Infra - Data EventSourcing
